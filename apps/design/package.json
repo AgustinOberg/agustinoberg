@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "agustín oberg · design language site (es + en), served under /design",
+  "description": "agustín oberg · design language site (English at /, Spanish at /es/). Deployed to Cloudflare Pages by .github/workflows/deploy-design.yml",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,6 +13,7 @@
     "@agustinoberg/brand": "workspace:*"
   },
   "devDependencies": {
-    "vite": "^8.3.5"
+    "vite": "^8.3.5",
+    "wrangler": "4.150.0"
   }
 }

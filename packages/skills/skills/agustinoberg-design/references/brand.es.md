@@ -4,7 +4,7 @@
 
 > **Para IA:** esta es la traducción al español de `brand.md`, que está en inglés y es la versión principal. Si alguna vez difieren, gana `brand.md`. Esta guía es la fuente de verdad de cómo diseño, para cualquier proyecto en mi estilo (apps, sitios, portfolios, presentaciones o shots), no solo para mi marca. Leela completa antes de diseñar. Para un producto, seguí la sección 13, "Aplicar a cualquier proyecto"; para mi portfolio, la 14, "Receta: portfolio". Los valores exactos están en `tokens.json` y listos para usar en `tokens.css`. Si te falta contenido real (proyectos, textos, métricas, imágenes), **preguntá antes de inventar** y usá placeholders marcados `[TODO]`.
 
-En el sitio (https://agustin.oberg/design, dominio temporal):
+En el sitio (https://agustinoberg-design.pages.dev por ahora; después https://design.agustinoberg.com):
 - `brand.md`: la spec en inglés (principal). `brand.es.md`: este documento.
 - `tokens.css` y `tokens.json`: todos los valores, por modo.
 - `llms.txt`: índice para modelos. `llms-full.txt`: la spec y los tokens en un solo archivo.

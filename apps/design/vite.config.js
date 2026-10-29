@@ -100,6 +100,26 @@ Sitemap: ${siteUrl}/sitemap.xml
   };
 }
 
+// Cloudflare Pages host config. Pages already serves /es/ from es/index.html and adds
+// trailing slashes; these cover the old /en/ route and give AI files the right types.
+function hostFiles(base) {
+  const redirects = `${base}en ${base} 301
+${base}en/* ${base} 301
+`;
+  const headers = `${base}brand.md
+  Content-Type: text/markdown; charset=utf-8
+${base}brand.es.md
+  Content-Type: text/markdown; charset=utf-8
+${base}llms.txt
+  Content-Type: text/plain; charset=utf-8
+${base}llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+${base}assets/*
+  Cache-Control: public, max-age=31536000, immutable
+`;
+  return { _redirects: redirects, _headers: headers };
+}
+
 function aiFilesPlugin(siteUrl, base) {
   return {
     name: "ai-files",
@@ -107,7 +127,7 @@ function aiFilesPlugin(siteUrl, base) {
       // Friendly URLs in dev: add the trailing slash to page folders and send the
       // old /en/ route to the English root. Production hosts should do the same.
       const redirects = new Map([
-        [base.replace(/\/$/, ""), base],
+        ...(base === "/" ? [] : [[base.replace(/\/$/, ""), base]]),
         [`${base}es`, `${base}es/`],
         [`${base}en`, base],
         [`${base}en/`, base],
@@ -128,7 +148,7 @@ function aiFilesPlugin(siteUrl, base) {
       });
     },
     generateBundle() {
-      for (const [fileName, source] of Object.entries(aiFiles(siteUrl))) {
+      for (const [fileName, source] of Object.entries({ ...aiFiles(siteUrl), ...hostFiles(base) })) {
         this.emitFile({ type: "asset", fileName, source });
       }
     },
@@ -137,7 +157,7 @@ function aiFilesPlugin(siteUrl, base) {
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, here, "VITE_");
-  const siteUrl = (env.VITE_SITE_URL || "http://localhost:5173/design").replace(/\/$/, "");
+  const siteUrl = (env.VITE_SITE_URL || "http://localhost:5173").replace(/\/$/, "");
   const base = new URL(siteUrl).pathname.replace(/\/?$/, "/");
 
   return {
