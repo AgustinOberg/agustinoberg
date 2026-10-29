@@ -3,6 +3,7 @@
 Copy `assets/tokens.css` into the project and load it before your own styles. It already contains:
 - every token, for light and dark;
 - the base components: `.headline`, `.label`, `.num`, `.btn` (`--primary`, `--secondary`, `--glass`, `--accent`, `--lg`), `.chip`, `.glass`, `.sheet`, `.stage` and `.atmos--*`;
+- color: `.accent-{forest|ember|tide|rouge|iris|flame}` on a container (sets `--accent`, `--accent-1`, `--accent-2`), `.surface--tint` and `.surface--accent` for the color dial, and `--data-{hue}` for categories in charts, metrics and tags;
 - the micro layer: `.pblur`, `.edgeblur`, `.float-sheet`, `.swap`, `.shimmer`, `.reveal`, `.words`, `.stagger`, `.live`, `.link`, `.depth-text` and `.contact-shadow`;
 - the reduced-motion rules.
 

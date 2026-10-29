@@ -43,8 +43,16 @@ const camel = (s) => s.replace(/-([a-z0-9])/g, (_, c) => c.toUpperCase());
 const camelKeys = (obj) => Object.fromEntries(Object.entries(obj).map(([k, v]) => [camel(k), v]));
 const json = (v, indent = "") => JSON.stringify(v, null, 2).replace(/\n/g, `\n${indent}`);
 
+// Resolves "{color.atmosphere.x.dark.glow}" style references to their value.
+const resolve = (node) => {
+  const v = val(node);
+  const ref = typeof v === "string" && v.match(/^\{(.+)\}$/);
+  return ref ? resolve(ref[1].split(".").reduce((o, k) => o[k], t)) : v;
+};
+
 const theme = {
   mono: camelKeys(mapValues(t.color.mono, val)),
+  data: mapValues(t.color.data, (d) => ({ light: resolve(d.light), dark: resolve(d.dark) })),
   semantic: mapValues(t.color.semantic, val),
   light: camelKeys(mapValues(t.color.light, val)),
   dark: camelKeys(mapValues(t.color.dark, val)),
@@ -85,14 +93,18 @@ export const colors = {
 export type Scheme = keyof typeof colors;
 export type Palette = (typeof colors)[Scheme];
 
-/** One atmosphere per product. Keys: "0" (deepest) → "2", then "glow". */
+/** One lead atmosphere per product. Keys: "0" (deepest) → "2", then "glow". */
 export const atmospheres = ${json(theme.atmospheres)} as const;
 
 export type Atmosphere = keyof typeof atmospheres;
 
-/** Product accent = glow of the product's atmosphere in the current mode. One kind of element per screen. */
+/** Product accent = glow of the product's lead atmosphere in the current mode. How much it covers depends on the color dial (brand.md, section 6). */
 export const accent = (atmosphere: Atmosphere, scheme: Scheme) => atmospheres[atmosphere][scheme].glow;
 export const onAccent = ${JSON.stringify(theme.onAccent)};
+
+/** Data colors: one hue per category in charts, metrics and tags, lead hue first. Never decoration. */
+export const dataColors = ${json(theme.data)} as const;
+export const dataColor = (hue: Atmosphere, scheme: Scheme) => dataColors[hue][scheme];
 
 export const radius = ${json(theme.radius)} as const;
 

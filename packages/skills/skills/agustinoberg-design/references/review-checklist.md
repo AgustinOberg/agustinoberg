@@ -8,7 +8,9 @@ Count these. A failed count is a fix, not a judgment call.
 
 | count | must be |
 |---|---|
-| distinct accent hues | 1 for a product, 0 for the personal brand |
+| lead hues | 1 for a product; 0 in the personal brand's chrome |
+| data categories that change color between screens, or data colors used as decoration | 0 |
+| photos, objects or avatars desaturated or tinted to match the frame | 0 |
 | corner radii outside {8, 16, 24, 32, pill, concentric} | 0 |
 | buttons, chips, toggles or segmented controls that aren't pills | 0 |
 | statement headlines (hero, section opener, empty state) that aren't two-tone, or headlines longer than two lines | 0 |
@@ -42,7 +44,8 @@ The language fixes the hand, not the layout (spec section 4, "Range").
 - [ ] Light: #F4F4F4 page, white cards with a soft shadow. Dark: #000 page, #111 cards with a 1 px top light and no big shadows.
 - [ ] Neither mode is an automatic inversion of the other. Each token has its own value.
 - [ ] Floating surfaces sit off the edge with concentric radii. Glass only goes over imagery or an atmosphere.
-- [ ] One atmosphere at most, and the accent is on one kind of element per screen.
+- [ ] One lead atmosphere, at the dial the direction chose, applied the same way on every screen. Dial 1: the accent is on one kind of element per screen. Dial 3: whole surfaces carry the hue with on-accent text.
+- [ ] It isn't grey by accident. Content is in full color, and if the result feels flat, the dial or the content is wrong.
 - [ ] Generous air. Nothing is centered by default when a left-aligned layout reads better.
 - [ ] Mono labels are 11 px uppercase, used sparingly.
 
@@ -83,12 +86,13 @@ Code review alone never finishes visual work.
 |---|---|
 | Every site has the same skeleton (sticky label column, two-tone hero with two buttons, full-width stages) | Write the direction first and change at least 3 free axes (spec section 4) |
 | Giant centered hero headline with a gradient | Small two-tone headline, left-aligned, mono frame |
-| Purple-to-blue gradient buttons with a glow | Primary is `fg` on `bg`; the accent is the atmosphere's glow, used once |
+| Purple-to-blue gradient buttons with a glow | Primary is `fg` on `bg`; the accent is the lead atmosphere's glow, at the chosen dial |
 | Everything is a card with a border | Remove the borders; separate with space, surface steps and soft light |
 | Glassmorphism on every surface | Glass only over imagery or an atmosphere; opaque surfaces elsewhere |
 | Gray-on-gray dark mode | Pure black page, #111 cards, white text, `fg-2` for the second line |
 | Same shadows in both modes | Shadows in light only; surface steps and a 1 px light in dark |
-| Five accent colors | One atmosphere, one accent, one kind of element |
+| Five accent colors | One lead hue; categories use the data colors, content keeps its own |
+| Everything black, white and grey, nothing to look at | Pick a dial on purpose: let content carry color, tint featured cards (dial 2) or paint surfaces (dial 3) |
 | Every element animates on load | Frequency gate: animate occasional moments, keep the rest still |
 | Bouncy springs on big panels | Springs only for small things or finger-driven motion |
 | Emoji as section icons | One line icon family, or no icon |

@@ -67,7 +67,7 @@ Design references set the look. Research sets the structure. Never design a scre
 2. **Choose the visual base:** references, partial references or none (see above). Load `agustinoberg-design` and read its philosophy-and-decisions reference. If there are references, also pick the 3 to 6 touch details you'll use and note why each fits.
 3. **Write the direction** (agustinoberg-design, spec section 4, "Range"): the idea in one sentence, a pick per free axis with its reason, and the signature moment. It must only fit this product. For a site, a home or a key screen, sketch 2 or 3 directions that differ on at least 3 axes and pick one, or ask. With references, the direction covers whatever they leave open (often composition and the signature moment).
 4. **Pick the recipe:**
-   - A product: `references/apply-to-product.md`. Choose one atmosphere and the accent rule, then use the mobile recipe's screen patterns. The recipe says which patterns a screen uses; the direction decides how the screen is composed. The travel app is a worked example, not a template.
+   - A product: `references/apply-to-product.md`. Choose the lead atmosphere and the color dial, then use the mobile recipe's screen patterns. The recipe says which patterns a screen uses; the direction decides how the screen is composed. The travel app is a worked example, not a template.
    - Agustín's portfolio: `references/portfolio.md`. It lists what the portfolio must contain; the direction decides how it looks.
 5. **Study** each screen type (prime directive).
 6. **Map the flows.** For every screen, write down three things before you build it, using `references/navigation.md`:
@@ -83,7 +83,7 @@ Design references set the look. Research sets the structure. Never design a scre
    - the product counts below, always.
 11. **Run the verification loop** in `references/verification.md`. Fix, relaunch, look again.
 12. **Report back briefly:**
-    - the visual base (references or Agustín's design), the direction, the touch details used, and the recipe and atmosphere;
+    - the visual base (references or Agustín's design), the direction, the touch details used, and the recipe, the atmosphere and the color dial;
     - the reference patterns you adopted;
     - the navigation map;
     - the states covered;
@@ -186,7 +186,7 @@ Count these alongside agustinoberg-design's visual pre-flight. A failed count is
 
 | file | load when |
 |---|---|
-| `references/apply-to-product.md` | any product: references vs. no references, Agustín's touch, accent rule, mobile recipe, screen patterns, travel app example, checklist |
+| `references/apply-to-product.md` | any product: references vs. no references, Agustín's touch, lead hue and color dial, mobile recipe, screen patterns, travel app example, checklist |
 | `references/portfolio.md` | Agustín's portfolio or personal site |
 | `references/navigation.md` | mapping flows: push, replace, modal, sheet, overlay, one-way doors, tabs, deep links |
 | `references/states-and-performance.md` | loading, empty, error, offline, optimistic updates, perceived performance, state architecture |

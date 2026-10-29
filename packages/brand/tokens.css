@@ -137,6 +137,11 @@
   --ember-0: #fbf7ef;  --ember-1: #f5e7c8;  --ember-2: #eccb83;  --ember-glow: #e0a730;
   --tide-0: #f2f5fc;   --tide-1: #dfe7fa;   --tide-2: #b3c7f2;   --tide-glow: #5b86e8;
   --rouge-0: #fbf2f5;  --rouge-1: #f7dde6;  --rouge-2: #f0b0c6;  --rouge-glow: #e2557f;
+  --iris-0: #f6f4fd;   --iris-1: #e9e3fb;   --iris-2: #cbbdf6;   --iris-glow: #8c6cf0;
+  --flame-0: #fcf5f1;  --flame-1: #f9e3d7;  --flame-2: #f3bc9f;  --flame-glow: #f2753a;
+  /* data: categories in charts, metrics and tags (deeper than the glows in light, for 3:1) */
+  --data-forest: #2f8a3b; --data-ember: #a87508; --data-tide: #3b6fe0;
+  --data-rouge: #d23a6a;  --data-iris: #7650e8;  --data-flame: #d9561a;
 }
 
 /* ---------- dark: OS preference ---------- */
@@ -172,6 +177,10 @@
     --ember-0: #0f0a02;  --ember-1: #3d2905;  --ember-2: #b8821a;  --ember-glow: #ffcf5c;
     --tide-0: #03081a;   --tide-1: #0f2152;   --tide-2: #2f5bd6;   --tide-glow: #8fb4ff;
     --rouge-0: #14030a;  --rouge-1: #4a0d24;  --rouge-2: #d6245e;  --rouge-glow: #ff8fb4;
+    --iris-0: #0b0719;   --iris-1: #231552;   --iris-2: #6d45e0;   --iris-glow: #b9a4ff;
+    --flame-0: #140802;  --flame-1: #4a1c08;  --flame-2: #d9531a;  --flame-glow: #ff9f6b;
+    --data-forest: var(--forest-glow); --data-ember: var(--ember-glow); --data-tide: var(--tide-glow);
+    --data-rouge: var(--rouge-glow);   --data-iris: var(--iris-glow);   --data-flame: var(--flame-glow);
   }
 }
 
@@ -207,6 +216,10 @@
   --ember-0: #0f0a02;  --ember-1: #3d2905;  --ember-2: #b8821a;  --ember-glow: #ffcf5c;
   --tide-0: #03081a;   --tide-1: #0f2152;   --tide-2: #2f5bd6;   --tide-glow: #8fb4ff;
   --rouge-0: #14030a;  --rouge-1: #4a0d24;  --rouge-2: #d6245e;  --rouge-glow: #ff8fb4;
+  --iris-0: #0b0719;   --iris-1: #231552;   --iris-2: #6d45e0;   --iris-glow: #b9a4ff;
+  --flame-0: #140802;  --flame-1: #4a1c08;  --flame-2: #d9531a;  --flame-glow: #ff9f6b;
+  --data-forest: var(--forest-glow); --data-ember: var(--ember-glow); --data-tide: var(--tide-glow);
+  --data-rouge: var(--rouge-glow);   --data-iris: var(--iris-glow);   --data-flame: var(--flame-glow);
 }
 
 /* ==========================================================================
@@ -342,15 +355,25 @@
 .atmos--ember  { --a-0: var(--ember-0);  --a-1: var(--ember-1);  --a-2: var(--ember-2);  --a-glow: var(--ember-glow); }
 .atmos--tide   { --a-0: var(--tide-0);   --a-1: var(--tide-1);   --a-2: var(--tide-2);   --a-glow: var(--tide-glow); }
 .atmos--rouge  { --a-0: var(--rouge-0);  --a-1: var(--rouge-1);  --a-2: var(--rouge-2);  --a-glow: var(--rouge-glow); }
+.atmos--iris   { --a-0: var(--iris-0);   --a-1: var(--iris-1);   --a-2: var(--iris-2);   --a-glow: var(--iris-glow); }
+.atmos--flame  { --a-0: var(--flame-0);  --a-1: var(--flame-1);  --a-2: var(--flame-2);  --a-glow: var(--flame-glow); }
 
-/* Product accent: the glow of the product's one atmosphere, in both modes.
-   Put the class on a container. Use it on one kind of element per screen. */
-.accent-forest { --accent: var(--forest-glow); }
-.accent-ember  { --accent: var(--ember-glow); }
-.accent-tide   { --accent: var(--tide-glow); }
-.accent-rouge  { --accent: var(--rouge-glow); }
+/* Product accent: the glow of the product's lead atmosphere, in both modes, plus two tints.
+   Put the class on a container. How much it covers depends on the color dial (brand.md, section 6). */
+.accent-forest { --accent: var(--forest-glow); --accent-1: var(--forest-1); --accent-2: var(--forest-2); }
+.accent-ember  { --accent: var(--ember-glow);  --accent-1: var(--ember-1);  --accent-2: var(--ember-2); }
+.accent-tide   { --accent: var(--tide-glow);   --accent-1: var(--tide-1);   --accent-2: var(--tide-2); }
+.accent-rouge  { --accent: var(--rouge-glow);  --accent-1: var(--rouge-1);  --accent-2: var(--rouge-2); }
+.accent-iris   { --accent: var(--iris-glow);   --accent-1: var(--iris-1);   --accent-2: var(--iris-2); }
+.accent-flame  { --accent: var(--flame-glow);  --accent-1: var(--flame-1);  --accent-2: var(--flame-2); }
 .btn--accent { background: var(--accent, var(--fg)); color: var(--ink-950); }
 .btn--accent:hover { background: color-mix(in srgb, var(--accent, var(--fg)) 88%, var(--ink-950)); }
+
+/* Color as surface (dial 3): a card or panel in the lead hue.
+   Tint: fg text, and fg-2 pulled toward fg so it keeps AA on the tint.
+   Accent: every line in on-accent; build hierarchy with size and weight, not grey. */
+.surface--tint { background: var(--accent-1, var(--surface-2)); color: var(--fg); --fg-2: color-mix(in srgb, var(--fg) 70%, var(--accent-1, var(--surface-2))); }
+.surface--accent { background: var(--accent, var(--fg)); color: var(--ink-950); --fg-2: var(--ink-950); --fg-3: var(--ink-950); }
 
 /* ==========================================================================
    Micro-blur

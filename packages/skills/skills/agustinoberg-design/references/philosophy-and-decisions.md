@@ -20,7 +20,7 @@ People don't read interfaces. They feel them.
 2. **Quiet frame, product as the hero.** Neutral backgrounds, restrained type and almost no color around the screen. The quieter the frame, the louder the product.
 3. **Depth with light, not lines.** Layers separate through blur, transparency and soft shadows. Borders and boxes divide. Blur creates order without cutting the image.
 4. **Motion explains.** Animate to show where something comes from and where it goes. If an animation doesn't answer a question, remove it.
-5. **One color per story.** The brand lives in black, white and grays. Each project picks a single color and sticks with it.
+5. **One color leads each story, and content brings the rest.** The frame lives in black, white and grays so color can be loud where it means something. Each project picks one lead hue and commits to it, sometimes as a sharp accent and sometimes as whole surfaces. Photos, objects, people and data bring their own color on top.
 6. **Light and dark from day one.** Both modes are designed in parallel. Nothing is inverted automatically.
 7. **Words are design too.** Short copy, active voice, zero jargon. If a button needs an explanation, the button is wrong.
 
@@ -41,7 +41,9 @@ People don't read interfaces. They feel them.
 | Floating, concentric sheets | Set off the edge, it reads as a layer. Concentric, it looks like hardware. | inset 12 · radius = outer − inset |
 | Ease-out by default | It responds instantly and slows down like a real object. | `cubic-bezier(.22,1,.36,1)` |
 | Close faster than open | Whoever closes has already decided. | open 420 ms · close 280 ms |
-| One atmosphere per project | A sustained color is remembered. | pick 1 of 4 or make one with the same recipe · never mix |
+| One lead hue per project | A sustained color is remembered. | pick 1 of 6 atmospheres or make one with the same recipe · never two leads |
+| Color dial, not a color ban | Some products whisper and some shout. Mono with one sharp accent and a screen flooded with the hue are both mine. | dial 0–3 per project (section 6) |
+| Content brings its own color | Photos, 3D objects, avatars and data are what people came for. A quiet frame lets them glow. | content and data colors don't count against the lead hue |
 | Front-facing mockups, no hands | Perspective and hands make the screen smaller. | device ≤ 60% of the height |
 
 ---
@@ -60,7 +62,10 @@ People don't read interfaces. They feel them.
 - **If you need to confirm an action with a result:** the button turns into the check. No toast.
 - **If you need to notify something with no decision:** toast. If there is a decision: sheet.
 - **If you separate layers in light mode:** soft shadow. In dark: a surface step and a 1 px light on top.
-- **If the project needs color:** pick one atmosphere and use it across the whole project, never in the personal brand.
+- **If you start a project:** pick its lead hue (one atmosphere) and its color dial (0–3). Mono is a choice, not the default.
+- **If there are photos, 3D objects, avatars or illustrations:** let them be in full color. Don't desaturate content to match the frame.
+- **If data has categories** (metrics, chart series, tags, map layers): give each category its data color, the same one everywhere in the product.
+- **If you design my personal brand's chrome** (nav, type, buttons of my site): mono. The projects shown inside it carry their full color.
 - **If you're torn between adding and removing:** remove.
 - **If you write a name, a nav link or a title:** normal capitalization. Proper names as their owners write them (Agustín Oberg, TraiNow), nav and buttons in title or sentence case (Work, About, Book a call), copy in sentence case. Only mono labels are uppercase.
 - **If a layout looks like one you've already made in this language:** change it (section 4).
@@ -88,7 +93,7 @@ Each project decides these from its own content. The options are examples, not a
 | section rhythm | mono label in a side column · label above the content · numbered chapters · no labels, only space |
 | where the scale lives | a huge number · a huge image or object · a giant blurred word behind (layered depth) · nothing big, everything precise |
 | density | one idea per viewport ↔ dense index, tables and specs |
-| color story | mono · one existing atmosphere · a new atmosphere made with the same recipe · the atmosphere as a whole surface, or only as the accent |
+| color story | the lead hue (one of six, or a new one with the same recipe) and the dial: 0 mono · 1 accent · 2 atmosphere · 3 surface (section 6) |
 | imagery | device on a stage · full-bleed photo with edge blur · brand object · type only · data and diagrams |
 | navigation | top bar · floating pill · side index · none (a single page) |
 | motion temperament | still and exact · one hero moment · reveals told by scroll (within section 11's limits) |
@@ -123,7 +128,9 @@ Both answers have to be yes.
 - Generic purple-blue gradients, overdone glassmorphism (blur above 40 or thick white borders).
 - Perspective mockups, hands holding the phone, emoji as UI icons.
 - Square buttons or buttons with small radii.
-- Two atmospheres in the same project.
+- Two lead hues in the same project. Content and data colors are not lead hues.
+- Data colors used as decoration, or content desaturated to look "on brand".
+- Defaulting to mono because it feels safe. Mono is a dial setting you choose for a reason.
 - Large shadows in dark.
 - Everything inside cards.
 - The same layout in every project. If it looks like the design site with other words, start again from the direction.

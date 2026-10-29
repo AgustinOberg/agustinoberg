@@ -43,8 +43,8 @@ black #000000 · ink-950 #0A0A0A · ink-900 #111111 · ink-800 #1F1F1F · ink-70
 ### Semantic (states only, never decoration)
 positive #34C759 · warning #FF9F0A · critical #FF453A
 
-### Atmospheres (one per project)
-Built as a radial gradient from the top (`a-2` → `a-1` → `a-0`), with a central glow at 38% and grain.
+### Atmospheres (one leads each project)
+Built as a radial gradient from the top (`a-2` → `a-1` → `a-0`), with a central glow at 38% and grain. Tones 1 and 2 also work as tinted surfaces, and the glow is the accent.
 
 | atmosphere | for | dark (0 / 1 / 2 / glow) | light (0 / 1 / 2 / glow) |
 |---|---|---|---|
@@ -52,8 +52,28 @@ Built as a radial gradient from the top (`a-2` → `a-1` → `a-0`), with a cent
 | ember | time, energy, rest | #0F0A02 / #3D2905 / #B8821A / #FFCF5C | #FBF7EF / #F5E7C8 / #ECCB83 / #E0A730 |
 | tide | money, trust, chat | #03081A / #0F2152 / #2F5BD6 / #8FB4FF | #F2F5FC / #DFE7FA / #B3C7F2 / #5B86E8 |
 | rouge | social, location, alerts | #14030A / #4A0D24 / #D6245E / #FF8FB4 | #FBF2F5 / #F7DDE6 / #F0B0C6 / #E2557F |
+| iris | creativity, AI, talent, night | #0B0719 / #231552 / #6D45E0 / #B9A4FF | #F6F4FD / #E9E3FB / #CBBDF6 / #8C6CF0 |
+| flame | intense sport, food, urgency, heat | #140802 / #4A1C08 / #D9531A / #FF9F6B | #FCF5F1 / #F9E3D7 / #F3BC9F / #F2753A |
 
 The hex values for the dark core and the glass come from the CSS of figura.digital. The atmosphere values are my own, approximated from the references.
+
+### Color dial (one per project)
+The references aren't black and white. Their frames are quiet, but the products inside are full of color: photos, 3D objects, category colors, and sometimes a whole screen in the brand's hue. Each project sets how loud its lead hue is.
+
+| dial | what the lead hue covers | good for |
+|---|---|---|
+| **0 · mono** | Nothing. Color comes only from content and data. | My personal brand's chrome, tools where the content is already colorful. |
+| **1 · accent** | One kind of element per screen: the domain action (Book, Pay), pins or active progress. | Calm, utility and money products. |
+| **2 · atmosphere** | The accent, plus the full atmosphere on key moments (onboarding, empty states, big confirmations, heroes) and tinted surfaces (tone 1) for featured cards. | Most consumer products. |
+| **3 · surface** | The hue as surface: whole cards, panels, headers or screens in the glow or tone 2, with on-accent text. Mono stays for body text and chrome. | Bold brands, launches, social, sport, games, presentation shots. |
+
+At any dial, the generic primary button stays `fg` on `bg`, and the lead hue is the only brand hue. In CSS, `.accent-{atmosphere}` on a container gives `--accent`, `--accent-1` and `--accent-2`; `.surface--tint` and `.surface--accent` paint a surface. On `.surface--accent`, all text is on-accent (#0A0A0A) and hierarchy comes from size and weight.
+
+### Content color (always allowed)
+Photos, video, 3D and brand objects, avatars, illustrations, maps and app icons keep their full color at every dial. They don't count as a second hue. Frame them with mono so they glow; never tint or desaturate them to match.
+
+### Data color (categories only)
+When data has categories (health metrics, chart series, tags, map layers, tee colors), each category gets one data color and keeps it everywhere: `--data-forest`, `--data-ember`, `--data-tide`, `--data-rouge`, `--data-iris`, `--data-flame`. The lead hue goes first. In light, they are deeper than the glows so marks reach 3:1; in dark, they are the glows. Use them on dots, icons, bars and small labels, never as big decorative fills. With more than four series, label directly.
 
 ---
 

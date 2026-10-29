@@ -69,7 +69,7 @@ export const clients: Client[] = [
 
 /* ---------- my own apps ---------- */
 
-export type Atmosphere = "forest" | "ember" | "tide" | "rouge" | null;
+export type Atmosphere = "forest" | "ember" | "tide" | "rouge" | "iris" | "flame" | null;
 
 export interface Project {
   id: string;

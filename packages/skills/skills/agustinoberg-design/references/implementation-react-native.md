@@ -2,7 +2,7 @@
 
 Copy `assets/react-native/theme.ts` into the app (for example `src/theme.ts`). It exports:
 - `colors.light` and `colors.dark`, `mono`, `semantic`;
-- `atmospheres`, `accent()`, `onAccent`;
+- `atmospheres`, `accent()`, `onAccent`, `dataColors` and `dataColor()`;
 - `radius`, `concentric()`, `space`;
 - `fontSize`, `fontWeight`, `trackingEm`, `tracking()`;
 - `blur`, `motion`.
@@ -126,6 +126,8 @@ Pill buttons:
 - **Primary:** `c.fg` background with `c.bg` text.
 - **Secondary:** `c.btn2`.
 - **Accent:** `accent(atmosphere, scheme)` background with `onAccent` text.
+
+Color dial surfaces: a tinted card is `atmospheres[hue][scheme]["1"]` with `c.fg` text; an accent surface is `accent(hue, scheme)` with `onAccent` for every line, hierarchy by size and weight. Data categories use `dataColor(hue, scheme)` on dots, icons and bars.
 
 ## 5. Glass
 

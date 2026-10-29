@@ -30,7 +30,7 @@ People don't read interfaces. They feel them.
 2. **Quiet frame, product as the hero.** Neutral backgrounds, restrained type and almost no color around the screen. The quieter the frame, the louder the product.
 3. **Depth with light, not lines.** Layers separate through blur, transparency and soft shadows. Borders and boxes divide. Blur creates order without cutting the image.
 4. **Motion explains.** Animate to show where something comes from and where it goes. If an animation doesn't answer a question, remove it.
-5. **One color per story.** The brand lives in black, white and grays. Each project picks a single color and sticks with it.
+5. **One color leads each story, and content brings the rest.** The frame lives in black, white and grays so color can be loud where it means something. Each project picks one lead hue and commits to it, sometimes as a sharp accent and sometimes as whole surfaces. Photos, objects, people and data bring their own color on top.
 6. **Light and dark from day one.** Both modes are designed in parallel. Nothing is inverted automatically.
 7. **Words are design too.** Short copy, active voice, zero jargon. If a button needs an explanation, the button is wrong.
 
@@ -51,7 +51,9 @@ People don't read interfaces. They feel them.
 | Floating, concentric sheets | Set off the edge, it reads as a layer. Concentric, it looks like hardware. | inset 12 · radius = outer − inset |
 | Ease-out by default | It responds instantly and slows down like a real object. | `cubic-bezier(.22,1,.36,1)` |
 | Close faster than open | Whoever closes has already decided. | open 420 ms · close 280 ms |
-| One atmosphere per project | A sustained color is remembered. | pick 1 of 4 or make one with the same recipe · never mix |
+| One lead hue per project | A sustained color is remembered. | pick 1 of 6 atmospheres or make one with the same recipe · never two leads |
+| Color dial, not a color ban | Some products whisper and some shout. Mono with one sharp accent and a screen flooded with the hue are both mine. | dial 0–3 per project (section 6) |
+| Content brings its own color | Photos, 3D objects, avatars and data are what people came for. A quiet frame lets them glow. | content and data colors don't count against the lead hue |
 | Front-facing mockups, no hands | Perspective and hands make the screen smaller. | device ≤ 60% of the height |
 
 ---
@@ -70,7 +72,10 @@ People don't read interfaces. They feel them.
 - **If you need to confirm an action with a result:** the button turns into the check. No toast.
 - **If you need to notify something with no decision:** toast. If there is a decision: sheet.
 - **If you separate layers in light mode:** soft shadow. In dark: a surface step and a 1 px light on top.
-- **If the project needs color:** pick one atmosphere and use it across the whole project, never in the personal brand.
+- **If you start a project:** pick its lead hue (one atmosphere) and its color dial (0–3). Mono is a choice, not the default.
+- **If there are photos, 3D objects, avatars or illustrations:** let them be in full color. Don't desaturate content to match the frame.
+- **If data has categories** (metrics, chart series, tags, map layers): give each category its data color, the same one everywhere in the product.
+- **If you design my personal brand's chrome** (nav, type, buttons of my site): mono. The projects shown inside it carry their full color.
 - **If you're torn between adding and removing:** remove.
 - **If you write a name, a nav link or a title:** normal capitalization. Proper names as their owners write them (Agustín Oberg, TraiNow), nav and buttons in title or sentence case (Work, About, Book a call), copy in sentence case. Only mono labels are uppercase.
 - **If a layout looks like one you've already made in this language:** change it (section 4).
@@ -98,7 +103,7 @@ Each project decides these from its own content. The options are examples, not a
 | section rhythm | mono label in a side column · label above the content · numbered chapters · no labels, only space |
 | where the scale lives | a huge number · a huge image or object · a giant blurred word behind (layered depth) · nothing big, everything precise |
 | density | one idea per viewport ↔ dense index, tables and specs |
-| color story | mono · one existing atmosphere · a new atmosphere made with the same recipe · the atmosphere as a whole surface, or only as the accent |
+| color story | the lead hue (one of six, or a new one with the same recipe) and the dial: 0 mono · 1 accent · 2 atmosphere · 3 surface (section 6) |
 | imagery | device on a stage · full-bleed photo with edge blur · brand object · type only · data and diagrams |
 | navigation | top bar · floating pill · side index · none (a single page) |
 | motion temperament | still and exact · one hero moment · reveals told by scroll (within section 11's limits) |
@@ -169,8 +174,8 @@ black #000000 · ink-950 #0A0A0A · ink-900 #111111 · ink-800 #1F1F1F · ink-70
 ### Semantic (states only, never decoration)
 positive #34C759 · warning #FF9F0A · critical #FF453A
 
-### Atmospheres (one per project)
-Built as a radial gradient from the top (`a-2` → `a-1` → `a-0`), with a central glow at 38% and grain.
+### Atmospheres (one leads each project)
+Built as a radial gradient from the top (`a-2` → `a-1` → `a-0`), with a central glow at 38% and grain. Tones 1 and 2 also work as tinted surfaces, and the glow is the accent.
 
 | atmosphere | for | dark (0 / 1 / 2 / glow) | light (0 / 1 / 2 / glow) |
 |---|---|---|---|
@@ -178,8 +183,28 @@ Built as a radial gradient from the top (`a-2` → `a-1` → `a-0`), with a cent
 | ember | time, energy, rest | #0F0A02 / #3D2905 / #B8821A / #FFCF5C | #FBF7EF / #F5E7C8 / #ECCB83 / #E0A730 |
 | tide | money, trust, chat | #03081A / #0F2152 / #2F5BD6 / #8FB4FF | #F2F5FC / #DFE7FA / #B3C7F2 / #5B86E8 |
 | rouge | social, location, alerts | #14030A / #4A0D24 / #D6245E / #FF8FB4 | #FBF2F5 / #F7DDE6 / #F0B0C6 / #E2557F |
+| iris | creativity, AI, talent, night | #0B0719 / #231552 / #6D45E0 / #B9A4FF | #F6F4FD / #E9E3FB / #CBBDF6 / #8C6CF0 |
+| flame | intense sport, food, urgency, heat | #140802 / #4A1C08 / #D9531A / #FF9F6B | #FCF5F1 / #F9E3D7 / #F3BC9F / #F2753A |
 
 The hex values for the dark core and the glass come from the CSS of figura.digital. The atmosphere values are my own, approximated from the references.
+
+### Color dial (one per project)
+The references aren't black and white. Their frames are quiet, but the products inside are full of color: photos, 3D objects, category colors, and sometimes a whole screen in the brand's hue. Each project sets how loud its lead hue is.
+
+| dial | what the lead hue covers | good for |
+|---|---|---|
+| **0 · mono** | Nothing. Color comes only from content and data. | My personal brand's chrome, tools where the content is already colorful. |
+| **1 · accent** | One kind of element per screen: the domain action (Book, Pay), pins or active progress. | Calm, utility and money products. |
+| **2 · atmosphere** | The accent, plus the full atmosphere on key moments (onboarding, empty states, big confirmations, heroes) and tinted surfaces (tone 1) for featured cards. | Most consumer products. |
+| **3 · surface** | The hue as surface: whole cards, panels, headers or screens in the glow or tone 2, with on-accent text. Mono stays for body text and chrome. | Bold brands, launches, social, sport, games, presentation shots. |
+
+At any dial, the generic primary button stays `fg` on `bg`, and the lead hue is the only brand hue. In CSS, `.accent-{atmosphere}` on a container gives `--accent`, `--accent-1` and `--accent-2`; `.surface--tint` and `.surface--accent` paint a surface. On `.surface--accent`, all text is on-accent (#0A0A0A) and hierarchy comes from size and weight.
+
+### Content color (always allowed)
+Photos, video, 3D and brand objects, avatars, illustrations, maps and app icons keep their full color at every dial. They don't count as a second hue. Frame them with mono so they glow; never tint or desaturate them to match.
+
+### Data color (categories only)
+When data has categories (health metrics, chart series, tags, map layers, tee colors), each category gets one data color and keeps it everywhere: `--data-forest`, `--data-ember`, `--data-tide`, `--data-rouge`, `--data-iris`, `--data-flame`. The lead hue goes first. In light, they are deeper than the glows so marks reach 3:1; in dark, they are the glows. Use them on dots, icons, bars and small labels, never as big decorative fills. With more than four series, label directly.
 
 ---
 
@@ -391,8 +416,8 @@ This language isn't only for my brand. Use it to design any product in my style:
 | | what it includes |
 |---|---|
 | **Carries over** (without references; with references, only my touch) | Philosophy, decisions, if/then rules, typography, radii, spacing, components, micro-blurs, motion, light and dark, imagery and the quality checklist. |
-| **Adapts to the product** | Accent color (one atmosphere), name and logo, copy (in the product's voice, using my writing rules), language, and domain icons and photos. |
-| **Only my brand** | The "Agustín Oberg" wordmark, the "ao" monogram, my positioning, my sample copy and the rule that my personal brand uses no color. |
+| **Adapts to the product** | Lead hue (one atmosphere) and color dial, name and logo, copy (in the product's voice, using my writing rules), language, and domain icons and photos. |
+| **Only my brand** | The "Agustín Oberg" wordmark, the "ao" monogram, my positioning, my sample copy and the rule that my personal brand's chrome is mono (the projects inside it keep their color). |
 
 ### With or without references
 Before designing, check which design references exist: a Figma file, screenshots, the client's brand or apps the person wants to follow.
@@ -418,11 +443,12 @@ These are the details that go on top of any design without overriding its identi
 - **If the reference doesn't contradict it:** floating sheets with concentric radius, two-tone headlines (in the reference's typeface), layered depth on heroes and the button that turns into a check.
 - **Never:** change the reference's colors, typography, logo or radius scale. Don't bring my atmospheres into a brand that already has a palette.
 
-### Accent color in products
-- The product picks **one** atmosphere for its theme, or creates a new one with the same recipe: 4 tones per mode, from the deepest to the glow.
-- The accent is that atmosphere's `glow`, in both modes. Text on the accent is #0A0A0A. In CSS: put `.accent-forest`, `.accent-ember`, `.accent-tide` or `.accent-rouge` on a container and use the `.btn--accent` button.
-- The accent appears on **one kind of element per screen**: the domain action (Book, Claim, Pay), the pins or the active progress. Everything else stays mono. The generic primary button stays `fg` on `bg`.
-- The full atmosphere (gradient, glow and grain) goes in onboarding, empty states, big confirmations and presentation shots.
+### Color in products
+- The product picks **one** lead atmosphere for its theme (forest, ember, tide, rouge, iris or flame), or creates a new one with the same recipe: 4 tones per mode, from the deepest to the glow.
+- The accent is that atmosphere's `glow`, in both modes. Text on the accent is #0A0A0A. In CSS: put `.accent-{atmosphere}` on a container and use `.btn--accent`, `.surface--tint` or `.surface--accent`.
+- The product picks its **color dial** (section 6). Dial 1 keeps the accent on one kind of element per screen. Dial 2 adds the full atmosphere on key moments and tinted cards. Dial 3 paints whole surfaces in the hue. Choose it from the content and the brand's temperament, not by habit.
+- Content (photos, objects, avatars, maps) is in full color at any dial, and categories use the data colors.
+- The generic primary button stays `fg` on `bg`.
 
 ### Direction first
 Write the direction from section 4 before the first screen: the idea, a pick on each free axis and the signature moment. The recipe below says which patterns each kind of screen uses. Composition, density, scale and imagery come from the direction, so two products built with this recipe shouldn't look alike.
@@ -445,7 +471,7 @@ Suggested stack: Expo / React Native with Reanimated and expo-blur (or Skia for 
 Navigation: push to go deeper, sheets for short tasks and tabs with a crossfade. Both modes from day one, with reduced motion respected.
 
 ### Example: travel app
-- **Atmosphere:** tide (sea, flights, trust). If the product is about nature or the outdoors, forest.
+- **Atmosphere:** tide (sea, flights, trust). If the product is about nature or the outdoors, forest. Dial 2: the destination photos bring most of the color, and tide leads the booking action, the empty states and the confirmation.
 - **Explore:** map with edge blur, white pins with a photo of the place, and destination cards peeking at the bottom with prices.
 - **Destination:** full-bleed photo with edge blur, the place name, the price per night as a big number and, at most, one sticker ("NEW") per screen.
 - **Book:** floating sheet with dates (segmented control for nights, plus a calendar) and the background receding.
@@ -457,7 +483,8 @@ Navigation: push to go deeper, sheets for short tasks and tabs with a crossfade.
 - [ ] Is there a written direction (idea, free axes, signature moment) that only fits this project?
 - [ ] Does it look like itself, and not like my design site or another project in this language?
 - [ ] If there were references, do they lead the visuals, with my touch present in 3 to 6 details that don't override them?
-- [ ] One atmosphere, with the accent on one kind of element per screen?
+- [ ] One lead atmosphere, with a color dial chosen on purpose and applied consistently?
+- [ ] Content in full color, and every data category with one data color everywhere?
 - [ ] Two-tone statement headlines, big numbers and pill buttons?
 - [ ] Normal capitalization: names as their owners write them, nav and buttons starting with a capital?
 - [ ] Floating concentric sheets with the background receding?
@@ -522,7 +549,7 @@ When I ask you to "make me a portfolio", follow this. It lists what the portfoli
 - [ ] Are both modes finished and tested?
 - [ ] Is there progressive blur on the nav and on scroll edges?
 - [ ] Do sheets float with a concentric radius, and does the background recede?
-- [ ] Does each project use a single atmosphere?
+- [ ] Does each project use a single lead atmosphere, shown with its real color, at the dial that fits it?
 - [ ] Is every piece of data, client and metric real, with nothing invented?
 - [ ] Does it work with reduced motion?
 
@@ -533,7 +560,9 @@ When I ask you to "make me a portfolio", follow this. It lists what the portfoli
 - Generic purple-blue gradients, overdone glassmorphism (blur above 40 or thick white borders).
 - Perspective mockups, hands holding the phone, emoji as UI icons.
 - Square buttons or buttons with small radii.
-- Two atmospheres in the same project.
+- Two lead hues in the same project. Content and data colors are not lead hues.
+- Data colors used as decoration, or content desaturated to look "on brand".
+- Defaulting to mono because it feels safe. Mono is a dial setting you choose for a reason.
 - Large shadows in dark.
 - Everything inside cards.
 - The same layout in every project. If it looks like the design site with other words, start again from the direction.

@@ -96,7 +96,7 @@ img, svg { max-width: 100%; }
 .numbers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-5); padding-block: var(--s-6) 0; border-top: 1px solid var(--line); }
 .stat { display: grid; gap: var(--s-2); align-content: start; animation: rise var(--dur-3) var(--ease-out) both; animation-delay: calc(min(var(--i, 0), 5) * var(--stagger-list) + var(--dur-4)); }
 .stat .num { font-size: clamp(44px, 6vw, 80px); }
-.stat .star { font-size: 0.62em; vertical-align: 0.38em; margin-left: 0.06em; letter-spacing: 0; }
+.stat .star { font-size: 0.62em; vertical-align: 0.38em; margin-left: 0.06em; letter-spacing: 0; color: var(--data-ember); }
 .stat__label { font-size: var(--text-sm); color: var(--fg-2); max-width: 24ch; }
 @media (max-width: 900px) { .numbers { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--s-6); } }
 
@@ -185,6 +185,8 @@ img, svg { max-width: 100%; }
 .project__text p { margin: 0; color: var(--fg-2); max-width: 62ch; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--s-1); }
 .project__stores { display: flex; flex-wrap: wrap; gap: var(--s-2); flex: none; }
+/* The project's tags sit on its own tint (tone 1 of its atmosphere), so its color carries past the stage. */
+.project[class*="accent-"] .chip { background: var(--accent-1); color: var(--fg); }
 @media (max-width: 760px) {
   .project__meta { flex-direction: column; }
   .project__idx, .project__badge { left: var(--s-4); }

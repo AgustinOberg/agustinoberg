@@ -36,9 +36,11 @@ The laws fix the hand: tokens, type, shape, depth, both modes, motion and voice.
    - *Choices:* one pick per free axis, each with a reason from the content.
    - *Signature moment:* the one detail people will remember.
    If the lines would fit any project, rewrite them. For a site, a home or a key screen, sketch 2 or 3 directions that differ on at least 3 axes and pick one, or ask. Show the direction to the user in one short block.
-4. **Pick the color story:**
-   - *Agustín's personal brand* (portfolio, his site, his shots): mono only, no accent.
-   - *Anything else:* one atmosphere (forest, ember, tide, rouge, or a new one made with the same recipe) whose `glow` is the one accent.
+4. **Pick the color story** (spec section 6): the lead hue and the color dial.
+   - *Lead hue:* one atmosphere (forest, ember, tide, rouge, iris, flame, or a new one made with the same recipe). Its `glow` is the accent.
+   - *Dial:* 0 mono, 1 accent, 2 atmosphere, 3 surface. Choose it from the content and the brand's temperament. Mono is a choice, never the safe default.
+   - *Always:* content (photos, 3D objects, avatars, maps) in full color, and categories in the data colors.
+   - *Agustín's personal brand* (his site, portfolio, shots): the chrome is mono, and every project shown inside it carries its full color.
 5. **Use the tokens for every value.** Never hardcode a color, radius, blur, duration or easing that exists as a token.
 6. **Apply the laws below,** then pick the signature details that serve the direction: one leads, a few support it. Never all of them.
 7. **Run the visual pre-flight** in `references/review-checklist.md` and look at the result in both modes before calling it done.
@@ -55,7 +57,7 @@ Breaking one is a finding to fix, not a style preference.
    - Light: `bg` #F4F4F4, cards #FFFFFF with a soft shadow.
    - Dark: `bg` #000000, cards #111111 with a 1 px inner top light and no big shadows.
    - Never invert automatically. Never a mid-grey "soft" dark.
-5. **Mono frame, one accent.** The primary button is `fg` on `bg` and inverts per mode. A product spends its one accent on one kind of element per screen. The personal brand spends none.
+5. **Quiet frame, one lead hue, colorful content.** The primary button is `fg` on `bg` and inverts per mode. A product has one lead hue, and its dial decides how much it covers: from one kind of element per screen (dial 1) to whole surfaces (dial 3). Content and data colors are always allowed and never count as a second hue. The personal brand's chrome is mono; its projects are not.
 6. **Shape lock:** 8 for stages, 16 for thumbs and inputs, 24 for cards, 32 for sheets, and a pill for every button, chip, toggle and segmented control. Nested surfaces are concentric: inner radius = outer radius − inset. Corners are continuous (squircle) wherever the platform allows.
 7. **Depth with light, not lines.** Separate layers with blur, transparency and soft light, never with borders around everything or cards inside cards. Floating surfaces sit off the edge (inset 12) and use glass when an image is behind them.
 8. **Quiet frame.** Neutral stages, generous air, the content centered on what matters. One icon family (1.8 stroke, round caps); emoji only as content, never in chrome.
@@ -115,7 +117,8 @@ Hard limits:
 - Perspective mockups, hands holding phones, emoji as UI icons, three icon families.
 - Square or barely rounded buttons. Borders around everything. Cards inside cards.
 - Big shadows in dark mode, or a mid-grey dark background.
-- Two atmospheres in one product, or color in Agustín's personal brand.
+- Two lead hues in one product, or a colored chrome in Agustín's personal brand.
+- Everything grey by default, content desaturated to look "on brand", or data colors used as decoration.
 - Centered-everything layouts with giant hero type.
 - The same skeleton in every project (sticky label column, two-tone hero with two buttons, full-width stages) just because it's the default. Start from the direction.
 - Lowercase names, nav links or titles as a style.
@@ -129,7 +132,7 @@ Hard limits:
 | file | load when |
 |---|---|
 | `references/philosophy-and-decisions.md` | always, once per task (includes the range: what's fixed and what each project decides) |
-| `references/foundations.md` | colors, light/dark, atmospheres, type scale, radii, spacing, layout |
+| `references/foundations.md` | colors, the color dial, content and data color, light/dark, atmospheres, type scale, radii, spacing, layout |
 | `references/components.md` | buttons, chips, sheets, toggles, toasts, segmented |
 | `references/micro-and-motion.md` | blur effects, micro-animations, timing, screen transitions |
 | `references/imagery-and-voice.md` | shots, mockups, brand objects, copy and tone |

@@ -71,7 +71,7 @@ export const colors = {
 export type Scheme = keyof typeof colors;
 export type Palette = (typeof colors)[Scheme];
 
-/** One atmosphere per product. Keys: "0" (deepest) → "2", then "glow". */
+/** One lead atmosphere per product. Keys: "0" (deepest) → "2", then "glow". */
 export const atmospheres = {
   "forest": {
     "light": {
@@ -128,14 +128,71 @@ export const atmospheres = {
       "2": "#D6245E",
       "glow": "#FF8FB4"
     }
+  },
+  "iris": {
+    "light": {
+      "0": "#F6F4FD",
+      "1": "#E9E3FB",
+      "2": "#CBBDF6",
+      "glow": "#8C6CF0"
+    },
+    "dark": {
+      "0": "#0B0719",
+      "1": "#231552",
+      "2": "#6D45E0",
+      "glow": "#B9A4FF"
+    }
+  },
+  "flame": {
+    "light": {
+      "0": "#FCF5F1",
+      "1": "#F9E3D7",
+      "2": "#F3BC9F",
+      "glow": "#F2753A"
+    },
+    "dark": {
+      "0": "#140802",
+      "1": "#4A1C08",
+      "2": "#D9531A",
+      "glow": "#FF9F6B"
+    }
   }
 } as const;
 
 export type Atmosphere = keyof typeof atmospheres;
 
-/** Product accent = glow of the product's atmosphere in the current mode. One kind of element per screen. */
+/** Product accent = glow of the product's lead atmosphere in the current mode. How much it covers depends on the color dial (brand.md, section 6). */
 export const accent = (atmosphere: Atmosphere, scheme: Scheme) => atmospheres[atmosphere][scheme].glow;
 export const onAccent = "#0A0A0A";
+
+/** Data colors: one hue per category in charts, metrics and tags, lead hue first. Never decoration. */
+export const dataColors = {
+  "forest": {
+    "light": "#2F8A3B",
+    "dark": "#8FD68A"
+  },
+  "ember": {
+    "light": "#A87508",
+    "dark": "#FFCF5C"
+  },
+  "tide": {
+    "light": "#3B6FE0",
+    "dark": "#8FB4FF"
+  },
+  "rouge": {
+    "light": "#D23A6A",
+    "dark": "#FF8FB4"
+  },
+  "iris": {
+    "light": "#7650E8",
+    "dark": "#B9A4FF"
+  },
+  "flame": {
+    "light": "#D9561A",
+    "dark": "#FF9F6B"
+  }
+} as const;
+export const dataColor = (hue: Atmosphere, scheme: Scheme) => dataColors[hue][scheme];
 
 export const radius = {
   "xs": 8,

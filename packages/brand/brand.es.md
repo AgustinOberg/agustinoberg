@@ -30,7 +30,7 @@ La gente no lee interfaces: las siente.
 2. **Marco quieto, producto protagonista.** Fondos neutros, tipografía contenida y casi nada de color alrededor de la pantalla. Cuanto más callado el marco, más se escucha el producto.
 3. **Profundidad con luz, no con líneas.** Las capas se separan con desenfoque, transparencia y sombras suaves. Los bordes y las cajas dividen; el blur ordena sin cortar la imagen.
 4. **El movimiento explica.** Se anima para mostrar de dónde viene algo y adónde va. Si una animación no responde una pregunta, se saca.
-5. **Un color por historia.** La marca vive en negro, blanco y grises. Cada proyecto elige un solo color y lo sostiene.
+5. **Un color manda en cada historia, y el contenido trae el resto.** El marco vive en negro, blanco y grises para que el color pueda sonar fuerte donde significa algo. Cada proyecto elige un color protagonista y se compromete con él: a veces como un acento puntual y a veces como superficies enteras. Fotos, objetos, personas y datos suman su propio color encima.
 6. **Claro y oscuro desde el día uno.** Los dos modos se diseñan en paralelo. Nada se invierte automáticamente.
 7. **Las palabras también son diseño.** Copy corto, voz activa, cero jerga. Si un botón necesita explicación, el botón está mal.
 
@@ -51,7 +51,9 @@ La gente no lee interfaces: las siente.
 | Sheets flotantes y concéntricos | Separado del borde se lee como capa; concéntrico parece hardware. | inset 12 · radio = exterior − inset |
 | Ease-out por defecto | Responde al instante y frena como algo real. | `cubic-bezier(.22,1,.36,1)` |
 | Cerrar más rápido que abrir | Quien cierra ya decidió. | abrir 420 ms · cerrar 280 ms |
-| Una atmósfera por proyecto | Un color sostenido se recuerda. | elegir 1 de 4 o crear una con la misma receta · nunca mezclar |
+| Un color protagonista por proyecto | Un color sostenido se recuerda. | elegir 1 de 6 atmósferas o crear una con la misma receta · nunca dos protagonistas |
+| Un dial de color, no una prohibición | Hay productos que susurran y productos que gritan. Mono con un acento puntual y una pantalla inundada de color son los dos míos. | dial 0–3 por proyecto (sección 6) |
+| El contenido trae su propio color | Fotos, objetos 3D, avatares y datos son lo que la gente vino a ver. Un marco quieto los hace brillar. | los colores de contenido y de datos no cuentan contra el protagonista |
 | Mockups frontales, sin manos | La perspectiva y las manos achican la pantalla. | device ≤ 60% del alto |
 
 ---
@@ -70,7 +72,10 @@ La gente no lee interfaces: las siente.
 - **Si hay que confirmar una acción con resultado:** el botón se convierte en el check. No toast.
 - **Si hay que avisar algo sin decisión:** toast. Si hay decisión: sheet.
 - **Si separás capas en modo claro:** sombra suave. En oscuro: escalón de superficie y una luz de 1 px arriba.
-- **Si el proyecto necesita color:** elegí una atmósfera y usala en todo el proyecto, nunca en la marca personal.
+- **Si arrancás un proyecto:** elegí su color protagonista (una atmósfera) y su dial de color (0–3). Mono es una elección, no el default.
+- **Si hay fotos, objetos 3D, avatares o ilustraciones:** dejalos a todo color. No desatures el contenido para que combine con el marco.
+- **Si los datos tienen categorías** (métricas, series de un gráfico, tags, capas de un mapa): dale a cada categoría su color de datos, el mismo en todo el producto.
+- **Si diseñás el chrome de mi marca personal** (nav, tipografía, botones de mi sitio): mono. Los proyectos que se muestran adentro llevan todo su color.
 - **Si dudás entre agregar o sacar:** sacá.
 - **Si escribís un nombre, un link de la nav o un título:** mayúsculas normales. Los nombres propios como los escriben sus dueños (Agustín Oberg, TraiNow), la nav y los botones con mayúscula inicial (Work, About, Book a call) y el copy en sentence case. Solo los labels mono van en mayúsculas.
 - **Si un layout se parece a uno que ya hiciste en este lenguaje:** cambialo (sección 4).
@@ -98,7 +103,7 @@ Cada proyecto lo decide a partir de su propio contenido. Las opciones son ejempl
 | ritmo de secciones | label mono en una columna lateral · label arriba del contenido · capítulos numerados · sin labels, solo espacio |
 | dónde vive la escala | un número enorme · una imagen u objeto enorme · una palabra gigante con blur detrás (profundidad por capas) · nada grande, todo preciso |
 | densidad | una idea por pantalla ↔ índice denso, tablas y specs |
-| historia de color | mono · una atmósfera existente · una atmósfera nueva con la misma receta · la atmósfera como superficie entera, o solo como acento |
+| historia de color | el color protagonista (uno de seis, o uno nuevo con la misma receta) y el dial: 0 mono · 1 acento · 2 atmósfera · 3 superficie (sección 6) |
 | imagen | device en un stage · foto a sangre con blur de borde · objeto de marca · solo tipografía · datos y diagramas |
 | navegación | barra arriba · pill flotante · índice lateral · ninguna (una sola página) |
 | temperamento del motion | quieto y exacto · un momento protagonista · reveals contados con el scroll (dentro de los límites de la sección 11) |
@@ -169,8 +174,8 @@ black #000000 · ink-950 #0A0A0A · ink-900 #111111 · ink-800 #1F1F1F · ink-70
 ### Semánticos (solo estados, nunca decoración)
 positive #34C759 · warning #FF9F0A · critical #FF453A
 
-### Atmósferas (una por proyecto)
-Se arman como gradiente radial desde arriba (`a-2` → `a-1` → `a-0`), con un glow central al 38% y grano.
+### Atmósferas (una manda en cada proyecto)
+Se arman como gradiente radial desde arriba (`a-2` → `a-1` → `a-0`), con un glow central al 38% y grano. Los tonos 1 y 2 también sirven como superficies teñidas, y el glow es el acento.
 
 | atmósfera | para | oscuro (0 / 1 / 2 / glow) | claro (0 / 1 / 2 / glow) |
 |---|---|---|---|
@@ -178,8 +183,28 @@ Se arman como gradiente radial desde arriba (`a-2` → `a-1` → `a-0`), con un 
 | ember | tiempo, energía, descanso | #0F0A02 / #3D2905 / #B8821A / #FFCF5C | #FBF7EF / #F5E7C8 / #ECCB83 / #E0A730 |
 | tide | plata, confianza, chat | #03081A / #0F2152 / #2F5BD6 / #8FB4FF | #F2F5FC / #DFE7FA / #B3C7F2 / #5B86E8 |
 | rouge | social, ubicación, alertas | #14030A / #4A0D24 / #D6245E / #FF8FB4 | #FBF2F5 / #F7DDE6 / #F0B0C6 / #E2557F |
+| iris | creatividad, IA, talento, noche | #0B0719 / #231552 / #6D45E0 / #B9A4FF | #F6F4FD / #E9E3FB / #CBBDF6 / #8C6CF0 |
+| flame | deporte intenso, comida, urgencia, calor | #140802 / #4A1C08 / #D9531A / #FF9F6B | #FCF5F1 / #F9E3D7 / #F3BC9F / #F2753A |
 
 Los hex del núcleo oscuro y del vidrio vienen del CSS de figura.digital. Los de las atmósferas son propios, aproximados a partir de las referencias.
+
+### Dial de color (uno por proyecto)
+Las referencias no son blanco y negro. Sus marcos son quietos, pero los productos de adentro están llenos de color: fotos, objetos 3D, colores por categoría y, a veces, una pantalla entera en el color de la marca. Cada proyecto define qué tan fuerte suena su color protagonista.
+
+| dial | qué cubre el color protagonista | sirve para |
+|---|---|---|
+| **0 · mono** | Nada. El color viene solo del contenido y los datos. | El chrome de mi marca personal, herramientas donde el contenido ya es colorido. |
+| **1 · acento** | Un solo tipo de elemento por pantalla: la acción del dominio (Book, Pay), los pins o el progreso activo. | Productos tranquilos, utilitarios y de plata. |
+| **2 · atmósfera** | El acento, más la atmósfera completa en momentos clave (onboarding, estados vacíos, confirmaciones grandes, heroes) y superficies teñidas (tono 1) en cards destacadas. | La mayoría de los productos de consumo. |
+| **3 · superficie** | El color como superficie: cards, paneles, headers o pantallas enteras en el glow o el tono 2, con texto on-accent. Lo mono queda para el texto corrido y el chrome. | Marcas audaces, lanzamientos, social, deporte, juegos, shots de presentación. |
+
+En cualquier dial, el botón primario genérico sigue siendo `fg` sobre `bg`, y el protagonista es el único color de marca. En CSS, `.accent-{atmósfera}` en un contenedor da `--accent`, `--accent-1` y `--accent-2`; `.surface--tint` y `.surface--accent` pintan una superficie. Sobre `.surface--accent`, todo el texto va en on-accent (#0A0A0A) y la jerarquía sale del tamaño y el peso.
+
+### Color de contenido (siempre permitido)
+Fotos, video, objetos 3D y de marca, avatares, ilustraciones, mapas e íconos de apps mantienen todo su color en cualquier dial. No cuentan como un segundo color. Enmarcalos en mono para que brillen; nunca los tiñas ni los desatures para que combinen.
+
+### Color de datos (solo categorías)
+Cuando los datos tienen categorías (métricas de salud, series de un gráfico, tags, capas de un mapa, colores de tee), cada categoría recibe un color de datos y lo mantiene en todos lados: `--data-forest`, `--data-ember`, `--data-tide`, `--data-rouge`, `--data-iris`, `--data-flame`. El protagonista va primero. En claro son más profundos que los glows para que las marcas lleguen a 3:1; en oscuro son los glows. Usalos en puntos, íconos, barras y labels chicos, nunca como rellenos grandes decorativos. Con más de cuatro series, etiquetá directo.
 
 ---
 
@@ -391,8 +416,8 @@ Este lenguaje no es solo para mi marca. Sirve para diseñar cualquier producto e
 | | qué incluye |
 |---|---|
 | **Se transfiere** (sin referencias; con referencias, solo mi toque) | Filosofía, decisiones, reglas si/entonces, tipografía, radios, espacio, componentes, micro-blurs, motion, claro y oscuro, imagen y el checklist de calidad. |
-| **Se adapta al producto** | Color de acento (una atmósfera), nombre y logo, copy (en la voz del producto, con mis reglas de escritura), idioma, íconos y fotos del dominio. |
-| **Solo de mi marca** | El wordmark "Agustín Oberg", el monograma "ao", mi posicionamiento, mis textos de ejemplo y la regla de que mi marca personal no usa color. |
+| **Se adapta al producto** | Color protagonista (una atmósfera) y dial de color, nombre y logo, copy (en la voz del producto, con mis reglas de escritura), idioma, íconos y fotos del dominio. |
+| **Solo de mi marca** | El wordmark "Agustín Oberg", el monograma "ao", mi posicionamiento, mis textos de ejemplo y la regla de que el chrome de mi marca personal es mono (los proyectos de adentro mantienen su color). |
 
 ### Con referencias o sin referencias
 Antes de diseñar, fijate qué referencias de diseño hay: un Figma, capturas, la marca del cliente o apps que la persona quiere seguir.
@@ -418,11 +443,12 @@ Son los detalles que van arriba de cualquier diseño sin pisar su identidad. Ele
 - **Si la referencia no lo contradice:** sheets flotantes con radio concéntrico, titulares en dos tonos (usando la tipografía de la referencia), profundidad por capas en heroes y el botón que se convierte en check.
 - **Nunca:** cambiar los colores, la tipografía, el logo o la escala de radios de la referencia. Tampoco meter mis atmósferas en una marca que ya tiene su paleta.
 
-### Color de acento en productos
-- El producto elige **una** atmósfera según su tema, o crea una nueva con la misma receta: 4 tonos por modo, del más profundo al glow.
-- El acento es el `glow` de esa atmósfera, en los dos modos. El texto sobre el acento va en #0A0A0A. En CSS: clase `.accent-forest`, `.accent-ember`, `.accent-tide` o `.accent-rouge` en un contenedor, y el botón `.btn--accent`.
-- El acento aparece en **un solo tipo de elemento por pantalla**: la acción propia del dominio (Book, Claim, Pay), los pins o el progreso activo. Todo lo demás sigue mono. El botón primario genérico sigue siendo `fg` sobre `bg`.
-- La atmósfera completa (gradiente, glow y grano) va en onboarding, estados vacíos, confirmaciones grandes y shots de presentación.
+### Color en productos
+- El producto elige **una** atmósfera protagonista según su tema (forest, ember, tide, rouge, iris o flame), o crea una nueva con la misma receta: 4 tonos por modo, del más profundo al glow.
+- El acento es el `glow` de esa atmósfera, en los dos modos. El texto sobre el acento va en #0A0A0A. En CSS: clase `.accent-{atmósfera}` en un contenedor, y `.btn--accent`, `.surface--tint` o `.surface--accent`.
+- El producto elige su **dial de color** (sección 6). El dial 1 deja el acento en un solo tipo de elemento por pantalla. El dial 2 suma la atmósfera completa en momentos clave y cards teñidas. El dial 3 pinta superficies enteras con el color. Elegilo según el contenido y el temperamento de la marca, no por costumbre.
+- El contenido (fotos, objetos, avatares, mapas) va a todo color en cualquier dial, y las categorías usan los colores de datos.
+- El botón primario genérico sigue siendo `fg` sobre `bg`.
 
 ### Primero la dirección
 Escribí la dirección de la sección 4 antes de la primera pantalla: la idea, una elección por eje libre y el momento firma. La receta de abajo dice qué patrones usa cada tipo de pantalla. La composición, la densidad, la escala y la imagen salen de la dirección, así que dos productos hechos con esta receta no deberían parecerse.
@@ -445,7 +471,7 @@ Stack sugerido: Expo / React Native con Reanimated y expo-blur (o Skia para el b
 Navegación: push para profundizar, sheets para tareas cortas y tabs con crossfade. Los dos modos desde el día uno, con movimiento reducido respetado.
 
 ### Ejemplo: app de viajes
-- **Atmósfera:** tide (mar, vuelos, confianza). Si el producto es de naturaleza u outdoor, forest.
+- **Atmósfera:** tide (mar, vuelos, confianza). Si el producto es de naturaleza u outdoor, forest. Dial 2: las fotos de los destinos traen la mayor parte del color, y tide manda en la acción de reservar, los estados vacíos y la confirmación.
 - **Explorar:** mapa con blur de borde, pins blancos con la foto del lugar y cards de destinos que asoman abajo, con precio.
 - **Destino:** foto a sangre con blur de borde, nombre del lugar, precio por noche como número grande y, como máximo, un sticker ("NEW") por pantalla.
 - **Reservar:** sheet flotante con fechas (segmented para las noches y calendario) y el fondo que retrocede.
@@ -457,7 +483,8 @@ Navegación: push para profundizar, sheets para tareas cortas y tabs con crossfa
 - [ ] ¿Hay una dirección escrita (idea, ejes libres, momento firma) que solo sirve para este proyecto?
 - [ ] ¿Se parece a sí mismo, y no a mi sitio de diseño ni a otro proyecto en este lenguaje?
 - [ ] ¿Si había referencias, mandan en lo visual, y mi toque está presente con 3 a 6 detalles sin pisarlas?
-- [ ] ¿Una sola atmósfera, con el acento en un solo tipo de elemento por pantalla?
+- [ ] ¿Una sola atmósfera protagonista, con un dial de color elegido a propósito y aplicado de forma consistente?
+- [ ] ¿El contenido a todo color, y cada categoría de datos con un solo color de datos en todos lados?
 - [ ] ¿Titulares de afirmación en dos tonos, números grandes y botones pastilla?
 - [ ] ¿Mayúsculas normales: nombres como los escriben sus dueños, nav y botones con mayúscula inicial?
 - [ ] ¿Sheets flotantes concéntricos con el fondo que retrocede?
@@ -522,7 +549,7 @@ Cuando me pidan "haceme un portfolio", seguí esto. Dice qué tiene que tener el
 - [ ] ¿Los dos modos están terminados y probados?
 - [ ] ¿Hay blur progresivo en nav y en los bordes de scroll?
 - [ ] ¿Los sheets flotan con radio concéntrico y el fondo retrocede?
-- [ ] ¿Cada proyecto usa una sola atmósfera?
+- [ ] ¿Cada proyecto usa una sola atmósfera protagonista, se muestra con su color real y en el dial que le corresponde?
 - [ ] ¿Ningún dato, cliente o métrica fue inventado?
 - [ ] ¿Funciona con movimiento reducido?
 
@@ -533,7 +560,9 @@ Cuando me pidan "haceme un portfolio", seguí esto. Dice qué tiene que tener el
 - Gradientes violeta-azul genéricos, glassmorphism exagerado (blur de más de 40 o bordes blancos gruesos).
 - Mockups en perspectiva, manos sosteniendo el teléfono, emojis como íconos de UI.
 - Botones rectos o con radios chicos.
-- Dos atmósferas en un mismo proyecto.
+- Dos colores protagonistas en un mismo proyecto. Los colores de contenido y de datos no son protagonistas.
+- Colores de datos usados como decoración, o contenido desaturado para que parezca "de la marca".
+- Ir a mono por default porque se siente seguro. Mono es una posición del dial que se elige por una razón.
 - Sombras grandes en oscuro.
 - Todo dentro de cards.
 - El mismo layout en todos los proyectos. Si parece el sitio de diseño con otras palabras, empezá de nuevo desde la dirección.

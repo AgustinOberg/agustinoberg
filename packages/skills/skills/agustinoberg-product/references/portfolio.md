@@ -55,6 +55,6 @@ When I ask you to "make me a portfolio", follow this. It lists what the portfoli
 - [ ] Are both modes finished and tested?
 - [ ] Is there progressive blur on the nav and on scroll edges?
 - [ ] Do sheets float with a concentric radius, and does the background recede?
-- [ ] Does each project use a single atmosphere?
+- [ ] Does each project use a single lead atmosphere, shown with its real color, at the dial that fits it?
 - [ ] Is every piece of data, client and metric real, with nothing invented?
 - [ ] Does it work with reduced motion?

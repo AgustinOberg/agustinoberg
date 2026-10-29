@@ -9,8 +9,8 @@ This language isn't only for my brand. Use it to design any product in my style:
 | | what it includes |
 |---|---|
 | **Carries over** (without references; with references, only my touch) | Philosophy, decisions, if/then rules, typography, radii, spacing, components, micro-blurs, motion, light and dark, imagery and the quality checklist. |
-| **Adapts to the product** | Accent color (one atmosphere), name and logo, copy (in the product's voice, using my writing rules), language, and domain icons and photos. |
-| **Only my brand** | The "Agustín Oberg" wordmark, the "ao" monogram, my positioning, my sample copy and the rule that my personal brand uses no color. |
+| **Adapts to the product** | Lead hue (one atmosphere) and color dial, name and logo, copy (in the product's voice, using my writing rules), language, and domain icons and photos. |
+| **Only my brand** | The "Agustín Oberg" wordmark, the "ao" monogram, my positioning, my sample copy and the rule that my personal brand's chrome is mono (the projects inside it keep their color). |
 
 ### With or without references
 Before designing, check which design references exist: a Figma file, screenshots, the client's brand or apps the person wants to follow.
@@ -36,11 +36,12 @@ These are the details that go on top of any design without overriding its identi
 - **If the reference doesn't contradict it:** floating sheets with concentric radius, two-tone headlines (in the reference's typeface), layered depth on heroes and the button that turns into a check.
 - **Never:** change the reference's colors, typography, logo or radius scale. Don't bring my atmospheres into a brand that already has a palette.
 
-### Accent color in products
-- The product picks **one** atmosphere for its theme, or creates a new one with the same recipe: 4 tones per mode, from the deepest to the glow.
-- The accent is that atmosphere's `glow`, in both modes. Text on the accent is #0A0A0A. In CSS: put `.accent-forest`, `.accent-ember`, `.accent-tide` or `.accent-rouge` on a container and use the `.btn--accent` button.
-- The accent appears on **one kind of element per screen**: the domain action (Book, Claim, Pay), the pins or the active progress. Everything else stays mono. The generic primary button stays `fg` on `bg`.
-- The full atmosphere (gradient, glow and grain) goes in onboarding, empty states, big confirmations and presentation shots.
+### Color in products
+- The product picks **one** lead atmosphere for its theme (forest, ember, tide, rouge, iris or flame), or creates a new one with the same recipe: 4 tones per mode, from the deepest to the glow.
+- The accent is that atmosphere's `glow`, in both modes. Text on the accent is #0A0A0A. In CSS: put `.accent-{atmosphere}` on a container and use `.btn--accent`, `.surface--tint` or `.surface--accent`.
+- The product picks its **color dial** (section 6). Dial 1 keeps the accent on one kind of element per screen. Dial 2 adds the full atmosphere on key moments and tinted cards. Dial 3 paints whole surfaces in the hue. Choose it from the content and the brand's temperament, not by habit.
+- Content (photos, objects, avatars, maps) is in full color at any dial, and categories use the data colors.
+- The generic primary button stays `fg` on `bg`.
 
 ### Direction first
 Write the direction from section 4 before the first screen: the idea, a pick on each free axis and the signature moment. The recipe below says which patterns each kind of screen uses. Composition, density, scale and imagery come from the direction, so two products built with this recipe shouldn't look alike.
@@ -63,7 +64,7 @@ Suggested stack: Expo / React Native with Reanimated and expo-blur (or Skia for 
 Navigation: push to go deeper, sheets for short tasks and tabs with a crossfade. Both modes from day one, with reduced motion respected.
 
 ### Example: travel app
-- **Atmosphere:** tide (sea, flights, trust). If the product is about nature or the outdoors, forest.
+- **Atmosphere:** tide (sea, flights, trust). If the product is about nature or the outdoors, forest. Dial 2: the destination photos bring most of the color, and tide leads the booking action, the empty states and the confirmation.
 - **Explore:** map with edge blur, white pins with a photo of the place, and destination cards peeking at the bottom with prices.
 - **Destination:** full-bleed photo with edge blur, the place name, the price per night as a big number and, at most, one sticker ("NEW") per screen.
 - **Book:** floating sheet with dates (segmented control for nights, plus a calendar) and the background receding.
@@ -75,7 +76,8 @@ Navigation: push to go deeper, sheets for short tasks and tabs with a crossfade.
 - [ ] Is there a written direction (idea, free axes, signature moment) that only fits this project?
 - [ ] Does it look like itself, and not like my design site or another project in this language?
 - [ ] If there were references, do they lead the visuals, with my touch present in 3 to 6 details that don't override them?
-- [ ] One atmosphere, with the accent on one kind of element per screen?
+- [ ] One lead atmosphere, with a color dial chosen on purpose and applied consistently?
+- [ ] Content in full color, and every data category with one data color everywhere?
 - [ ] Two-tone statement headlines, big numbers and pill buttons?
 - [ ] Normal capitalization: names as their owners write them, nav and buttons starting with a capital?
 - [ ] Floating concentric sheets with the background receding?

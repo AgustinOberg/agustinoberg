@@ -6,8 +6,11 @@ const { project: p, index, lang } = Astro.props;
 const t = copy[lang];
 const n = String(index + 1).padStart(2, "0");
 const stage = p.atmosphere ? `atmos atmos--${p.atmosphere}` : "mono";
+// The project's own hue follows it out of the stage: its store buttons are its accent.
+const accent = p.atmosphere ? `accent-${p.atmosphere}` : "";
+const storeBtn = p.atmosphere ? "btn--accent" : "btn--secondary";
 ---
-<article class="project" id={p.id}>
+<article class={`project ${accent}`} id={p.id}>
   <div class={`stage project__stage ${stage}`}>
     <span class="label project__idx">{n} · {p.category[lang]}</span>
     <span class="depth-text project__word" aria-hidden="true">{p.name}</span>
@@ -36,7 +39,7 @@ const stage = p.atmosphere ? `atmos atmos--${p.atmosphere}` : "mono";
     {p.store && (
       <div class="project__stores">
         {p.store.map((s) => (
-          <a class="btn btn--secondary" href={s.href} target="_blank" rel="noopener" aria-label={`${p.name} ${t.work.on} ${s.label}`}>{s.label} ↗</a>
+          <a class={`btn ${storeBtn}`} href={s.href} target="_blank" rel="noopener" aria-label={`${p.name} ${t.work.on} ${s.label}`}>{s.label} ↗</a>
         ))}
       </div>
     )}
