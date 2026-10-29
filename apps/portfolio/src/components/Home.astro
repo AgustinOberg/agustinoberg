@@ -1,0 +1,131 @@
+---
+import Nav from "./Nav.astro";
+import Project from "./Project.astro";
+import { clients, copy, experience, links, projects, type Lang } from "../data/content";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = copy[lang];
+---
+<a class="btn btn--primary skip" href="#main">{t.skip}</a>
+<Nav lang={lang} />
+
+<main id="main">
+  <span id="top"></span>
+
+  <section class="wrap hero">
+    <div>
+      <h1 class="headline reveal">
+        <span>{t.hero.h1}</span>
+        <span class="muted">{t.hero.h2}</span>
+      </h1>
+      <div class="ctas">
+        <a class="btn btn--primary btn--lg" href="#work">{t.hero.primary}</a>
+        <a class="btn btn--secondary btn--lg" href="#contact">{t.hero.secondary}</a>
+      </div>
+    </div>
+    <dl class="hero__meta">
+      {t.hero.meta.map(([k, v]) => (<><dt class="label">{k}</dt><dd>{v}</dd></>))}
+    </dl>
+  </section>
+
+  <section class="wrap numbers" aria-label={t.numbers.label}>
+    {t.numbers.items.map(([value, label], i) => (
+      <div class="stat" style={`--i:${i}`}>
+        <span class="num" set:html={value.replace("★", '<span class="star">★</span>')} />
+        <span class="stat__label">{label}</span>
+      </div>
+    ))}
+  </section>
+
+  <section class="wrap section" id="work">
+    <span class="label">{t.clients.label}</span>
+    <div>
+      <h2><span>{t.clients.h1}</span> <span class="muted">{t.clients.h2}</span></h2>
+      <div class="clients">
+        {clients.map((c) => (
+          <article class="client">
+            <div class="client__head">
+              <h3>{c.name}</h3>
+              <span class="client__meta">{c.role[lang]} · {c.when[lang]} · {c.place[lang]}</span>
+            </div>
+            <p class="client__line">{c.line[lang]}</p>
+            <div class="client__stat">
+              <span class={c.stat.value.startsWith("[") ? "client__todo" : "num"}>{c.stat.value}</span>
+              <span class="stat__label">{c.stat.label[lang]}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="apps">
+    <span class="label">{t.work.label}</span>
+    <div>
+      <h2><span>{t.work.h1}</span> <span class="muted">{t.work.h2}</span></h2>
+      <div class="projects">
+        {projects.map((p, i) => <Project project={p} index={i} lang={lang} />)}
+      </div>
+      <p class="more"><a class="link" href={links.playDeveloper} target="_blank" rel="noopener">{t.work.all} ↗</a></p>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <span class="label">{t.manifesto.label}</span>
+    <div class="manifesto">
+      {t.manifesto.lines.map((line) => <p data-line>{line}</p>)}
+      <div class="design-cta">
+        <h3 class="headline"><span>{t.manifesto.designH1}</span><span class="muted">{t.manifesto.designH2}</span></h3>
+        <a class="btn btn--secondary btn--lg" href={links.design} target="_blank" rel="noopener">{t.manifesto.more} ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" id="about">
+    <span class="label">{t.about.label}</span>
+    <div class="about">
+      <div class="about__intro">
+        <figure class="about__photo">
+          <img src="/about/agustin.jpg" alt={t.about.photo} width="576" height="576" loading="lazy" decoding="async" />
+        </figure>
+        <div>
+          <h2><span>{t.about.h1}</span> <span class="muted">{t.about.h2}</span></h2>
+          {t.about.body.map((p) => <p class="lede">{p}</p>)}
+        </div>
+      </div>
+
+      <span class="label sub">{t.about.servicesLabel}</span>
+      <ul class="services">
+        {t.about.services.map(([name, detail]) => <li><b>{name}</b><span>{detail}</span></li>)}
+      </ul>
+
+      <span class="label sub">{t.about.expLabel}</span>
+      <div class="rows">
+        {experience.map((e) => (
+          <div class="row">
+            <div><h3>{e.org}</h3><span class="row__role">{e.role[lang]}</span></div>
+            <p>{e.note[lang]}</p>
+            <span class="row__when">{e.when[lang]}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap closing" id="contact">
+    <h2 class="headline"><span>{t.contact.h1}</span><span class="muted">{t.contact.h2}</span></h2>
+    <div class="ctas">
+      <a class="btn btn--primary btn--lg" href={`mailto:${links.email}`}>{t.contact.primary}</a>
+      <a class="btn btn--secondary btn--lg" href={links.linkedin} target="_blank" rel="noopener">{t.contact.secondary}</a>
+    </div>
+    <p class="closing__email"><a class="link" href={`mailto:${links.email}`}>{links.email}</a></p>
+  </section>
+
+  <footer class="wrap footer">
+    <div><span class="label">{t.footer.sitemap}</span><ul><li><a class="link" href="#work">{t.nav.work}</a></li><li><a class="link" href="#apps">{t.nav.apps}</a></li><li><a class="link" href="#about">{t.nav.about}</a></li><li><a class="link" href="#contact">{t.nav.contact}</a></li></ul></div>
+    <div><span class="label">{t.footer.social}</span><ul><li><a class="link" href={`mailto:${links.email}`}>Email</a></li><li><a class="link" href={links.linkedin} target="_blank" rel="noopener">LinkedIn</a></li><li><a class="link" href={links.x} target="_blank" rel="noopener">X</a></li><li><a class="link" href={links.playDeveloper} target="_blank" rel="noopener">Google Play</a></li></ul></div>
+    <div><span class="label">{t.footer.more}</span><ul><li><a class="link" href={links.design} target="_blank" rel="noopener">{t.footer.design}</a></li></ul></div>
+    <p class="footer__legal">{t.footer.legal}</p>
+  </footer>
+</main>

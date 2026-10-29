@@ -1,0 +1,44 @@
+---
+import { copy, type Lang, type Project } from "../data/content";
+
+interface Props { project: Project; index: number; lang: Lang }
+const { project: p, index, lang } = Astro.props;
+const t = copy[lang];
+const n = String(index + 1).padStart(2, "0");
+const stage = p.atmosphere ? `atmos atmos--${p.atmosphere}` : "mono";
+---
+<article class="project" id={p.id}>
+  <div class={`stage project__stage ${stage}`}>
+    <span class="label project__idx">{n} · {p.category[lang]}</span>
+    <span class="depth-text project__word" aria-hidden="true">{p.name}</span>
+    <div class="project__object">
+      {p.icon
+        ? <img class="project__icon" src={p.icon} alt="" width="144" height="144" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+        : <span class="project__icon project__icon--blank" aria-hidden="true">{p.name[0]}</span>}
+      <div class="contact-shadow"></div>
+    </div>
+    {p.stat && <span class="glass project__badge"><b>{p.stat.value}</b> {p.stat.label[lang]}</span>}
+    {p.status && <span class="glass project__badge"><span class="live"></span> {p.status[lang]}</span>}
+  </div>
+
+  <div class="project__meta">
+    <div class="project__text">
+      <h3>{p.name}</h3>
+      <p>{p.line[lang]}</p>
+      {(p.platforms.length > 0 || p.facts.length > 0 || p.stack) && (
+        <div class="tags">
+          {p.platforms.map((x) => <span class="chip">{x}</span>)}
+          {p.facts.map((f) => <span class="chip">{f[lang]}</span>)}
+          {p.stack && <span class="chip">{p.stack[lang]}</span>}
+        </div>
+      )}
+    </div>
+    {p.store && (
+      <div class="project__stores">
+        {p.store.map((s) => (
+          <a class="btn btn--secondary" href={s.href} target="_blank" rel="noopener" aria-label={`${p.name} ${t.work.on} ${s.label}`}>{s.label} ↗</a>
+        ))}
+      </div>
+    )}
+  </div>
+</article>

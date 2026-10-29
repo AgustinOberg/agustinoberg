@@ -14,7 +14,8 @@
         "dist/**"
       ],
       "env": [
-        "VITE_SITE_URL"
+        "VITE_SITE_URL",
+        "PUBLIC_SITE_URL"
       ]
     },
     "dev": {

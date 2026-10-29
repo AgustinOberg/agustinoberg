@@ -8,6 +8,7 @@
     "build": "turbo run build",
     "preview": "turbo run preview",
     "dev:design": "turbo run dev --filter=design",
+    "dev:portfolio": "turbo run dev --filter=portfolio",
     "sync:skills": "turbo run build --filter=@agustinoberg/skills"
   },
   "devDependencies": {

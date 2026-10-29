@@ -5,6 +5,9 @@ Monorepo for agustín oberg's personal brand (product designer). Turborepo + pnp
 ```
 apps/design/        design language site (English at /, Spanish at /es/)   → `pnpm dev:design`
                     deployed to Cloudflare Pages by .github/workflows/deploy-design.yml
+apps/portfolio/     portfolio, Astro (English at /, Spanish at /es/)   → `pnpm dev:portfolio`
+                    deployed to Cloudflare Pages by .github/workflows/deploy-portfolio.yml
+                    every fact and string lives in src/data/content.ts (en + es)
 packages/brand/     @agustinoberg/brand: the spec (brand.md = English, brand.es.md = Spanish) and tokens (tokens.css, tokens.json)
 packages/skills/    agent skills for skills.sh: agustinoberg-design, agustinoberg-product   → `pnpm sync:skills`
 skills.sh.json      tells `npx skills` to look in packages/skills/skills
@@ -34,6 +37,7 @@ More apps will come (portfolio…). Each new app goes in `apps/<name>` and depen
 ```sh
 pnpm install
 pnpm dev:design        # http://localhost:5173/  (es: /es/)
+pnpm dev:portfolio     # http://localhost:4321/  (es: /es/)
 pnpm build             # every app and package
 pnpm sync:skills       # regenerate + validate the skills
 ```
@@ -41,5 +45,6 @@ pnpm sync:skills       # regenerate + validate the skills
 ## Deploy
 
 - Push to `main`: GitHub Actions builds `apps/design` and deploys it to Cloudflare Pages (project `agustinoberg-design`). Pull requests get preview URLs.
+- Same for `apps/portfolio` (project `agustinoberg-portfolio`, workflow `deploy-portfolio.yml`). Its URL is `PUBLIC_SITE_URL` in `apps/portfolio/.env`; the repo variable `PORTFOLIO_SITE_URL` overrides it in CI.
 - Needs repo secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. Without them, CI builds and skips the deploy.
 - Don't deploy by hand or to anywhere else unless I ask.

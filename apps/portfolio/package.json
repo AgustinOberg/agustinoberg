@@ -1,0 +1,19 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "agustín oberg · portfolio (en + es), built with Astro",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@agustinoberg/brand": "workspace:*",
+    "astro": "^7.4.4"
+  },
+  "devDependencies": {
+    "wrangler": "4.150.0"
+  }
+}
