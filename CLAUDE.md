@@ -45,6 +45,6 @@ pnpm sync:skills       # regenerate + validate the skills
 ## Deploy
 
 - Push to `main`: GitHub Actions builds `apps/design` and deploys it to Cloudflare Pages (project `agustinoberg-design`). Pull requests get preview URLs.
-- Same for `apps/portfolio` (project `agustinoberg-portfolio`, workflow `deploy-portfolio.yml`). Its URL is `PUBLIC_SITE_URL` in `apps/portfolio/.env`; the repo variable `PORTFOLIO_SITE_URL` overrides it in CI.
+- Same for `apps/portfolio` (project `agustinoberg` → https://agustinoberg.pages.dev, workflow `deploy-portfolio.yml`). Its URL is `PUBLIC_SITE_URL` in `apps/portfolio/.env`; the repo variable `PORTFOLIO_SITE_URL` overrides it in CI.
 - Needs repo secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. Without them, CI builds and skips the deploy.
 - Don't deploy by hand or to anywhere else unless I ask.

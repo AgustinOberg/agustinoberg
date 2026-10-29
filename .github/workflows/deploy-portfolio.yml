@@ -1,5 +1,5 @@
 # Builds apps/portfolio (Astro) and deploys it to Cloudflare Pages.
-#   push to main   → production (https://agustinoberg-portfolio.pages.dev, later the final domain)
+#   push to main   → production (https://agustinoberg.pages.dev, later the final domain)
 #   pull request   → preview deployment with its own URL
 #
 # Needs, in GitHub → Settings → Secrets and variables → Actions:
@@ -37,7 +37,7 @@ permissions:
   deployments: write
 
 env:
-  PAGES_PROJECT: agustinoberg-portfolio
+  PAGES_PROJECT: agustinoberg
 
 jobs:
   deploy:
@@ -77,7 +77,8 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          if pnpm exec wrangler pages project list | grep -qw "$PAGES_PROJECT"; then
+          # Match the exact name in the table: "agustinoberg" must not match "agustinoberg-design".
+          if pnpm exec wrangler pages project list | grep -qE "[│|] +${PAGES_PROJECT} +[│|]"; then
             echo "Pages project $PAGES_PROJECT exists."
           else
             pnpm exec wrangler pages project create "$PAGES_PROJECT" --production-branch=main
