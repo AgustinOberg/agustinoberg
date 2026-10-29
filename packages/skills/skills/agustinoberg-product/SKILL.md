@@ -16,7 +16,7 @@ What you ship will sit next to the best products in the world, and people will c
 - put motion only where it earns its place;
 - verify until you can't find a flaw.
 
-**This skill is the how. The look comes from the references, or from `agustinoberg-design` when there are none.** Load `agustinoberg-design` either way. It's the full language when there are no references, and the source of Agustín's touch when there are. If it isn't installed, ask the user to install it (`npx skills add <owner>/agustinoberg --skill agustinoberg-design`). Don't improvise a visual language.
+**This skill is the how. The look comes from the references, or from `agustinoberg-design` when there are none.** Load `agustinoberg-design` either way. It's the full language when there are no references, and the source of Agustín's touch when there are. If it isn't installed, ask the user to install it (`npx skills add AgustinOberg/agustinoberg --skill agustinoberg-design`). Don't improvise a visual language.
 
 ## Visual base: references first, then Agustín's design
 

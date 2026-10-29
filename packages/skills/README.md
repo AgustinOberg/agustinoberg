@@ -15,16 +15,16 @@ The repo root has a `skills.sh.json` that points the CLI at `packages/skills/ski
 
 ```sh
 # every skill, in the current project
-npx skills add <github-owner>/agustinoberg
+npx skills add AgustinOberg/agustinoberg
 
 # one skill, for Claude Code, without prompts
-npx skills add <github-owner>/agustinoberg --skill agustinoberg-design -a claude-code -y
+npx skills add AgustinOberg/agustinoberg --skill agustinoberg-design -a claude-code -y
 
 # both skills, available in every project
-npx skills add <github-owner>/agustinoberg --skill agustinoberg-design --skill agustinoberg-product -g
+npx skills add AgustinOberg/agustinoberg --skill agustinoberg-design --skill agustinoberg-product -g
 ```
 
-Replace `<github-owner>` with the GitHub user or org that hosts this repo. `[TODO: set once the repo is on GitHub]`
+The repo is private for now, so installing needs an account with access to it; see the skills CLI docs on private repositories. Once it's public, anyone can install it.
 
 ## Structure
 
