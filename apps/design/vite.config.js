@@ -170,6 +170,7 @@ export default defineConfig(({ mode }) => {
         input: {
           en: resolve(here, "index.html"),
           es: resolve(here, "es/index.html"),
+          notFound: resolve(here, "404.html"),
         },
       },
     },
