@@ -1,0 +1,15 @@
+{
+  "name": "@agustinoberg/skills",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "agustín oberg · agent skills distributed through skills.sh (npx skills add). One folder per skill in skills/.",
+  "scripts": {
+    "build": "node scripts/sync.mjs && node scripts/validate.mjs",
+    "validate": "node scripts/validate.mjs",
+    "list": "DISABLE_TELEMETRY=1 npx -y skills add ./ --list"
+  },
+  "dependencies": {
+    "@agustinoberg/brand": "workspace:*"
+  }
+}

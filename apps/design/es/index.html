@@ -1,0 +1,1066 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>agustín oberg · design language</title>
+<meta name="description" content="Mi lenguaje de diseño: filosofía, decisiones, modo claro y oscuro, micro-blurs, motion y una spec completa para que cualquier IA diseñe como yo.">
+<meta name="theme-color" content="#f4f4f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="alternate" hreflang="es" href="%VITE_SITE_URL%/es/">
+<link rel="alternate" hreflang="en" href="%VITE_SITE_URL%/">
+<link rel="alternate" hreflang="x-default" href="%VITE_SITE_URL%/">
+<link rel="alternate" type="text/markdown" href="%VITE_SITE_URL%/brand.es.md" title="Design language (spec completa en markdown)">
+<link rel="alternate" type="application/json" href="%VITE_SITE_URL%/tokens.json" title="Design tokens (JSON)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="help" type="text/plain" href="%VITE_SITE_URL%/llms.txt" title="Index for AI models">
+<link rel="stylesheet" href="/src/styles.css">
+<script>
+  // Apply the saved theme before first paint to avoid a flash.
+  try { const t = localStorage.getItem("ao-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (_) {}
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-chev-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+    <symbol id="i-chev-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></symbol>
+    <symbol id="i-arrow-down-left" viewBox="0 0 24 24"><path d="M17 7L7 17M15 17H7V9"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.4a4.2 4.2 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6.5 4h11v16l-5.5-4-5.5 4z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="18.5" cy="12" r="1.3"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="3"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-flash" viewBox="0 0 24 24"><path d="M8 3h8l-1 6h3l-8 12 1-8H7z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8.5 7l1.5-3h4l1.5 3"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="M21 15.5v-2L13.5 9V4a1.5 1.5 0 0 0-3 0v5L3 13.5v2l7.5-2.3V18l-2 1.5V21l3.5-1 3.5 1v-1.5l-2-1.5v-4.8z"/></symbol>
+    <symbol id="s-signal" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></symbol>
+    <symbol id="s-wifi" viewBox="0 0 16 12"><path d="M8 11.6l2.3-2.7a3.5 3.5 0 0 0-4.6 0zM8 6.3c1.6 0 3.1.6 4.2 1.6l1.4-1.6A8.4 8.4 0 0 0 8 4.1a8.4 8.4 0 0 0-5.6 2.2l1.4 1.6A6.3 6.3 0 0 1 8 6.3zM8 1.4c2.8 0 5.3 1 7.2 2.7L16 2.8A12.5 12.5 0 0 0 8 0 12.5 12.5 0 0 0 0 2.8l.8 1.3A11 11 0 0 1 8 1.4z"/></symbol>
+    <symbol id="s-battery" viewBox="0 0 27 12"><rect x="0.5" y="0.5" width="23" height="11" rx="3.5" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="25" y="4" width="1.6" height="4" rx=".8" opacity=".4"/></symbol>
+  </defs>
+</svg>
+<a class="btn btn--primary skip" href="#main">Ir al contenido</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="wordmark" href="#top" aria-label="agustín oberg, inicio"><span class="mono-mark" aria-hidden="true">ao</span><span class="wm-text">agustín oberg</span></a>
+    <div class="nav__right">
+      <nav class="nav__links" aria-label="Secciones">
+        <a class="link" href="#examples">ejemplos</a>
+        <a class="link" href="#filosofia">filosofía</a>
+        <a class="link" href="#decisiones">decisiones</a>
+        <a class="link" href="#micro">micro</a>
+        <a class="link" href="#motion">motion</a>
+        <span class="nav__rule" aria-hidden="true"></span>
+        <a class="link" href="#ia">para IA</a>
+      </nav>
+      <nav class="lang" aria-label="Idioma"><a href="%BASE_URL%" lang="en" hreflang="en">EN</a><a href="%BASE_URL%es/" lang="es" aria-current="page">ES</a></nav>
+      <div class="theme-switch" id="themeSwitch" role="group" aria-label="Tema">
+        <span class="thumb" aria-hidden="true"></span>
+        <button type="button" data-mode="auto" aria-pressed="true" aria-label="Tema del sistema" title="Sistema"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v16" /><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/></svg></button>
+        <button type="button" data-mode="light" aria-pressed="false" aria-label="Tema claro" title="Claro"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg></button>
+        <button type="button" data-mode="dark" aria-pressed="false" aria-label="Tema oscuro" title="Oscuro"><svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <span id="top"></span>
+  <section class="wrap hero">
+    <div>
+      <h1 class="headline reveal">
+        <span>Diseño productos que se sienten antes de entenderse.</span>
+        <span class="muted">Esta es mi forma de diseñar: qué decido, por qué, y cómo se ve.</span>
+      </h1>
+      <div class="ctas">
+        <a class="btn btn--primary btn--lg" href="#filosofia">Leer la filosofía</a>
+        <a class="btn btn--secondary btn--lg" href="#ia">Para IA</a>
+      </div>
+    </div>
+    <div class="hero__meta">
+      <span class="label">design language</span>
+      <span>v2.0 · octubre 2026</span>
+      <span class="label">modos</span>
+      <span>claro + oscuro</span>
+      <span class="label">para IA</span>
+      <span><a class="link" href="%BASE_URL%llms.txt">llms.txt</a> · <a class="link" href="%BASE_URL%brand.md">brand.md</a></span>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="hero-stage" role="img" aria-label="Tres productos de ejemplo: verdant en modo claro, tally y solace en modo oscuro">
+      <div class="hero-row"><div class="sc-device sm" aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-light sc-verdant">
+<svg class="map" viewBox="0 0 390 844" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <rect width="390" height="844" fill="#ecede7"/>
+  <path d="M0 600 C 70 575 150 640 235 628 S 350 648 390 630 L390 844 L0 844Z" fill="#cfe0ea"/>
+  <path d="M262 0 C 268 70 318 112 390 118 L390 0Z" fill="#cfe0ea"/>
+  <path d="M36 214 C 84 170 168 178 190 230 S 154 334 92 324 S 8 262 36 214Z" fill="#d3e7c8"/>
+  <ellipse cx="306" cy="432" rx="72" ry="50" fill="#d3e7c8"/>
+  <rect x="146" y="478" width="84" height="62" rx="16" fill="#d3e7c8"/>
+  <g fill="#e2e3dc">
+    <rect x="214" y="150" width="56" height="44" rx="6"/><rect x="282" y="160" width="70" height="38" rx="6"/>
+    <rect x="30" y="380" width="64" height="52" rx="6"/><rect x="106" y="392" width="48" height="40" rx="6"/>
+    <rect x="236" y="250" width="44" height="58" rx="6"/><rect x="40" y="470" width="80" height="44" rx="6"/>
+    <rect x="250" y="520" width="90" height="40" rx="6"/>
+  </g>
+  <g fill="none" stroke-linecap="round">
+    <g stroke="#dcddd5" stroke-width="15"><path d="M-10 372 C 100 342 210 410 400 352"/><path d="M152 -10 C 162 200 120 420 204 860"/></g>
+    <g stroke="#ffffff" stroke-width="11"><path d="M-10 372 C 100 342 210 410 400 352"/><path d="M152 -10 C 162 200 120 420 204 860"/></g>
+    <g stroke="#ffffff" stroke-width="5"><path d="M0 128 L390 196"/><path d="M0 500 L390 548"/><path d="M58 0 L104 844"/><path d="M300 0 L262 844"/><path d="M0 300 L390 262"/><path d="M0 706 L390 742"/><path d="M200 196 L240 360"/></g>
+  </g>
+  <g font-family="Inter, sans-serif" font-weight="600" fill="#97998f">
+    <text x="62" y="262" font-size="11">Jardim</text>
+    <text x="276" y="438" font-size="11">Parque</text>
+    <text x="110" y="160" font-size="10" letter-spacing="2.4">GRAÇA</text>
+    <text x="232" y="232" font-size="10" letter-spacing="2.4">ALFAMA</text>
+    <text x="40" y="660" font-size="10" letter-spacing="2.4" fill="#8fb0c4">TEJO</text>
+  </g>
+</svg>
+<span class="pin" style="left:108px;top:300px;--ph:linear-gradient(135deg,#f6d365,#fda085)"><i></i></span>
+<span class="pin" style="left:300px;top:322px;--ph:linear-gradient(135deg,#a1c4fd,#5b86e8)"><i></i></span>
+<span class="pin sel" style="left:212px;top:418px;--ph:linear-gradient(135deg,#d4fc79,#3f7a45)"><i></i></span>
+<span class="pin" style="left:86px;top:540px;--ph:linear-gradient(135deg,#fbc2eb,#e2557f)"><i></i></span>
+<span class="me" style="left:176px;top:526px"></span>
+<div class="edge"></div>
+<div class="topfade"></div>
+<div class="sc-status"><span>9:41</span><span class="r"><svg viewBox="0 0 18 12"><use href="#s-signal"/></svg><svg viewBox="0 0 16 12"><use href="#s-wifi"/></svg><svg viewBox="0 0 27 12"><use href="#s-battery"/></svg></span></div><div class="sc-island"></div>
+<div class="search"><div class="bar sc-glass"><svg class="i "><use href="#i-search"/></svg>Search Lisbon</div><span class="sc-iconbtn sc-glass"><svg class="i "><use href="#i-sliders"/></svg></span></div>
+<div class="chips"><span class="on">All</span><span>Viewpoints</span><span>Food</span><span>Markets</span></div>
+<div class="bottomblur"></div>
+<div class="cards">
+  <div class="card"><span class="ph" style="--ph:linear-gradient(135deg,#d4fc79,#3f7a45)"></span><div><b>Miradouro</b><small>Graça · 1.2 km · Open</small></div><span class="go">Go <svg class="i sm"><use href="#i-arrow-up-right"/></svg></span></div>
+  <div class="card"><span class="ph" style="--ph:linear-gradient(135deg,#f6d365,#fda085)"></span><div><b>Feira da Ladra</b><small>Market · 1.8 km</small></div></div>
+</div>
+<div class="tabbar sc-glass"><span class="on"><svg class="i "><use href="#i-compass"/></svg>Explore</span><span><svg class="i "><use href="#i-heart"/></svg>Saved</span><span><svg class="i "><use href="#i-bookmark"/></svg>Trips</span><span><svg class="i "><use href="#i-user"/></svg>Profile</span></div>
+<div class="sc-home"></div></div></div></div><div class="sc-device lg" aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-dark sc-tally">
+<div class="behind">
+  <div class="top"><span class="sc-avatar" style="background:linear-gradient(135deg,#ffcf5c,#e2557f);color:#fff">MD</span><span class="sc-iconbtn"><svg class="i "><use href="#i-bell"/></svg></span></div>
+  <p class="cap">Total balance</p>
+  <p class="bal sc-num">$12,480<span>.00</span></p>
+  <div class="acts"><div><span><svg class="i "><use href="#i-arrow-up-right"/></svg></span>Send</div><div><span><svg class="i "><use href="#i-arrow-down-left"/></svg></span>Request</div><div><span><svg class="i "><use href="#i-plus"/></svg></span>Top up</div><div><span><svg class="i "><use href="#i-more"/></svg></span>More</div></div>
+  <div class="txs">
+    <div><span class="sc-avatar" style="width:44px;height:44px;background:linear-gradient(135deg,#8fb4ff,#2f5bd6);color:#fff">S</span><div><b>Studio account</b><small>Today · Transfer</small></div><em>−$1,240.00</em></div>
+    <div><span class="sc-avatar" style="width:44px;height:44px;background:linear-gradient(135deg,#ffcf5c,#b8821a);color:#fff">C</span><div><b>Coffee Lab</b><small>Yesterday · Card</small></div><em>−$6.40</em></div>
+    <div><span class="sc-avatar" style="width:44px;height:44px;background:linear-gradient(135deg,#8fd68a,#3f7a45);color:#fff">M</span><div><b>Mara Diaz</b><small>Mon · Request</small></div><em>+$180.00</em></div>
+  </div>
+</div>
+<div class="dim"></div>
+<div class="sc-status" style="--sc-status:#fff"><span>9:41</span><span class="r"><svg viewBox="0 0 18 12"><use href="#s-signal"/></svg><svg viewBox="0 0 16 12"><use href="#s-wifi"/></svg><svg viewBox="0 0 27 12"><use href="#s-battery"/></svg></span></div><div class="sc-island"></div>
+<div class="fsheet">
+  <div class="grab"></div>
+  <div class="head"><span></span><span>Send</span><span class="sc-iconbtn"><svg class="i sm"><use href="#i-x"/></svg></span></div>
+  <div class="who"><span class="sc-avatar">S</span><div><b>Studio account</b><small>Tally •••• 4021</small></div><svg class="i "><use href="#i-chev-down"/></svg></div>
+  <p class="amt sc-num"><sup>$</sup>1,240</p>
+  <p class="note sc-label">No fee · arrives Nov 12</p>
+  <div class="tseg"><i></i><span>Now</span><span class="on">Nov 12</span><span>Monthly</span></div>
+  <div class="sc-cta">Schedule transfer</div>
+</div>
+<div class="sc-home" style="--sc-home:#fff"></div></div></div></div><div class="sc-device sm" aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-dark sc-solace">
+<div class="glow"></div>
+<div class="sc-status" style="--sc-status:#fff"><span>9:41</span><span class="r"><svg viewBox="0 0 18 12"><use href="#s-signal"/></svg><svg viewBox="0 0 16 12"><use href="#s-wifi"/></svg><svg viewBox="0 0 27 12"><use href="#s-battery"/></svg></span></div><div class="sc-island"></div>
+<div class="head"><span class="sc-iconbtn sc-glass"><svg class="i "><use href="#i-chev-left"/></svg></span><div><b>Bench press</b><small>Set 3 of 4</small></div><span class="sc-iconbtn sc-glass"><svg class="i "><use href="#i-more"/></svg></span></div>
+<div class="sets">
+  <div><span>1</span><b>80 kg</b><span>× 8</span><span class="ok"><svg class="i sm"><use href="#i-check"/></svg></span></div>
+  <div><span>2</span><b>80 kg</b><span>× 6</span><span class="ok"><svg class="i sm"><use href="#i-check"/></svg></span></div>
+</div>
+<div class="ring"><svg viewBox="0 0 280 280"><circle class="track" cx="140" cy="140" r="130"/><circle class="bar" cx="140" cy="140" r="130" data-ring style="stroke-dashoffset:390"/></svg>
+  <div class="center"><small>Rest</small><span class="sc-num" data-timer>0:47</span><small>Next · 82.5 kg × 6</small></div></div>
+<div class="adj"><span class="sc-glass">−15 s</span><span class="sc-glass">+15 s</span></div>
+<div class="sc-cta">Skip rest</div>
+<div class="sc-home" style="--sc-home:#fff"></div></div></div></div></div>
+    </div>
+    <div class="hero-captions"><div><b>verdant</b><span>Explorar una ciudad en un mapa que se desenfoca en los bordes.</span></div><div><b>tally</b><span>Enviar plata desde un sheet de vidrio que flota sobre tu saldo.</span></div><div><b>solace</b><span>Descansar entre series con un timer que se lee desde el banco.</span></div></div>
+  </div>
+
+  <!-- ===================== examples ===================== -->
+  <section class="wrap section" id="examples">
+    <span class="label">ejemplos</span>
+    <div>
+      <h2>Mismo lenguaje, cualquier producto. <span class="muted">Apps ficticias, reglas reales.</span></h2>
+      <p class="lede">Cada pantalla está hecha a tamaño real de iPhone con los tokens y patrones de esta página, y después escalada al marco. Los nombres y datos son inventados; las decisiones no.</p>
+      <div class="cases">
+        <article class="case">
+          <div class="stage "><div class="sc-device " aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-dark sc-closet">
+<div class="cam"></div><div class="vign"></div>
+<div class="sc-status" style="--sc-status:#fff"><span>9:41</span><span class="r"><svg viewBox="0 0 18 12"><use href="#s-signal"/></svg><svg viewBox="0 0 16 12"><use href="#s-wifi"/></svg><svg viewBox="0 0 27 12"><use href="#s-battery"/></svg></span></div><div class="sc-island"></div>
+<div class="scan"><span class="live"></span>Scanning</div>
+<div class="fsheet">
+  <span class="close"><svg class="i sm"><use href="#i-x"/></svg></span>
+  <div class="stagepart"><span class="word">detected</span><div style="display:grid;justify-items:center"><div class="record"></div><div class="shadow"></div></div><span class="sticker">NEW</span></div>
+  <div class="info"><p class="eyebrow">Deep Cuts Pressings</p><h4>Blue Hours</h4><p>Vinyl LP · First pressing · 1959</p><div class="meta"><span>Jazz</span><span>12 in</span><span>Mint</span></div></div>
+  <div class="sc-cta">Add to collection</div>
+</div>
+<div class="sc-home" style="--sc-home:#fff"></div></div></div></div></div>
+          <div class="case-meta"><h3>closet <span>· objeto detectado</span></h3><p>Apuntás la cámara y el objeto se despega de la habitación.</p><div class="tags"><span class="chip">vidrio flotante</span><span class="chip">profundidad por capas</span><span class="chip">sombra de contacto</span><span class="chip">un sticker</span></div></div>
+        </article>
+        <article class="case">
+          <div class="stage black"><div class="sc-device " aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-light sc-atlas">
+<div class="thread">
+  <div class="me">Somewhere warm for a weekend in November?</div>
+  <p class="ai">Seville, Málaga or Barcelona. Barcelona has the most direct flights from Lisbon.</p>
+  <div class="me">Cheap weekend in Barcelona from Lisbon, Nov 14 to 16?</div>
+  <p class="ai" data-words>Found 3 direct flights. The early one is the best deal, and it gives you a full Friday.</p>
+  <div class="flight">
+    <p class="sc-label">Direct · Fri, Nov 14</p>
+    <div class="route"><div><span class="sc-num">LIS</span><small>07:40</small></div><div class="line"><svg class="i fill" style="transform:rotate(90deg)"><use href="#i-plane"/></svg></div><div style="text-align:right"><span class="sc-num">BCN</span><small>10:25</small></div></div>
+    <div class="foot"><span class="chip">1h 45m</span><span class="price sc-num">$184</span><span class="book">Book</span></div>
+  </div>
+  <div class="think"><span class="live"></span><span class="shimmer">Checking hotels near the beach</span></div>
+</div>
+<div class="pb"><i></i><i></i><i></i></div>
+<div class="sc-status"><span>9:41</span><span class="r"><svg viewBox="0 0 18 12"><use href="#s-signal"/></svg><svg viewBox="0 0 16 12"><use href="#s-wifi"/></svg><svg viewBox="0 0 27 12"><use href="#s-battery"/></svg></span></div><div class="sc-island"></div>
+<div class="bar"><span class="sc-iconbtn sc-glass"><svg class="i "><use href="#i-chev-left"/></svg></span><div><b>Atlas</b><small>Trip planner</small></div><span class="sc-avatar">MD</span></div>
+<div class="botfade"></div>
+<div class="composer"><span class="plus"><svg class="i "><use href="#i-plus"/></svg></span><span class="ph">Ask Atlas</span><span class="send"><svg class="i "><use href="#i-arrow-up"/></svg></span></div>
+<div class="sc-home"></div></div></div></div></div>
+          <div class="case-meta"><h3>atlas <span>· planificador de viajes</span></h3><p>Un planificador de viajes que responde con palabras que llegan, con un solo acento donde está la plata.</p><div class="tags"><span class="chip">palabras que llegan</span><span class="chip">shimmer</span><span class="chip">blur progresivo</span><span class="chip">un acento</span></div></div>
+        </article>
+        <article class="case">
+          <div class="stage black"><div class="sc-device " aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-dark sc-boarding">
+<div class="wall"></div>
+<div class="sc-status" style="--sc-status:#fff"><span>9:41</span><span class="r"><svg viewBox="0 0 18 12"><use href="#s-signal"/></svg><svg viewBox="0 0 16 12"><use href="#s-wifi"/></svg><svg viewBox="0 0 27 12"><use href="#s-battery"/></svg></span></div>
+<div class="sc-island"><svg class="i sm fill" style="transform:rotate(45deg)"><use href="#i-plane"/></svg><span>18 min</span></div>
+<div class="lock"><svg class="i "><use href="#i-lock"/></svg><p class="date">Friday, November 14</p><p class="time">9:41</p></div>
+<div class="act">
+  <div class="row"><span class="mark"><svg class="i sm fill" style="transform:rotate(90deg)"><use href="#i-plane"/></svg></span><b>LIS → BCN</b><span class="sc-label">Gate B12</span></div>
+  <div class="big"><span class="sc-num">18</span><span>min to boarding</span></div>
+  <div class="prog"><i></i><svg class="i fill" style="transform:rotate(90deg)"><use href="#i-plane"/></svg></div>
+  <div class="ends"><span>Lisbon 07:40</span><span>Barcelona 10:25</span></div>
+</div>
+<span class="corner l"><svg class="i "><use href="#i-flash"/></svg></span><span class="corner r"><svg class="i "><use href="#i-camera"/></svg></span>
+<div class="sc-home" style="--sc-home:#fff"></div></div></div></div></div>
+          <div class="case-meta"><h3>boarding <span>· actividad en vivo</span></h3><p>Tu vuelo, en vivo en la pantalla bloqueada, en la island y sobre vidrio.</p><div class="tags"><span class="chip">island</span><span class="chip">actividad en vivo</span><span class="chip">número protagonista</span><span class="chip">atmósfera</span></div></div>
+        </article>
+        <article class="case">
+          <div class="stage "><div class="sc-device " aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-dark sc-pulse">
+<div class="atm"></div><div class="rings"></div>
+<div class="sc-status" style="--sc-status:#fff"><span>9:41</span><span class="r"><svg viewBox="0 0 18 12"><use href="#s-signal"/></svg><svg viewBox="0 0 16 12"><use href="#s-wifi"/></svg><svg viewBox="0 0 27 12"><use href="#s-battery"/></svg></span></div><div class="sc-island"></div>
+<span class="tag t1"><span class="live"></span>1,204 live now</span>
+<div class="orb"></div><div class="cshadow"></div>
+<span class="tag t2">Jazz · 0.4 km</span>
+<div class="copy"><h4>Your city, live.<span>See what's on around you, right now.</span></h4></div>
+<div class="dots"><i class="on"></i><i></i><i></i></div>
+<div class="sc-cta">Get started</div>
+<p class="alt">I already have an account</p>
+<div class="sc-home" style="--sc-home:#fff"></div></div></div></div></div>
+          <div class="case-meta"><h3>pulse <span>· onboarding</span></h3><p>Primer arranque: un objeto, dos líneas, un botón.</p><div class="tags"><span class="chip">atmósfera completa</span><span class="chip">objeto de marca</span><span class="chip">titular en dos tonos</span></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== filosofía ===================== -->
+  <section class="wrap section" id="filosofia">
+    <span class="label">filosofía</span>
+    <div>
+      <h2>La gente no lee interfaces. <span class="muted">Las siente.</span></h2>
+      <p class="lede">Siete creencias que guían todo lo que diseño. Cuando dudo entre dos opciones, vuelvo acá.</p>
+      <div class="rows">
+        <div class="row"><h3>El detalle es el producto</h3><div><p>Dos apps con las mismas funciones no se sienten igual. La diferencia está en 200 milisegundos, en un blur de 6 píxeles, en un botón que se achica cuando lo tocás.</p><p class="why">Ahí pongo la mayor parte de mi tiempo.</p></div></div>
+        <div class="row"><h3>Marco quieto, producto protagonista</h3><div><p>Fondos neutros, tipografía contenida y casi nada de color alrededor de la pantalla.</p><p class="why">Cuanto más callado el marco, más se escucha el producto.</p></div></div>
+        <div class="row"><h3>Profundidad con luz, no con líneas</h3><div><p>Separo capas con desenfoque, transparencia y sombras suaves. Los bordes y las cajas dividen; el blur ordena sin cortar la imagen.</p><p class="why">Una interfaz con capas se entiende sin explicarla.</p></div></div>
+        <div class="row"><h3>El movimiento explica</h3><div><p>Animo para mostrar de dónde viene algo y adónde va. El sheet sube desde abajo porque vive abajo; el check nace del botón que lo pidió.</p><p class="why">Si una animación no responde una pregunta, la saco.</p></div></div>
+        <div class="row"><h3>Un color por historia</h3><div><p>Mi marca vive en negro, blanco y grises. Cada proyecto elige un solo color y lo sostiene en todas sus piezas.</p><p class="why">Un color sostenido se recuerda. Cinco colores se olvidan.</p></div></div>
+        <div class="row"><h3>Claro y oscuro desde el día uno</h3><div><p>Diseño los dos modos en paralelo. No invierto colores: cada modo tiene sus propias decisiones de sombra, vidrio y contraste.</p><p class="why">El modo es de quien usa la app, no mío.</p></div></div>
+        <div class="row"><h3>Las palabras también son diseño</h3><div><p>Copy corto, voz activa, cero jerga. Los nombres van en minúscula y los flujos con flecha.</p><p class="why">Si un botón necesita explicación, el botón está mal.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== decisiones ===================== -->
+  <section class="wrap section" id="decisiones">
+    <span class="label">decisiones</span>
+    <div>
+      <h2>Cada decisión tiene un porqué. <span class="muted">Si no lo puedo explicar, no va.</span></h2>
+      <p class="lede">Lo que siempre hago, la razón y la regla concreta que sale de eso.</p>
+      <div class="rows decisions">
+        <div class="row"><h3>Botones siempre pastilla</h3><p>Se leen como tocables al instante, entran cómodos bajo el pulgar y repiten la curva del teléfono.</p><span class="rule">radio 999 · alto 40 o 52</span></div>
+        <div class="row"><h3>Titulares chicos en dos tonos</h3><p>La seguridad no necesita tamaño. El gris arma la jerarquía y deja el tamaño grande libre para los números.</p><span class="rule">línea 1 fg · línea 2 fg-2 · mismo peso</span></div>
+        <div class="row"><h3>Números enormes</h3><p>Hora, plata y puntaje son lo que la gente vino a ver. Tienen que leerse de un vistazo.</p><span class="rule">600 · tabulares · tracking −4.5%</span></div>
+        <div class="row"><h3>Una sola sans</h3><p>Inter Display tiene tamaño óptico y números tabulares, y se parece a SF Pro: el diseño y el iPhone hablan igual.</p><span class="rule">Inter Display · Geist Mono solo en labels</span></div>
+        <div class="row"><h3>Negro puro en oscuro</h3><p>En OLED el negro desaparece, el device se funde con la página y los glows ganan contraste.</p><span class="rule">bg #000 en oscuro</span></div>
+        <div class="row"><h3>Gris claro, no blanco, en claro</h3><p>El blanco puro cansa y no deja que las cards se separen. Sobre gris claro, una card blanca flota sola.</p><span class="rule">bg #F4F4F4 · cards #FFFFFF</span></div>
+        <div class="row"><h3>Blur en vez de bordes</h3><p>El vidrio deja ver el contexto y separa capas sin cortar la imagen de atrás.</p><span class="rule">blur 20 · saturate 180% · luz de 1 px arriba</span></div>
+        <div class="row"><h3>Sheets flotantes y concéntricos</h3><p>Separado del borde se lee como capa. Con radio concéntrico parece parte del hardware.</p><span class="rule">inset 12 · radio = exterior − inset</span></div>
+        <div class="row"><h3>Ease-out por defecto</h3><p>Responde al toque de inmediato y frena como un objeto real. Nada arranca lento.</p><span class="rule">cubic-bezier(.22, 1, .36, 1)</span></div>
+        <div class="row"><h3>Cerrar más rápido que abrir</h3><p>Cuando alguien cierra algo ya decidió. No lo hago esperar.</p><span class="rule">abrir 420 ms · cerrar 280 ms</span></div>
+        <div class="row"><h3>Una atmósfera por proyecto</h3><p>El color identifica el proyecto, no decora. Repetido en todas las piezas, se vuelve memoria.</p><span class="rule">elegir 1 de 4 · nunca mezclar</span></div>
+        <div class="row"><h3>Mockups frontales, sin manos</h3><p>La perspectiva y las manos distorsionan y achican la pantalla, que es lo que importa.</p><span class="rule">device ≤ 60% del alto del shot</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== modos ===================== -->
+  <section class="wrap section" id="modos">
+    <span class="label">claro + oscuro</span>
+    <div>
+      <h2>Claro y oscuro al mismo nivel. <span class="muted">Mismas decisiones, distinta luz.</span></h2>
+      <p class="lede">Los dos modos usan los mismos tokens con valores pensados para cada uno. Probá el selector de arriba: toda la página cambia, menos esta comparación.</p>
+      <div class="modes">
+        <div class="mode theme-light">
+          <span class="label">modo claro</span>
+          <div class="card">
+            <p class="headline"><span>Transfer sent.</span><span class="muted">$1,240 to Studio account.</span></p>
+            <div class="demo"><span class="btn btn--primary">Done</span><span class="btn btn--secondary">Share receipt</span></div>
+            <div class="demo"><span class="chip"><span class="dot"></span>Completed</span><span class="chip">Nov 12</span></div>
+          </div>
+          <div class="atmos atmos--tide"><span class="btn btn--glass">● Sent · $1,240</span></div>
+        </div>
+        <div class="mode theme-dark">
+          <span class="label">modo oscuro</span>
+          <div class="card">
+            <p class="headline"><span>Transfer sent.</span><span class="muted">$1,240 to Studio account.</span></p>
+            <div class="demo"><span class="btn btn--primary">Done</span><span class="btn btn--secondary">Share receipt</span></div>
+            <div class="demo"><span class="chip"><span class="dot"></span>Completed</span><span class="chip">Nov 12</span></div>
+          </div>
+          <div class="atmos atmos--tide"><span class="btn btn--glass">● Sent · $1,240</span></div>
+        </div>
+      </div>
+
+      <span class="label sub">qué cambia entre modos</span>
+      <div class="table-scroll">
+        <table class="tbl">
+          <thead><tr><th>aspecto</th><th>claro</th><th>oscuro</th></tr></thead>
+          <tbody>
+            <tr><td>fondo</td><td><span class="dotc" style="background:#f4f4f4"></span><code>#F4F4F4</code></td><td><span class="dotc" style="background:#000"></span><code>#000000</code></td></tr>
+            <tr><td>cards</td><td>Blancas, con sombra suave y larga.</td><td><code>#111111</code> con un hilo de luz de 1 px arriba.</td></tr>
+            <tr><td>separación</td><td>Sombra.</td><td>Escalón de superficie y hairline. Casi sin sombras: en negro se ven sucias.</td></tr>
+            <tr><td>vidrio</td><td>Blanco al 68% + blur 20.</td><td>Blanco al 12% + blur 20.</td></tr>
+            <tr><td>botón primario</td><td>Negro con texto claro.</td><td>Blanco con texto negro.</td></tr>
+            <tr><td>texto secundario</td><td><code>#6B6B6B</code></td><td><code>#8F8F8F</code></td></tr>
+            <tr><td>atmósferas</td><td>Pastel, con glow saturado.</td><td>Profundas, con glow brillante.</td></tr>
+            <tr><td>grano</td><td>5%</td><td>12%</td></tr>
+            <tr><td>stage de devices</td><td><code>#E8E8E8</code></td><td><code>#EDEDED</code>: el stage claro se mantiene en oscuro.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <span class="label sub">cómo diseño los dos modos</span>
+      <div class="grid-2">
+        <div class="card"><span class="label">siempre</span>
+          <ul class="chk yes">
+            <li>Diseño los dos modos en paralelo, en el mismo archivo y la misma semana.</li>
+            <li>Cada token tiene un valor elegido por modo. Nada se invierte automáticamente.</li>
+            <li>En claro separo con sombra; en oscuro, con superficie y luz.</li>
+            <li>Reviso contraste AA en los dos antes de dar algo por terminado.</li>
+            <li>Por defecto sigo al sistema y dejo elegir: sistema, claro u oscuro.</li>
+          </ul>
+        </div>
+        <div class="card"><span class="label">nunca</span>
+          <ul class="chk no">
+            <li>Gris medio como fondo oscuro "para que no sea tan negro".</li>
+            <li>Sombras oscuras grandes en modo oscuro.</li>
+            <li>Un modo terminado y el otro "después".</li>
+            <li>El mismo vidrio en los dos modos: en claro necesita más opacidad.</li>
+            <li>Íconos o ilustraciones que solo funcionan sobre un fondo.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== sistema ===================== -->
+  <section class="wrap section" id="sistema">
+    <span class="label">sistema</span>
+    <div>
+      <h2>Negro, blanco y doce grises. <span class="muted">El color se gana proyecto a proyecto.</span></h2>
+      <p class="lede">La escala base es la misma en los dos modos; lo que cambia es qué tono cumple cada rol. Tocá un tono para copiar el hex.</p>
+      <div class="ramp" id="ramp">
+        <button type="button" data-hex="#000000" style="--c:#000000; --t:#fff"><b>black</b><code>#000000</code></button>
+        <button type="button" data-hex="#0A0A0A" style="--c:#0A0A0A; --t:#fff"><b>ink-950</b><code>#0A0A0A</code></button>
+        <button type="button" data-hex="#111111" style="--c:#111111; --t:#fff"><b>ink-900</b><code>#111111</code></button>
+        <button type="button" data-hex="#1F1F1F" style="--c:#1F1F1F; --t:#fff"><b>ink-800</b><code>#1F1F1F</code></button>
+        <button type="button" data-hex="#2B2B2B" style="--c:#2B2B2B; --t:#fff"><b>ink-700</b><code>#2B2B2B</code></button>
+        <button type="button" data-hex="#3D3D3D" style="--c:#3D3D3D; --t:#fff"><b>ink-600</b><code>#3D3D3D</code></button>
+        <button type="button" data-hex="#5C5C5C" style="--c:#5C5C5C; --t:#fff"><b>ink-500</b><code>#5C5C5C</code></button>
+        <button type="button" data-hex="#8F8F8F" style="--c:#8F8F8F; --t:#000"><b>ink-400</b><code>#8F8F8F</code></button>
+        <button type="button" data-hex="#B8B8B8" style="--c:#B8B8B8; --t:#000"><b>ink-300</b><code>#B8B8B8</code></button>
+        <button type="button" data-hex="#D9D9D9" style="--c:#D9D9D9; --t:#000"><b>ink-200</b><code>#D9D9D9</code></button>
+        <button type="button" data-hex="#E6E6E6" style="--c:#E6E6E6; --t:#000"><b>ink-150</b><code>#E6E6E6</code></button>
+        <button type="button" data-hex="#EDEDED" style="--c:#EDEDED; --t:#000"><b>ink-100</b><code>#EDEDED</code></button>
+        <button type="button" data-hex="#F4F4F4" style="--c:#F4F4F4; --t:#000"><b>ink-50</b><code>#F4F4F4</code></button>
+        <button type="button" data-hex="#FFFFFF" style="--c:#FFFFFF; --t:#000"><b>white</b><code>#FFFFFF</code></button>
+      </div>
+
+      <span class="label sub">roles por modo</span>
+      <div class="table-scroll">
+        <table class="tbl">
+          <thead><tr><th>token</th><th>claro</th><th>oscuro</th><th>uso</th></tr></thead>
+          <tbody>
+            <tr><td><code>--bg</code></td><td><code>#F4F4F4</code></td><td><code>#000000</code></td><td>Fondo de página.</td></tr>
+            <tr><td><code>--surface-1</code></td><td><code>#FFFFFF</code></td><td><code>#111111</code></td><td>Cards.</td></tr>
+            <tr><td><code>--surface-2</code></td><td><code>#F0F0F0</code></td><td><code>#1F1F1F</code></td><td>Filas, inputs, elementos dentro de cards.</td></tr>
+            <tr><td><code>--sheet-bg</code></td><td><code>#FFFFFF</code></td><td><code>#1F1F1F</code></td><td>Sheets opacos.</td></tr>
+            <tr><td><code>--fg</code></td><td><code>#0A0A0A</code></td><td><code>#FFFFFF</code></td><td>Texto principal y botón primario.</td></tr>
+            <tr><td><code>--fg-2</code></td><td><code>#6B6B6B</code></td><td><code>#8F8F8F</code></td><td>Segunda línea del titular, descripciones.</td></tr>
+            <tr><td><code>--fg-3</code></td><td><code>#A1A1A1</code></td><td><code>#5C5C5C</code></td><td>Hints, labels apagados, punto de partida de los reveals.</td></tr>
+            <tr><td><code>--btn-2</code></td><td><code>#E6E6E6</code></td><td><code>#1F1F1F</code></td><td>Botón secundario y chips.</td></tr>
+            <tr><td><code>--glass</code></td><td><code>white 68%</code></td><td><code>white 12%</code></td><td>Superficies de vidrio con blur.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <span class="label sub">atmósferas · una por proyecto</span>
+      <p class="lede">Gradiente radial desde arriba, glow al centro y grano. Cada una tiene versión clara y oscura: cambiá el tema y mirá cómo se adaptan.</p>
+      <div class="grid-4">
+        <div class="atmos atmos--forest atmos-tile topo">
+          <span class="label">forest</span>
+          <div class="center"><span class="gloss" style="--g-1:#9be096; --g-2:#1f5c2b"></span></div>
+          <div><h3>Deporte, outdoor, foco</h3><div class="stops"><i style="background:var(--forest-0)"></i><i style="background:var(--forest-1)"></i><i style="background:var(--forest-2)"></i><i style="background:var(--forest-glow)"></i></div></div>
+        </div>
+        <div class="atmos atmos--ember atmos-tile">
+          <span class="label">ember</span>
+          <div class="center"><span class="num">0:30</span></div>
+          <div><h3>Tiempo, energía, descanso</h3><div class="stops"><i style="background:var(--ember-0)"></i><i style="background:var(--ember-1)"></i><i style="background:var(--ember-2)"></i><i style="background:var(--ember-glow)"></i></div></div>
+        </div>
+        <div class="atmos atmos--tide atmos-tile">
+          <span class="label">tide</span>
+          <div class="center"><span class="btn btn--glass">● Enviado</span></div>
+          <div><h3>Plata, confianza, chat</h3><div class="stops"><i style="background:var(--tide-0)"></i><i style="background:var(--tide-1)"></i><i style="background:var(--tide-2)"></i><i style="background:var(--tide-glow)"></i></div></div>
+        </div>
+        <div class="atmos atmos--rouge atmos-tile">
+          <span class="label">rouge</span>
+          <div class="center"><span class="gloss" style="--g-1:#ff9fbf; --g-2:#8a0f37"></span></div>
+          <div><h3>Social, ubicación, alertas</h3><div class="stops"><i style="background:var(--rouge-0)"></i><i style="background:var(--rouge-1)"></i><i style="background:var(--rouge-2)"></i><i style="background:var(--rouge-glow)"></i></div></div>
+        </div>
+      </div>
+
+      <span class="label sub">tipografía</span>
+      <p class="lede">Inter Display para todo, con peso 600 en títulos y 400 a 500 en texto. Geist Mono solo en labels chicos, en mayúscula y en gris.</p>
+      <div class="specimen">
+        <div class="spec-row"><span class="label">display · 56 · 600<br>tracking −3%</span><div class="sample t-display">Design that ships</div></div>
+        <div class="spec-row"><span class="label">h2 · 28 · 600<br>tracking −1.5%</span><div class="sample t-h2">Onboarding → first payment</div></div>
+        <div class="spec-row"><span class="label">body · 16 · 400<br>color fg-2</span><div class="sample t-body">I design mobile products end to end, from the first flow to the last micro-interaction, and hand off files engineers can build from.</div></div>
+        <div class="spec-row"><span class="label">label · mono 11<br>caps · +6%</span><div class="sample"><span class="label">sitemap · social · contact</span></div></div>
+        <div class="spec-row"><span class="label">números · 600<br>tabulares</span><div class="sample num">$1,240</div></div>
+      </div>
+
+      <span class="label sub">forma y espacio</span>
+      <p class="lede">Cuanto más flota algo, más redondo es. Cuando una superficie va adentro de otra, el radio interno es el externo menos el margen.</p>
+      <div class="shapes">
+        <div class="shape"><div class="o" style="width: 150px; height: 96px; border-radius: var(--r-xs)"></div><span><b>r-xs · 8</b><br>stage</span></div>
+        <div class="shape"><div class="o" style="width: 96px; height: 96px; border-radius: var(--r-md)"></div><span><b>r-md · 16</b><br>thumbs, inputs</span></div>
+        <div class="shape"><div class="o" style="width: 150px; height: 112px; border-radius: var(--r-lg)"></div><span><b>r-lg · 24</b><br>cards</span></div>
+        <div class="shape"><div class="o" style="width: 170px; height: 112px; border-radius: var(--r-xl)"></div><span><b>r-xl · 32</b><br>sheets</span></div>
+        <div class="shape"><div class="o" style="width: 120px; height: 40px; border-radius: var(--r-pill)"></div><span><b>r-pill</b><br>botones, chips</span></div>
+        <div class="shape"><div class="concentric"></div><span><b>concéntrico</b><br>36 − 12 = 24</span></div>
+      </div>
+      <div class="space" style="display: grid; gap: 8px; margin-top: 48px;">
+        <div class="space-row"><span>s-1 · 4px</span><i style="width:4px"></i></div>
+        <div class="space-row"><span>s-2 · 8px</span><i style="width:8px"></i></div>
+        <div class="space-row"><span>s-3 · 12px</span><i style="width:12px"></i></div>
+        <div class="space-row"><span>s-4 · 16px</span><i style="width:16px"></i></div>
+        <div class="space-row"><span>s-5 · 24px</span><i style="width:24px"></i></div>
+        <div class="space-row"><span>s-6 · 32px</span><i style="width:32px"></i></div>
+        <div class="space-row"><span>s-7 · 48px</span><i style="width:48px"></i></div>
+        <div class="space-row"><span>s-8 · 64px</span><i style="width:64px"></i></div>
+        <div class="space-row"><span>s-9 · 96px</span><i style="width:96px"></i></div>
+        <div class="space-row"><span>s-10 · 160px</span><i style="width:160px"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== micro ===================== -->
+  <section class="wrap section" id="micro">
+    <span class="label">micro</span>
+    <div>
+      <h2>Lo que nadie ve, pero todos sienten. <span class="muted">Micro-blurs y micro-animaciones.</span></h2>
+      <p class="lede">Esta es la capa que más me importa. Ninguno de estos detalles se nota por separado; juntos son la diferencia entre una pantalla correcta y una que se siente cara. <strong>Regla general:</strong> el blur nunca pasa de 10 px fuera del vidrio, y ninguna micro-animación dura más de 420 ms.</p>
+      <div class="grid-2">
+
+        <article class="card mcard">
+          <div class="mstage">
+            <div class="pwrap">
+              <div class="plist" tabindex="0" aria-label="Lista con blur progresivo; se puede scrollear">
+                <div class="plist-inner">
+                  <div><i></i>Main account<span>$25,482</span></div>
+                  <div><i></i>Savings<span>$3,120</span></div>
+                  <div><i></i>Travel fund<span>$880</span></div>
+                  <div><i></i>Rent<span>$214</span></div>
+                  <div><i></i>Groceries<span>$1,906</span></div>
+                  <div><i></i>Emergency fund<span>$742</span></div>
+                  <div><i></i>Joint account<span>$5,310</span></div>
+                  <div><i></i>Taxes<span>$96</span></div>
+                </div>
+              </div>
+              <div class="pblur pblur--top" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="pblur pblur--bottom" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="mbody">
+            <div class="mhead"><h3>Blur progresivo</h3></div>
+            <p>Bordes de listas, barras de navegación y tab bars. Scrolleá la lista.</p>
+            <p class="why">El contenido se va de a poco en vez de cortarse en seco, como en iOS.</p>
+            <dl class="specs">
+              <dt>capas</dt><dd>4 · blur 1, 2, 4, 8 px</dd>
+              <dt>máscaras</dt><dd>100%, 75%, 50%, 25% del alto</dd>
+              <dt>alto</dt><dd>72 px + fade del color de fondo</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage">
+            <div class="mapdemo theme-light">
+              <div class="map"></div>
+              <span class="pin" style="top: 30%; left: 34%; --p: #d6245e"><i></i></span>
+              <span class="pin" style="top: 52%; left: 56%; --p: #2f5bd6"><i></i></span>
+              <span class="pin" style="top: 70%; left: 20%; --p: #b8821a"><i></i></span>
+              <span class="pin" style="top: 16%; left: 76%; --p: #3f7a45"><i></i></span>
+              <div class="edgeblur"></div>
+            </div>
+          </div>
+          <div class="mbody">
+            <div class="mhead"><h3>Blur de borde</h3></div>
+            <p>Mapas, fotos y fondos de cámara detrás de la UI.</p>
+            <p class="why">El centro queda nítido y los bordes se van, como profundidad de campo: el ojo va directo a lo importante.</p>
+            <dl class="specs">
+              <dt>blur</dt><dd>10 px · saturate 110%</dd>
+              <dt>máscara</dt><dd>radial · nítido hasta 40%, blur pleno al 100%</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage">
+            <div class="glassdemo">
+              <div class="bgimg"></div>
+              <span class="x" aria-hidden="true">✕</span>
+              <div class="float-sheet"><b>Item detected</b><span>Air Max 1 · added to your closet</span></div>
+            </div>
+          </div>
+          <div class="mbody">
+            <div class="mhead"><h3>Vidrio flotante</h3></div>
+            <p>Sheets y tarjetas sobre cámara, foto o color.</p>
+            <p class="why">Separado del borde se lee como capa; con radio concéntrico parece parte del hardware.</p>
+            <dl class="specs">
+              <dt>superficie</dt><dd>blur 32 px · saturate 160% · tinte 55%</dd>
+              <dt>borde</dt><dd>luz interna de 1 px arriba + hairline</dd>
+              <dt>posición</dt><dd>inset 10–12 px · radio = exterior − inset</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage">
+            <div class="recede" id="recede">
+              <div class="content">
+                <b>$12,480</b>
+                <div class="rowx">Studio account<span>−$1,240</span></div>
+                <div class="rowx">Mara Diaz<span>+$560</span></div>
+              </div>
+              <button class="btn btn--primary open-btn" type="button" data-recede="open">Transfer</button>
+              <div class="sheet">
+                <div class="sheet__grabber"></div>
+                <b>Confirm transfer</b>
+                <p>$1,240 to Studio account</p>
+                <button class="btn btn--primary" type="button" data-recede="close">Confirm</button>
+              </div>
+            </div>
+          </div>
+          <div class="mbody">
+            <div class="mhead"><h3>Fondo que retrocede</h3></div>
+            <p>Cuando se abre un sheet, lo de atrás se desenfoca y se aleja un poco.</p>
+            <p class="why">Da profundidad sin tapar todo de negro, y el foco queda en la tarea.</p>
+            <dl class="specs">
+              <dt>fondo</dt><dd>blur 0 → 10 px · scale 1 → 0.96 · opacity 1 → 0.6</dd>
+              <dt>tiempo</dt><dd>420 ms ease-out al abrir · 280 ms al cerrar</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage">
+            <button class="btn btn--primary btn--lg sendbtn" type="button" id="sendBtn">
+              <span class="swap">
+                <span data-state="idle" data-on>Send $1,240</span>
+                <span data-state="busy"><span class="shimmer" style="--fg: var(--bg); --fg-3: color-mix(in srgb, var(--bg) 45%, var(--fg))">Sending…</span></span>
+                <span data-state="done"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Sent</span>
+              </span>
+            </button>
+          </div>
+          <div class="mbody">
+            <div class="mhead"><h3>Cambio con blur</h3><button class="btn btn--secondary replay" type="button" data-replay="send">Repetir</button></div>
+            <p>Botones y labels que cambian de estado: enviar, enviando, enviado.</p>
+            <p class="why">El estado viejo se desenfoca mientras el nuevo enfoca. El ojo lee continuidad en vez de un salto.</p>
+            <dl class="specs">
+              <dt>sale</dt><dd>opacity → 0 · blur → 6 px · scale → 0.96</dd>
+              <dt>entra</dt><dd>lo inverso · 240 ms ease-out, en simultáneo</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage"><p class="wordsdemo" id="words">I turned your three sketches into one flow you can actually test.</p></div>
+          <div class="mbody">
+            <div class="mhead"><h3>Texto que llega</h3><button class="btn btn--secondary replay" type="button" data-replay="words">Repetir</button></div>
+            <p>Respuestas de IA, confirmaciones y mensajes nuevos.</p>
+            <p class="why">Cada palabra enfoca al llegar. Se siente escrito en vivo, sin el parpadeo de un cursor.</p>
+            <dl class="specs">
+              <dt>palabra</dt><dd>opacity 0.15 → 1 · blur 4 → 0 · y 4 → 0</dd>
+              <dt>tiempo</dt><dd>420 ms ease-out · 30 ms entre palabras</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage"><div class="thinking"><span class="shimmer">Thinking about your portfolio</span><small>~4 s</small></div></div>
+          <div class="mbody">
+            <div class="mhead"><h3>Texto pensando</h3></div>
+            <p>Estados de carga con texto: "pensando", "buscando", "procesando".</p>
+            <p class="why">Un brillo que recorre el texto dice "estoy trabajando" sin spinner ni barra.</p>
+            <dl class="specs">
+              <dt>gradiente</dt><dd>fg-3 → fg → fg-3 · 300% de ancho</dd>
+              <dt>tiempo</dt><dd>2.2 s linear · loop (único loop permitido en UI)</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage">
+            <div class="depth">
+              <span class="depth-text" aria-hidden="true">detected</span>
+              <div class="obj"><span class="gloss" style="--g-1:#ffcf5c; --g-2:#7a4c06"></span><span class="contact-shadow"></span></div>
+              <span class="sticker">NEW</span>
+            </div>
+          </div>
+          <div class="mbody">
+            <div class="mhead"><h3>Profundidad por capas</h3></div>
+            <p>Pantallas de producto, objetos detectados y heroes de marca.</p>
+            <p class="why">Texto grande y borroso atrás, objeto nítido adelante, sombra de contacto abajo: tres planos que se leen como espacio real.</p>
+            <dl class="specs">
+              <dt>texto atrás</dt><dd>700 · opacity 14% · blur 2.5 px</dd>
+              <dt>sombra</dt><dd>elipse 70% · blur 4 px · 35% negro</dd>
+              <dt>sticker</dt><dd>uno solo por pantalla · rotado −4°</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage">
+            <div class="island-demo">
+              <button class="isl" id="isl" type="button" aria-expanded="false" aria-label="Llamada en curso; tocá para expandir">
+                <span class="small"><span class="live"></span>Studio call<span class="t" id="islTime">0:12</span></span>
+                <span class="big"><b>Call with Studio</b><span>Recording · 12:04</span><span class="acts"><i>Mute</i><i class="end">End</i></span></span>
+              </button>
+            </div>
+          </div>
+          <div class="mbody">
+            <div class="mhead"><h3>Pill que crece</h3></div>
+            <p>Actividades en vivo, llamadas, timers, reproductores. Tocá la pill.</p>
+            <p class="why">El contenido crece desde donde ya estaba, sin abrir otra pantalla.</p>
+            <dl class="specs">
+              <dt>forma</dt><dd>ancho, alto y radio juntos · 420 ms ease-in-out</dd>
+              <dt>contenido</dt><dd>cambio con blur · 240 ms · delay 120 ms</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage">
+            <div class="icons-demo">
+              <button class="icon-morph plus" type="button" id="plusBtn" aria-pressed="false" aria-label="Agregar"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+              <button class="icon-morph copy" type="button" id="copyBtn" aria-label="Copiar">
+                <span class="swap">
+                  <svg viewBox="0 0 24 24" data-on><rect x="8" y="8" width="11" height="11" rx="3"/><path d="M5 15V7a2 2 0 0 1 2-2h8"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+                </span>
+              </button>
+            </div>
+          </div>
+          <div class="mbody">
+            <div class="mhead"><h3>Ícono que muta</h3></div>
+            <p>Agregar ↔ cerrar, copiar → copiado. Tocá los dos.</p>
+            <p class="why">El ícono cambia en el mismo lugar y confirma la acción sin un toast.</p>
+            <dl class="specs">
+              <dt>+ → ×</dt><dd>rotate 45° · 240 ms spring</dd>
+              <dt>copiar</dt><dd>cambio con blur · vuelve a los 1.4 s</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage">
+            <div class="toggles">
+              <label for="t1">Face ID<button class="tgl" id="t1" type="button" role="switch" aria-checked="true"></button></label>
+              <label for="t2">Notifications<button class="tgl" id="t2" type="button" role="switch" aria-checked="false"></button></label>
+            </div>
+          </div>
+          <div class="mbody">
+            <div class="mhead"><h3>Interruptor elástico</h3></div>
+            <p>Toggles. Mantenelo apretado antes de soltar.</p>
+            <p class="why">El círculo se estira bajo el dedo como algo blando. Es un detalle que se siente antes de verse.</p>
+            <dl class="specs">
+              <dt>apretado</dt><dd>ancho 28 → 36 px</dd>
+              <dt>viaje</dt><dd>240 ms spring · color 240 ms</dd>
+            </dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage">
+            <div class="lives">
+              <span><i class="live"></i>Live · 1,204 watching</span>
+              <span><i class="live warn"></i>Pending approval</span>
+              <span><i class="live crit"></i>Recording</span>
+            </div>
+          </div>
+          <div class="mbody">
+            <div class="mhead"><h3>Punto vivo</h3></div>
+            <p>Estados que están pasando ahora: en vivo, pendiente, grabando.</p>
+            <p class="why">Un pulso suave dice "esto se está moviendo" sin pedir atención.</p>
+            <dl class="specs">
+              <dt>anillo</dt><dd>scale 1 → 2.6 · opacity 0.55 → 0</dd>
+              <dt>tiempo</dt><dd>1.6 s ease-out · loop solo mientras el estado dura</dd>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== motion ===================== -->
+  <section class="wrap section" id="motion">
+    <span class="label">motion</span>
+    <div>
+      <h2>Entra rápido, frena suave. <span class="muted">Tres curvas, seis duraciones, ocho patrones.</span></h2>
+      <p class="lede">Las reglas de movimiento a escala de pantalla. Todo sale de los tokens de <code>tokens.css</code>.</p>
+
+      <div class="rows">
+        <div class="row"><h3>Responder al instante</h3><p>Todo toque tiene respuesta visual en menos de 100 ms. Si la acción tarda, el botón cambia de estado antes de que llegue el resultado.</p></div>
+        <div class="row"><h3>Entrar rápido, frenar suave</h3><p>Casi todo usa ease-out. Lo que se abre tarda 420 ms; lo que se cierra, 280 ms.</p></div>
+        <div class="row"><h3>Nada aparece de la nada</h3><p>Los elementos entran desde donde se originan: el sheet desde abajo, el toast desde el borde, el check desde el botón.</p></div>
+        <div class="row"><h3>Una cosa a la vez</h3><p>Lo que entra junto se escalona: 120 ms entre líneas, 50 ms entre ítems (máximo 6), 30 ms entre palabras.</p></div>
+        <div class="row"><h3>El texto no baila</h3><p>El texto se revela y queda quieto. Nunca arranca invisible, nunca rebota y nunca se mueve mientras alguien lo lee.</p></div>
+      </div>
+
+      <span class="label sub">curvas</span>
+      <div class="curves">
+        <div class="card curve"><div class="what"><b>ease-out · por defecto</b><code>cubic-bezier(.22, 1, .36, 1)</code><p>Entradas, respuestas, reveals.</p></div><div class="lane out"><i></i></div></div>
+        <div class="card curve"><div class="what"><b>ease-in-out · recorrido</b><code>cubic-bezier(.65, 0, .35, 1)</code><p>Algo que cruza la pantalla, morphs, cierres.</p></div><div class="lane inout"><i></i></div></div>
+        <div class="card curve"><div class="what"><b>spring · confirmar</b><code>cubic-bezier(.34, 1.56, .64, 1)</code><p>Solo cosas chicas: check, chip, rebote al soltar.</p></div><div class="lane spring"><i></i></div></div>
+      </div>
+
+      <span class="label sub">duraciones</span>
+      <div class="table-scroll">
+        <table class="tbl">
+          <thead><tr><th>token</th><th>ms</th><th>se usa en</th></tr></thead>
+          <tbody>
+            <tr><td><code>--dur-1</code></td><td><code>120</code></td><td>Press, hover, fade de labels.</td></tr>
+            <tr><td><code>--dur-2</code></td><td><code>240</code></td><td>Chips, toggles, segmented, color, cambios con blur, salida de toast.</td></tr>
+            <tr><td><code>--dur-exit</code></td><td><code>280</code></td><td>Cerrar sheets, modales y pantallas.</td></tr>
+            <tr><td><code>--dur-3</code></td><td><code>420</code></td><td>Abrir sheets, entrar cards y toasts, morphs.</td></tr>
+            <tr><td><code>--dur-count</code></td><td><code>600</code></td><td>Números que ruedan.</td></tr>
+            <tr><td><code>--dur-4</code></td><td><code>800</code></td><td>Reveal de titulares y entrada del hero.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <span class="label sub">catálogo · tocá cada demo</span>
+      <div class="grid-2">
+        <article class="card mcard">
+          <div class="mstage"><button class="btn btn--primary btn--lg" type="button">Mantené apretado</button></div>
+          <div class="mbody">
+            <div class="mhead"><h3>Tocar</h3></div>
+            <p>Todo lo tocable. En mobile va con haptic liviano.</p>
+            <dl class="specs"><dt>al tocar</dt><dd>scale 1 → 0.97 · 120 ms ease-out</dd><dt>al soltar</dt><dd>0.97 → 1 · 240 ms spring</dd><dt>haptic</dt><dd>impact light</dd></dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage"><div class="roll" id="roll" role="img" aria-label="$1,240">$1,240</div></div>
+          <div class="mbody">
+            <div class="mhead"><h3>Rodar número</h3><button class="btn btn--secondary replay" type="button" data-replay="roll">Repetir</button></div>
+            <p>Saldos, montos, puntajes y timers cuando cambian.</p>
+            <dl class="specs"><dt>dígito</dt><dd>rueda vertical + blur 1.5 px mientras se mueve</dd><dt>tiempo</dt><dd>600 ms ease-out · 40 ms entre dígitos</dd><dt>fuente</dt><dd>siempre tabular-nums</dd></dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage">
+            <div class="seg" id="seg" role="group" aria-label="Período">
+              <span class="thumb" aria-hidden="true"></span>
+              <button type="button" aria-pressed="true">Día</button>
+              <button type="button" aria-pressed="false">Semana</button>
+              <button type="button" aria-pressed="false">Mes</button>
+            </div>
+          </div>
+          <div class="mbody">
+            <div class="mhead"><h3>Cambiar selección</h3></div>
+            <p>Segmented controls, tabs y filtros. El indicador viaja, no salta.</p>
+            <dl class="specs"><dt>indicador</dt><dd>translateX · 240 ms ease-in-out</dd><dt>texto</dt><dd>color · 240 ms ease-out</dd><dt>haptic</dt><dd>selection</dd></dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage"><button class="morph" id="morph" type="button"><span class="lbl">Pay $1,240</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button></div>
+          <div class="mbody">
+            <div class="mhead"><h3>Confirmar</h3><button class="btn btn--secondary replay" type="button" data-replay="morph">Repetir</button></div>
+            <p>Pagos, envíos y cualquier acción con resultado. El botón se convierte en la respuesta.</p>
+            <dl class="specs"><dt>1 · label</dt><dd>opacity → 0 + blur 4 · 120 ms</dd><dt>2 · forma</dt><dd>→ círculo 52 px · 420 ms ease-in-out</dd><dt>3 · check</dt><dd>scale 0.6 → 1 + trazo · 240 ms spring · delay 420</dd><dt>haptic</dt><dd>notification success</dd></dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage">
+            <div class="lst stagger" id="lst">
+              <div style="--i:0"><i></i>Main account<span>$25,482</span></div>
+              <div style="--i:1"><i></i>Savings<span>$3,120</span></div>
+              <div style="--i:2"><i></i>Travel fund<span>$880</span></div>
+              <div style="--i:3"><i></i>Rent<span>$214</span></div>
+            </div>
+          </div>
+          <div class="mbody">
+            <div class="mhead"><h3>Entrar lista</h3><button class="btn btn--secondary replay" type="button" data-replay="lst">Repetir</button></div>
+            <p>Contenido nuevo que llega después de una acción.</p>
+            <dl class="specs"><dt>ítem</dt><dd>opacity 0 → 1 · y 12 → 0 · blur 2 → 0</dd><dt>tiempo</dt><dd>420 ms ease-out · 50 ms entre ítems, tope 6</dd></dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage"><button class="btn btn--primary" type="button" id="tstBtn">Guardar</button><div class="tst" id="tst" role="status">Saved to drafts</div></div>
+          <div class="mbody">
+            <div class="mhead"><h3>Avisar</h3></div>
+            <p>Confirmaciones sin decisión. Si hay que decidir, va un sheet.</p>
+            <dl class="specs"><dt>entra</dt><dd>y 16 → 0 · blur 4 → 0 · 420 ms ease-out</dd><dt>queda</dt><dd>1600 ms</dd><dt>sale</dt><dd>240 ms ease-in-out</dd></dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage">
+            <div class="push" id="push">
+              <div class="scr one"><b>Accounts</b><button type="button" data-push="in">Studio<span>$12,480 →</span></button><button type="button" data-push="in">Savings<span>$4,100 →</span></button></div>
+              <div class="scr two"><button type="button" data-push="out" style="background: none; padding: 0; color: var(--fg-2)">← Accounts</button><span class="num">$12,480</span><p>Studio account · updated now</p></div>
+            </div>
+          </div>
+          <div class="mbody">
+            <div class="mhead"><h3>Pasar de pantalla</h3></div>
+            <p>Navegación hacia adelante y atrás. Tocá una cuenta.</p>
+            <dl class="specs"><dt>nueva</dt><dd>x 100% → 0 · 420 ms ease-out</dd><dt>anterior</dt><dd>x 0 → −30% · brightness 0.8</dd><dt>volver</dt><dd>inverso · 280 ms ease-in-out</dd></dl>
+          </div>
+        </article>
+
+        <article class="card mcard">
+          <div class="mstage"><div class="theme-demo"><button class="btn btn--primary btn--lg" type="button" id="themeDemo">Cambiar tema</button><small>El nuevo tema se revela en círculo desde el punto que tocaste.</small></div></div>
+          <div class="mbody">
+            <div class="mhead"><h3>Cambiar tema</h3></div>
+            <p>Pasar de claro a oscuro y al revés.</p>
+            <dl class="specs"><dt>revelado</dt><dd>clip-path circle desde el toque · 520 ms ease-out</dd><dt>sin soporte</dt><dd>crossfade de colores · 420 ms</dd></dl>
+          </div>
+        </article>
+      </div>
+
+      <span class="label sub">transiciones de pantalla</span>
+      <div class="table-scroll">
+        <table class="tbl">
+          <thead><tr><th>transición</th><th>qué se mueve</th><th>ms</th><th>curva</th></tr></thead>
+          <tbody>
+            <tr><td>push</td><td>Nueva x 100% → 0. Anterior x 0 → −30% y se oscurece al 80%.</td><td><code>420</code></td><td><code>ease-out</code></td></tr>
+            <tr><td>back</td><td>Lo inverso. Con gesto de borde, sigue al dedo.</td><td><code>280</code></td><td><code>ease-in-out</code></td></tr>
+            <tr><td>modal</td><td>Sheet desde abajo. Lo de atrás retrocede: blur 10, scale 0.96.</td><td><code>420</code></td><td><code>ease-out</code></td></tr>
+            <tr><td>tab</td><td>Crossfade con blur 4 px, sin desplazamiento.</td><td><code>240</code></td><td><code>ease-out</code></td></tr>
+            <tr><td>elemento compartido</td><td>Card → pantalla completa: posición, tamaño y radio interpolan juntos.</td><td><code>420</code></td><td><code>ease-in-out</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <span class="label sub">qué se anima y qué no</span>
+      <div class="grid-2">
+        <div class="card"><span class="label">sí</span>
+          <ul class="chk yes">
+            <li>Respuesta a cada toque.</li>
+            <li>Cambios de estado: cargando, enviado, error.</li>
+            <li>Contenido nuevo que llega después de una acción.</li>
+            <li>Transiciones entre pantallas y sheets.</li>
+            <li>Números que cambian de valor.</li>
+          </ul>
+        </div>
+        <div class="card"><span class="label">no</span>
+          <ul class="chk no">
+            <li>Texto mientras se lee.</li>
+            <li>Parallax o scroll que secuestra la página.</li>
+            <li>Loops infinitos en UI, salvo carga y estados en vivo.</li>
+            <li>Rebotes en elementos grandes.</li>
+            <li>Animaciones al cargar que nadie pidió.</li>
+          </ul>
+        </div>
+      </div>
+
+      <span class="label sub">movimiento reducido</span>
+      <p class="lede">Con <code>prefers-reduced-motion</code> o "Reducir movimiento" en iOS: sin desplazamiento, sin escala y sin blur. Los cambios de estado pasan a un crossfade de 120 ms, los números muestran el valor final y los loops se detienen. Los haptics se mantienen.</p>
+
+      <span class="label sub">código</span>
+      <div class="grid-2">
+        <pre><span class="c">/* CSS · con tokens.css */</span>
+<span class="k">.sheet</span> {
+  transform: translateY(100%);
+  transition: transform var(--dur-exit)
+              var(--ease-in-out);
+}
+<span class="k">.sheet.open</span> {
+  transform: none;
+  transition-duration: var(--dur-3);
+  transition-timing-function: var(--ease-out);
+}
+<span class="k">.behind.dim</span> {
+  filter: blur(var(--blur-behind));
+  transform: scale(0.96);
+}</pre>
+        <pre><span class="c">// React Native · Reanimated + expo-blur</span>
+<span class="k">export const</span> ease = {
+  out: Easing.bezier(0.22, 1, 0.36, 1),
+  inOut: Easing.bezier(0.65, 0, 0.35, 1),
+};
+<span class="k">export const</span> dur = { press: 120, quick: 240,
+  exit: 280, base: 420, count: 600, reveal: 800 };
+<span class="k">export const</span> spring = { damping: 16,
+  stiffness: 260, mass: 1 };
+
+<span class="c">// press</span>
+onPressIn: scale.value = withTiming(0.97,
+  { duration: dur.press, easing: ease.out });
+onPressOut: scale.value = withSpring(1, spring);
+
+<span class="c">// glass: &lt;BlurView intensity={40} tint="systemMaterial" /&gt;</span></pre>
+      </div>
+
+      <span class="label sub">video para shots</span>
+      <div class="table-scroll">
+        <table class="tbl">
+          <thead><tr><th>parámetro</th><th>valor</th></tr></thead>
+          <tbody>
+            <tr><td>formato</td><td>MP4 H.264 · 1600 × 1200 para Dribbble · 1920 × 1080 para el sitio.</td></tr>
+            <tr><td>frames</td><td>60 fps, en tiempo real. Nunca acelerado.</td></tr>
+            <tr><td>duración</td><td>6 a 10 s en loop perfecto: el último frame es igual al primero.</td></tr>
+            <tr><td>ritmo</td><td>600 a 800 ms de pausa en cada estado clave.</td></tr>
+            <tr><td>toques</td><td>Sin cursor. Si hace falta, un círculo blanco al 25% de 44 px que escala 0.8 → 1.</td></tr>
+            <tr><td>modos</td><td>Si la app tiene los dos, un shot por modo o un corte claro → oscuro a mitad del loop.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== imagen ===================== -->
+  <section class="wrap section" id="imagen">
+    <span class="label">imagen</span>
+    <div>
+      <h2>Tres puestas para mostrar trabajo. <span class="muted">Una por shot.</span></h2>
+      <p class="lede">4:3 para Dribbble y 16:9 para el sitio. iPhone frontal, sin perspectiva, ocupando como mucho el 60% del alto. Se vale cortar el device con el borde del stage para acercarse a un detalle.</p>
+      <div class="grid-3">
+        <div class="img"><div class="frame light"><div class="mini"><div></div></div></div><p><b>Stage claro.</b> Device centrado sobre #E8E8E8. Para UI clara y flujos.</p></div>
+        <div class="img"><div class="frame black"><div class="mini"><div style="background: radial-gradient(100% 60% at 50% 100%, #b8821a, #111 70%)"></div></div></div><p><b>Stage negro.</b> La pantalla es la única luz. Para UI oscura.</p></div>
+        <div class="img"><div class="frame atmos atmos--forest topo"><span class="gloss" style="--g-1:#9be096; --g-2:#1f5c2b; width: 56px; height: 56px"></span></div><p><b>Objeto de marca.</b> Objeto 3D brillante con el glow de la atmósfera, grano y sombra de contacto.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== voz ===================== -->
+  <section class="wrap section" id="voz">
+    <span class="label">voz</span>
+    <div>
+      <h2>Corto, directo, de igual a igual. <span class="muted">Decí qué hacés y pará.</span></h2>
+      <p class="lede">Para el mercado global, la marca habla en inglés; esta guía está en español. Los ejemplos son para ajustar a mi posicionamiento real.</p>
+      <div class="grid-2">
+        <div class="card say"><span class="label">hero</span><q>Product design and motion for teams that ship. <span class="muted">Screens, systems and the small moments between them.</span></q></div>
+        <div class="card say"><span class="label">about</span><q>I work in prototypes, not decks. <span class="muted">You see it moving by the end of week one.</span></q></div>
+        <div class="card say"><span class="label">título de shot</span><q>verdant → round summary</q><small>Minúscula y flecha para el flujo. ® solo si la marca está registrada.</small></div>
+        <div class="card say"><span class="label">post</span><q>sheet transitions for a booking flow</q><small>Una línea, sin hashtags. El video hace el resto.</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== para IA ===================== -->
+  <section class="wrap section" id="ia">
+    <span class="label">para IA</span>
+    <div>
+      <h2>Para IA. <span class="muted">Todo lo que necesitás para diseñar como yo.</span></h2>
+      <p class="lede">Si sos un modelo de IA leyendo esta página, empezá por <code>llms.txt</code> o leé todo junto en <code>llms-full.txt</code>. La fuente de verdad es <code>brand.md</code>, en inglés; <code>brand.es.md</code> es la traducción al español: tiene cada regla, valor y decisión de esta página en texto plano, más la receta para armar mi portfolio. Los valores exactos están en <code>tokens.json</code> y listos para usar en <code>tokens.css</code>. Si difieren, gana la versión en inglés.</p>
+      <div class="files">
+        <a class="card file" href="%BASE_URL%brand.es.md"><code>brand.es.md · brand.md</code><span>Spec completa en español (traducción) y en inglés (principal): filosofía, decisiones, reglas si/entonces, tokens por modo, componentes, micro, motion, voz y receta de portfolio.</span></a>
+        <a class="card file" href="%BASE_URL%tokens.json"><code>tokens.json</code><span>Todos los valores en formato de design tokens: color por modo, tipografía, radios, espacio, blur y motion.</span></a>
+        <a class="card file" href="%BASE_URL%tokens.css"><code>tokens.css</code><span>Los mismos tokens como variables CSS, con claro, oscuro y componentes base listos para importar.</span></a>
+        <a class="card file" href="%BASE_URL%llms.txt"><code>llms.txt · llms-full.txt</code><span>Índice para modelos de lenguaje con qué leer y en qué orden, y la spec completa en un solo archivo de texto.</span></a>
+      </div>
+
+      <span class="label sub">prompt para usar</span>
+      <p class="lede">Sirve para cualquier proyecto, no solo para mi portfolio. Copialo en cualquier IA y cambiá la tarea. También alcanza con algo corto como "fijate %VITE_SITE_URL% y, con mis guías de diseño, hacé una app de viajes": la página le indica a la IA dónde está todo.</p>
+      <div class="prompt">
+        <pre id="promptText">Leé %VITE_SITE_URL%/llms.txt y diseñá siguiendo mi lenguaje de diseño. La fuente de verdad es %VITE_SITE_URL%/brand.md y los valores están en tokens.css y tokens.json.
+
+Tarea: [lo que necesites: "una app de viajes", "mi portfolio", "una landing para X"].
+Para un producto, seguí "Aplicar a cualquier proyecto". Para mi portfolio, "Receta: portfolio".
+
+Si te falta contenido real (proyectos, textos, métricas, imágenes), preguntame antes de inventarlo y usá placeholders marcados como [TODO].</pre>
+        <button class="btn btn--secondary" type="button" id="copyPrompt">Copiar</button>
+      </div>
+
+      <details class="spec">
+        <summary>Ver la spec resumida</summary>
+<pre>IDENTIDAD
+- agustín oberg · product designer (mobile, motion, sistemas)
+- Lenguaje: monocromo, producto protagonista, micro-blurs, motion preciso, claro + oscuro
+
+REGLAS DURAS
+- Fuentes: Inter Display (todo) + Geist Mono (labels 11px caps +6%)
+- Titulares: chicos, 600, dos tonos (fg + fg-2), tracking −1.5% a −3%
+- Números: grandes, 600, tabular-nums, tracking −4.5%
+- Botones: pastilla siempre. Primario = fg sobre bg. Secundario = btn-2
+- Color: núcleo mono. Una atmósfera por proyecto (forest | ember | tide | rouge)
+- Claro: bg #F4F4F4, cards #FFF + sombra suave
+- Oscuro: bg #000, cards #111 + luz de 1px, sin sombras grandes
+- Vidrio: blur 20, saturate 180%, luz interna 1px; claro 68% / oscuro 12%
+- Sheets: flotantes, inset 12, radio = exterior − inset
+- Radios: 8 stage · 16 thumbs · 24 cards · 32 sheets · pill controles
+
+MICRO
+- Blur progresivo en bordes de scroll y barras (4 capas: 1/2/4/8px)
+- Blur de borde en mapas/fotos (nítido al centro)
+- Fondo que retrocede al abrir sheet: blur 10, scale .96, opacity .6
+- Cambio de estado con blur: 6px, 240ms
+- Palabras que llegan: blur 4 → 0, 30ms entre palabras
+- Shimmer para "pensando"; punto vivo con pulso para estados en curso
+- Profundidad: texto grande borroso atrás, objeto nítido, sombra de contacto
+
+MOTION
+- ease-out (.22,1,.36,1) por defecto · ease-in-out (.65,0,.35,1) recorridos · spring (.34,1.56,.64,1) solo chico
+- 120 press · 240 chips/blur · 280 cerrar · 420 abrir · 600 números · 800 titulares
+- Press: scale .97. Cerrar siempre más rápido que abrir
+- Reduced motion: sin movimiento, escala ni blur; crossfade 120ms
+
+NUNCA
+- Gradientes violeta-azul, mockups en perspectiva, manos, emojis como íconos
+- Bordes rectos en botones, dos atmósferas juntas, sombras grandes en oscuro
+- Copy de agencia, lorem ipsum, proyectos o métricas inventadas</pre>
+      </details>
+    </div>
+  </section>
+
+  <section class="wrap closing">
+    <p class="headline"><span>Así diseño.</span><span class="muted">Si algo de acá no se nota en el resultado, todavía no está terminado.</span></p>
+    <div class="ctas"><a class="btn btn--primary btn--lg" href="#top">Volver arriba</a><a class="btn btn--secondary btn--lg" href="%BASE_URL%brand.es.md">Leer brand.es.md</a></div>
+  </section>
+
+  <footer class="wrap footer">
+    <div><span class="label">archivos</span><ul><li><a class="link" href="%BASE_URL%brand.es.md"><code>brand.es.md</code></a> · <a class="link" href="%BASE_URL%brand.md">en</a></li><li><a class="link" href="%BASE_URL%tokens.json"><code>tokens.json</code></a></li><li><a class="link" href="%BASE_URL%tokens.css"><code>tokens.css</code></a></li><li><a class="link" href="%BASE_URL%llms.txt"><code>llms.txt</code></a></li></ul></div>
+    <div><span class="label">fuentes</span><ul><li>Inter Display · Google Fonts</li><li>Geist Mono · Google Fonts</li></ul></div>
+    <div><span class="label">referencias</span><ul><li>Dominik Tyka · dribbble.com/dominikt</li><li>Figura · figura.digital</li></ul></div>
+  </footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

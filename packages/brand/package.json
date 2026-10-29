@@ -1,0 +1,19 @@
+{
+  "name": "@agustinoberg/brand",
+  "version": "2.0.0",
+  "private": true,
+  "description": "agustín oberg · design language: spec (English, primary; Spanish translation) and design tokens shared by every app and skill in this repo",
+  "exports": {
+    "./tokens.css": "./tokens.css",
+    "./tokens.json": "./tokens.json",
+    "./brand.md": "./brand.md",
+    "./brand.es.md": "./brand.es.md",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "tokens.css",
+    "tokens.json",
+    "brand.md",
+    "brand.es.md"
+  ]
+}
