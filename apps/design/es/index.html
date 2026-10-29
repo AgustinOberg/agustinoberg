@@ -64,6 +64,7 @@
         <a class="link" href="#motion">motion</a>
         <span class="nav__rule" aria-hidden="true"></span>
         <a class="link" href="#ia">para IA</a>
+        <a class="link" href="#skills">skills</a>
       </nav>
       <nav class="lang" aria-label="Idioma"><a href="%BASE_URL%" lang="en" hreflang="en">EN</a><a href="%BASE_URL%es/" lang="es" aria-current="page">ES</a></nav>
       <div class="theme-switch" id="themeSwitch" role="group" aria-label="Tema">
@@ -1045,6 +1046,28 @@ NUNCA
 - Bordes rectos en botones, dos atmósferas juntas, sombras grandes en oscuro
 - Copy de agencia, lorem ipsum, proyectos o métricas inventadas</pre>
       </details>
+    </div>
+  </section>
+
+  <!-- ===================== skills ===================== -->
+  <section class="wrap section" id="skills">
+    <span class="label">skills</span>
+    <div>
+      <h2>Mi diseño, instalado en tu agente. <span class="muted">Un comando con skills.sh.</span></h2>
+      <p class="lede">Todo lo de esta página también se distribuye como skills para agentes a través de <a class="link" href="https://skills.sh">skills.sh</a>. Una vez instaladas, el agente las carga solo cuando la tarea lo pide: sin prompt para pegar ni links para pasar. Funcionan con Claude Code, Cursor, Codex y cualquier agente compatible con el formato abierto Agent Skills.</p>
+      <div class="grid-2">
+        <div class="card skill"><code>agustinoberg-design</code><b>Qué es mi diseño, exactamente.</b><span>Para todo lo que tenga que verse, moverse y leerse como si lo hubiera diseñado yo: pantallas, componentes, sitios, decks y shots de Dribbble. Trae los tokens para web (CSS) y React Native, código para cada patrón característico y un pre-flight visual.</span></div>
+        <div class="card skill"><code>agustinoberg-product</code><b>Cómo construir bien un producto.</b><span>Para apps, sitios y flujos completos. Si tenés referencias de diseño, mandan en lo visual y mi toque va encima; si no, usa mi diseño. Suma investigación antes de dibujar, gramática de navegación, todos los estados, dónde va el motion y un loop de verificación. Carga <code>agustinoberg-design</code>.</span></div>
+      </div>
+
+      <span class="label sub">instalación</span>
+      <p class="lede">Correlo en la carpeta de tu proyecto. La CLI te pregunta qué skills y para qué agentes; los flags se saltean las preguntas. Por ahora el repo es privado, así que instalar requiere acceso.</p>
+      <div class="cmds">
+        <div class="cmd"><span class="label">todas las skills, en este proyecto</span><div class="prompt"><pre>npx skills add AgustinOberg/agustinoberg</pre><button class="btn btn--secondary" type="button" data-copy>Copiar</button></div></div>
+        <div class="cmd"><span class="label">una skill, para Claude Code, sin preguntas</span><div class="prompt"><pre>npx skills add AgustinOberg/agustinoberg --skill agustinoberg-design -a claude-code -y</pre><button class="btn btn--secondary" type="button" data-copy>Copiar</button></div></div>
+        <div class="cmd"><span class="label">las dos skills, en todos tus proyectos</span><div class="prompt"><pre>npx skills add AgustinOberg/agustinoberg --skill agustinoberg-design --skill agustinoberg-product -g</pre><button class="btn btn--secondary" type="button" data-copy>Copiar</button></div></div>
+      </div>
+      <p class="lede after">Después pedí el trabajo como siempre, por ejemplo "hacé una app de viajes con mis guías de diseño". La skill hace el resto.</p>
     </div>
   </section>
 

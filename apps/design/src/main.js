@@ -4,8 +4,8 @@
 const root = document.documentElement;
 const LANG = root.lang.startsWith("en") ? "en" : "es";
 const T = {
-  es: { copied: (h) => `Copiado ${h}`, promptCopied: "Prompt copiado", selected: "Seleccionado: copialo con ⌘C", add: "Agregar", close: "Cerrar" },
-  en: { copied: (h) => `Copied ${h}`, promptCopied: "Prompt copied", selected: "Selected: copy it with ⌘C", add: "Add", close: "Close" },
+  es: { copied: (h) => `Copiado ${h}`, promptCopied: "Prompt copiado", commandCopied: "Comando copiado", selected: "Seleccionado: copialo con ⌘C", add: "Agregar", close: "Cerrar" },
+  en: { copied: (h) => `Copied ${h}`, promptCopied: "Prompt copied", commandCopied: "Command copied", selected: "Selected: copy it with ⌘C", add: "Add", close: "Close" },
 }[LANG];
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const $ = (sel) => document.querySelector(sel);
@@ -97,20 +97,24 @@ $("#ramp").addEventListener("click", async (e) => {
   showToast(ok ? T.copied(b.dataset.hex) : b.dataset.hex);
 });
 
-/* ---------- prompt copy ---------- */
-$("#copyPrompt").addEventListener("click", async (e) => {
-  const ok = await copy($("#promptText").textContent);
+/* ---------- prompt + command copy ---------- */
+async function copyPre(pre, msg) {
+  const ok = await copy(pre.textContent);
   if (ok) {
-    showToast(T.promptCopied);
+    showToast(msg);
   } else {
     const range = document.createRange();
-    range.selectNodeContents($("#promptText"));
+    range.selectNodeContents(pre);
     const sel = window.getSelection();
     sel.removeAllRanges();
     sel.addRange(range);
     showToast(T.selected);
   }
-});
+}
+$("#copyPrompt").addEventListener("click", () => copyPre($("#promptText"), T.promptCopied));
+document.querySelectorAll("[data-copy]").forEach((b) =>
+  b.addEventListener("click", () => copyPre(b.parentElement.querySelector("pre"), T.commandCopied))
+);
 
 /* ---------- helpers ---------- */
 function restart(el, cls) {

@@ -443,6 +443,16 @@ pre .c { color: var(--fg-3); }
 .prompt { position: relative; margin-top: var(--s-4); }
 .prompt pre { padding-right: 110px; white-space: pre-wrap; color: var(--fg); font-size: 13px; }
 .prompt .btn { position: absolute; top: 14px; right: 14px; min-height: 32px; font-size: var(--text-xs); }
+
+/* ---------- skills ---------- */
+.skill { display: grid; gap: 6px; align-content: start; }
+.skill > code { font-size: var(--text-sm); color: var(--fg); }
+.skill b { font-weight: 600; }
+.skill span { font-size: var(--text-sm); color: var(--fg-2); }
+.cmds { display: grid; gap: var(--s-4); }
+.cmd > .label { display: block; margin-bottom: var(--s-2); color: var(--fg-3); }
+.cmd .prompt { margin-top: 0; }
+.lede.after { margin-top: var(--s-5); }
 details.spec { margin-top: var(--s-4); }
 details.spec summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: var(--text-sm); }
 details.spec summary::-webkit-details-marker { display: none; }

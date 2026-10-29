@@ -64,6 +64,7 @@
         <a class="link" href="#motion">motion</a>
         <span class="nav__rule" aria-hidden="true"></span>
         <a class="link" href="#ia">for AI</a>
+        <a class="link" href="#skills">skills</a>
       </nav>
       <nav class="lang" aria-label="Language"><a href="%BASE_URL%" lang="en" aria-current="page">EN</a><a href="%BASE_URL%es/" lang="es" hreflang="es">ES</a></nav>
       <div class="theme-switch" id="themeSwitch" role="group" aria-label="Theme">
@@ -1045,6 +1046,28 @@ NEVER
 - Square corners on buttons, two atmospheres together, large shadows in dark
 - Agency copy, lorem ipsum, made-up projects or metrics</pre>
       </details>
+    </div>
+  </section>
+
+  <!-- ===================== skills ===================== -->
+  <section class="wrap section" id="skills">
+    <span class="label">skills</span>
+    <div>
+      <h2>My design, installed in your agent. <span class="muted">One command with skills.sh.</span></h2>
+      <p class="lede">Everything on this page also ships as agent skills through <a class="link" href="https://skills.sh">skills.sh</a>. Once they're installed, the agent loads them on its own when the task calls for it: no prompt to paste, no links to share. They work with Claude Code, Cursor, Codex and any agent that supports the open Agent Skills format.</p>
+      <div class="grid-2">
+        <div class="card skill"><code>agustinoberg-design</code><b>What my design is, exactly.</b><span>For anything that must look, move and read like I designed it: screens, components, sites, decks and Dribbble shots. It ships the tokens for the web (CSS) and React Native, code for every signature pattern and a visual pre-flight.</span></div>
+        <div class="card skill"><code>agustinoberg-product</code><b>How to build a product well.</b><span>For whole apps, sites and flows. Your design references lead the visuals when you have them, with my touch on top; without them, it uses my design. It adds study-first research, navigation grammar, every state, where motion goes and a verification loop. It loads <code>agustinoberg-design</code>.</span></div>
+      </div>
+
+      <span class="label sub">install</span>
+      <p class="lede">Run it in your project's folder. The CLI asks which skills and which agents; the flags skip the questions. The repo is private for now, so installing needs access to it.</p>
+      <div class="cmds">
+        <div class="cmd"><span class="label">every skill, in this project</span><div class="prompt"><pre>npx skills add AgustinOberg/agustinoberg</pre><button class="btn btn--secondary" type="button" data-copy>Copy</button></div></div>
+        <div class="cmd"><span class="label">one skill, for Claude Code, no questions</span><div class="prompt"><pre>npx skills add AgustinOberg/agustinoberg --skill agustinoberg-design -a claude-code -y</pre><button class="btn btn--secondary" type="button" data-copy>Copy</button></div></div>
+        <div class="cmd"><span class="label">both skills, in every project</span><div class="prompt"><pre>npx skills add AgustinOberg/agustinoberg --skill agustinoberg-design --skill agustinoberg-product -g</pre><button class="btn btn--secondary" type="button" data-copy>Copy</button></div></div>
+      </div>
+      <p class="lede after">Then ask for the work as usual, like "build a travel app with my design guidelines". The skill does the rest.</p>
     </div>
   </section>
 
