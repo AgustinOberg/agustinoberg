@@ -2,7 +2,7 @@
 
 # Imagery and voice
 
-## 11. Image and presentation
+## 12. Image and presentation
 
 Three setups, one per shot:
 1. **Light stage:** device centered on #E8E8E8. For light UI and flows.
@@ -15,13 +15,13 @@ Three setups, one per shot:
 
 ---
 
-## 12. Voice
+## 13. Voice
 
 - **Language:** English for the public brand. Spanish for internal documentation.
 - **Style:** short sentences, active voice, concrete verbs. No agency jargon ("innovative solutions", "unique experiences").
 - **Examples (draft):**
   - hero: "Product design and motion for teams that ship." / "Screens, systems and the small moments between them."
   - about: "I work in prototypes, not decks." / "You see it moving by the end of week one."
-  - shot: `verdant → round summary`
-  - post: `sheet transitions for a booking flow` (one line, no hashtags, with video)
+  - shot: `Verdant → round summary`
+  - post: `Sheet transitions for a booking flow` (one line, no hashtags, with video)
 - **Buttons:** say exactly what happens ("Schedule transfer", not "Continue"). Errors say what happened and how to fix it.

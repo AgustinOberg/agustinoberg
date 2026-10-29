@@ -1,10 +1,10 @@
 ---
 name: agustinoberg-design
-description: Agustín Oberg's design language, exactly. Monochrome, product-first visuals with two-tone headlines, big tabular numbers, pill buttons, floating concentric glass sheets, progressive and edge blur, blur-swap state changes, a precise motion vocabulary and light and dark mode as equals. Use it whenever something must look, move or read like Agustín Oberg designed it, such as a screen, component, website, design system, deck or Dribbble shot, or when the user says "my design", "my style", "mi diseño", "mi marca", "mis guías de diseño" or "agustin oberg". It ships tokens for the web (CSS) and React Native, code for every signature pattern and a visual pre-flight. To build a whole product or app, also load agustinoberg-product.
+description: Agustín Oberg's design language, exactly. Monochrome, product-first visuals with two-tone headlines, big tabular numbers, pill buttons, floating concentric glass sheets, progressive and edge blur, blur-swap state changes, a precise motion vocabulary and light and dark mode as equals. The rules fix the hand, not the layout - every project writes its own direction so no two look alike. Use it whenever something must look, move or read like Agustín Oberg designed it, such as a screen, component, website, design system, deck or Dribbble shot, or when the user says "my design", "my style", "mi diseño", "mi marca", "mis guías de diseño" or "agustin oberg". It ships tokens for the web (CSS) and React Native, code for every signature pattern and a visual pre-flight. To build a whole product or app, also load agustinoberg-product.
 license: MIT
 metadata:
   author: agustín oberg
-  version: 1.0.0
+  version: 1.1.0
 ---
 
 # Agustín Oberg · design language
@@ -23,24 +23,33 @@ Values live in:
 - `assets/react-native/theme.ts` (React Native);
 - `assets/tokens.json` (everything else).
 
+## Same hand, different work
+
+The laws fix the hand: tokens, type, shape, depth, both modes, motion and voice. They don't fix a layout. Composition, section rhythm, where the scale lives, density, color story, imagery, navigation shape, motion temperament and the signature moment are decided per project, from its content. The design site and the default recipes are one instance of the language, not its template. If a new piece looks like a previous one with other words, it failed. The full rules are in section 4, "Range", of `references/philosophy-and-decisions.md`.
+
 ## How to use it
 
-1. Read `references/philosophy-and-decisions.md` once per task. It has the identity, the philosophy, every decision with its reason and the if/then rules.
+1. Read `references/philosophy-and-decisions.md` once per task. It has the identity, the philosophy, every decision with its reason, the if/then rules and the range (fixed vs. free).
 2. Read only the other references the task needs (table at the end).
-3. **Pick the color story:**
+3. **Write the direction before any layout,** in three lines:
+   - *Idea:* one sentence about this content the design must express.
+   - *Choices:* one pick per free axis, each with a reason from the content.
+   - *Signature moment:* the one detail people will remember.
+   If the lines would fit any project, rewrite them. For a site, a home or a key screen, sketch 2 or 3 directions that differ on at least 3 axes and pick one, or ask. Show the direction to the user in one short block.
+4. **Pick the color story:**
    - *Agustín's personal brand* (portfolio, his site, his shots): mono only, no accent.
-   - *Anything else:* one atmosphere (forest, ember, tide or rouge) whose `glow` is the one accent.
-4. **Use the tokens for every value.** Never hardcode a color, radius, blur, duration or easing that exists as a token.
-5. **Apply the laws below,** then add the signature details that fit.
-6. **Run the visual pre-flight** in `references/review-checklist.md` and look at the result in both modes before calling it done.
-7. **Missing content:** if real content is missing (projects, copy, metrics, bio, photos), ask or use visible `[TODO: …]` placeholders. Never invent facts about Agustín or his clients.
+   - *Anything else:* one atmosphere (forest, ember, tide, rouge, or a new one made with the same recipe) whose `glow` is the one accent.
+5. **Use the tokens for every value.** Never hardcode a color, radius, blur, duration or easing that exists as a token.
+6. **Apply the laws below,** then pick the signature details that serve the direction: one leads, a few support it. Never all of them.
+7. **Run the visual pre-flight** in `references/review-checklist.md` and look at the result in both modes before calling it done.
+8. **Missing content:** if real content is missing (projects, copy, metrics, bio, photos), ask or use visible `[TODO: …]` placeholders. Never invent facts about Agustín or his clients.
 
 ## Language laws
 
 Breaking one is a finding to fix, not a style preference.
 
 1. **One family.** Inter Display for everything: 600 for headings, 400–500 for text, negative tracking on large sizes. Geist Mono only for 11 px uppercase labels (+6%).
-2. **Small, two-tone headlines.** Line one in `fg` states; line two in `fg-2` explains. Same size and weight, two lines maximum. Web ≤ 48 px (except display); mobile 22–28.
+2. **Small, two-tone statement headlines.** In a hero, a section opener or an empty state, line one in `fg` states and line two in `fg-2` explains. Same size and weight, two lines maximum. Web ≤ 48 px (except display); mobile 22–28. Card, row and block titles are one tone.
 3. **The number is the hero.** The key number on a screen (time, money, score) is its biggest element: 600, tabular-nums, −4.5% tracking. Format it like a product: 1.4M, $4.99, 38k.
 4. **Both modes, own values.**
    - Light: `bg` #F4F4F4, cards #FFFFFF with a soft shadow.
@@ -54,7 +63,8 @@ Breaking one is a finding to fix, not a style preference.
    - Short, active, concrete.
    - One label per intent ("Book" everywhere, never "Book" / "Reserve" / "Get it").
    - Buttons say exactly what happens.
-   - Project names and shot titles in lowercase; flows use `→`.
+   - Normal capitalization. Names are written the way their owners write them ("Agustín Oberg", "TraiNow"); nav links, buttons and tabs start with a capital ("Work", "Book a call"); everything else is sentence case. Only mono labels are uppercase. Never lowercase things for style.
+   - Flows use `→`.
 
 ## Motion vocabulary
 
@@ -107,6 +117,8 @@ Hard limits:
 - Big shadows in dark mode, or a mid-grey dark background.
 - Two atmospheres in one product, or color in Agustín's personal brand.
 - Centered-everything layouts with giant hero type.
+- The same skeleton in every project (sticky label column, two-tone hero with two buttons, full-width stages) just because it's the default. Start from the direction.
+- Lowercase names, nav links or titles as a style.
 - A serif word injected into a sans headline. The only serif allowed is one optional uppercase eyebrow line for a brand or collection name.
 - Agency copy ("innovative solutions", "seamless experiences") or lorem ipsum.
 - Invented projects, clients, metrics or quotes.
@@ -116,7 +128,7 @@ Hard limits:
 
 | file | load when |
 |---|---|
-| `references/philosophy-and-decisions.md` | always, once per task |
+| `references/philosophy-and-decisions.md` | always, once per task (includes the range: what's fixed and what each project decides) |
 | `references/foundations.md` | colors, light/dark, atmospheres, type scale, radii, spacing, layout |
 | `references/components.md` | buttons, chips, sheets, toggles, toasts, segmented |
 | `references/micro-and-motion.md` | blur effects, micro-animations, timing, screen transitions |

@@ -2,7 +2,7 @@
 
 # Components
 
-## 8. Components
+## 9. Components
 
 - **Primary button:** pill, `fg`/`bg`, 600. Hover: 86% mix toward `bg`. Press: scale 0.97.
 - **Secondary button:** pill, `btn-2`. Hover: `btn-2-hover`.

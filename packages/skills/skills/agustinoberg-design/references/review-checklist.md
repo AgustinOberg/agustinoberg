@@ -11,7 +11,8 @@ Count these. A failed count is a fix, not a judgment call.
 | distinct accent hues | 1 for a product, 0 for the personal brand |
 | corner radii outside {8, 16, 24, 32, pill, concentric} | 0 |
 | buttons, chips, toggles or segmented controls that aren't pills | 0 |
-| headlines that aren't two-tone, or run longer than two lines | 0 |
+| statement headlines (hero, section opener, empty state) that aren't two-tone, or headlines longer than two lines | 0 |
+| names, nav links, buttons or titles lowercased for style | 0 |
 | fonts other than Inter Display and Geist Mono (one optional serif eyebrow excepted) | 0 |
 | borders used to separate sections, or cards inside cards | 0 |
 | blur above 10 px outside glass surfaces | 0 |
@@ -24,10 +25,20 @@ Count these. A failed count is a fix, not a judgment call.
 | hardcoded values that exist as tokens | 0 |
 | invented facts (projects, clients, metrics, quotes) without `[TODO]` | 0 |
 
-## 2. The look
+## 2. Distinct, not templated
+
+The language fixes the hand, not the layout (spec section 4, "Range").
+
+- [ ] A written direction exists: an idea, a pick per free axis with its reason, and a signature moment. It wouldn't fit another project.
+- [ ] Cover the name: you can still tell which project this is.
+- [ ] Look at the details: you can tell Agustín designed it.
+- [ ] It doesn't reuse the design site's skeleton (sticky label column, two-tone hero with two buttons) or another project's, unless the direction gives a reason. Against known work in this language, at least 3 free axes changed.
+- [ ] One signature moment leads. The other signature details support it, and not all of them are used.
+
+## 3. The look
 
 - [ ] The product, or the key content, is the hero. The frame is quiet.
-- [ ] Headlines are small and two-tone. The key number is the biggest thing on the screen, tabular.
+- [ ] Statement headlines are small and two-tone. The key number is the biggest thing on the screen, tabular.
 - [ ] Light: #F4F4F4 page, white cards with a soft shadow. Dark: #000 page, #111 cards with a 1 px top light and no big shadows.
 - [ ] Neither mode is an automatic inversion of the other. Each token has its own value.
 - [ ] Floating surfaces sit off the edge with concentric radii. Glass only goes over imagery or an atmosphere.
@@ -35,7 +46,7 @@ Count these. A failed count is a fix, not a judgment call.
 - [ ] Generous air. Nothing is centered by default when a left-aligned layout reads better.
 - [ ] Mono labels are 11 px uppercase, used sparingly.
 
-## 3. The detail layer
+## 4. The detail layer
 
 - [ ] Scroll edges and sticky bars use progressive blur, never a hard cut.
 - [ ] Maps, photos and camera backgrounds use edge blur where UI sits on them.
@@ -45,14 +56,14 @@ Count these. A failed count is a fix, not a judgment call.
 - [ ] Presses land on press-in: scale 0.97 on buttons and cards, a highlight on rows.
 - [ ] Hard limits hold: blur ≤ 10 px outside glass, micro-animations ≤ 420 ms, loops only for shimmer and live states.
 
-## 4. The voice
+## 5. The voice
 
 - [ ] Copy is short, active and concrete. Buttons say exactly what happens.
 - [ ] One label per intent across the whole thing.
-- [ ] Project names and shot titles are lowercase; flows use `→`.
+- [ ] Capitalization is normal: names as their owners write them, nav and buttons start with a capital, the rest in sentence case. Flows use `→`.
 - [ ] No agency words, no lorem ipsum, no invented facts.
 
-## 5. Look at it
+## 6. Look at it
 
 Code review alone never finishes visual work.
 
@@ -66,10 +77,11 @@ Code review alone never finishes visual work.
 4. Turn on reduced motion. Everything spatial should become a short crossfade.
 5. Fix, then look again. Stop at "can't find a flaw", not at "looks fine".
 
-## 6. Generic AI design, and how to fix it
+## 7. Generic AI design, and how to fix it
 
 | symptom | fix |
 |---|---|
+| Every site has the same skeleton (sticky label column, two-tone hero with two buttons, full-width stages) | Write the direction first and change at least 3 free axes (spec section 4) |
 | Giant centered hero headline with a gradient | Small two-tone headline, left-aligned, mono frame |
 | Purple-to-blue gradient buttons with a glow | Primary is `fg` on `bg`; the accent is the atmosphere's glow, used once |
 | Everything is a card with a border | Remove the borders; separate with space, surface steps and soft light |

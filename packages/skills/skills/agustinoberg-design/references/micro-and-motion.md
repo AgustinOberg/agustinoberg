@@ -2,7 +2,7 @@
 
 # Micro-blurs, micro-animations and motion
 
-## 9. Micro-blurs and micro-animations
+## 10. Micro-blurs and micro-animations
 
 This is the layer that matters most. None of them stands out alone. Together they make the difference.
 - Outside of glass, blur never goes above 10 px.
@@ -27,7 +27,7 @@ This is the layer that matters most. None of them stands out alone. Together the
 
 ---
 
-## 10. Motion
+## 11. Motion
 
 ### Principles
 1. **Respond instantly:** feedback in under 100 ms.

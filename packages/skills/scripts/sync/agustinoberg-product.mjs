@@ -9,8 +9,8 @@ const write = skillWriter(SKILL);
 const sections = specSections("brand.md");
 
 for (const [file, title, ids] of [
-  ["references/apply-to-product.md", "Apply the design language to any product", [13]],
-  ["references/portfolio.md", "Recipe: Agustín's portfolio", [14]],
+  ["references/apply-to-product.md", "Apply the design language to any product", [14]],
+  ["references/portfolio.md", "Recipe: Agustín's portfolio", [15]],
 ]) {
   writeSections({ write, sections, file, title, ids, source: "brand.md", script: `${SKILL}.mjs` });
 }

@@ -1,8 +1,8 @@
 <!-- Generated from packages/brand/brand.es.md by packages/skills/scripts/sync/agustinoberg-design.mjs. Do not edit here: edit the brand spec and run `pnpm sync:skills`. -->
 
-# agustín oberg · design language v2.0
+# Agustín Oberg · design language v2.1
 
-> **Para IA:** esta es la traducción al español de `brand.md`, que está en inglés y es la versión principal. Si alguna vez difieren, gana `brand.md`. Esta guía es la fuente de verdad de cómo diseño, para cualquier proyecto en mi estilo (apps, sitios, portfolios, presentaciones o shots), no solo para mi marca. Leela completa antes de diseñar. Para un producto, seguí la sección 13, "Aplicar a cualquier proyecto"; para mi portfolio, la 14, "Receta: portfolio". Los valores exactos están en `tokens.json` y listos para usar en `tokens.css`. Si te falta contenido real (proyectos, textos, métricas, imágenes), **preguntá antes de inventar** y usá placeholders marcados `[TODO]`.
+> **Para IA:** esta es la traducción al español de `brand.md`, que está en inglés y es la versión principal. Si alguna vez difieren, gana `brand.md`. Esta guía es la fuente de verdad de cómo diseño, para cualquier proyecto en mi estilo (apps, sitios, portfolios, presentaciones o shots), no solo para mi marca. Leela completa antes de diseñar. Las reglas definen la mano, no un layout: la sección 4, "Rango", dice qué queda fijo y qué decide cada proyecto. Para un producto, seguí la sección 14, "Aplicar a cualquier proyecto"; para mi portfolio, la 15, "Receta: portfolio". Los valores exactos están en `tokens.json` y listos para usar en `tokens.css`. Si te falta contenido real (proyectos, textos, métricas, imágenes), **preguntá antes de inventar** y usá placeholders marcados `[TODO]`.
 
 En el sitio (https://agustinoberg-design.pages.dev por ahora; después https://design.agustinoberg.com):
 - `brand.md`: la spec en inglés (principal). `brand.es.md`: este documento.
@@ -16,11 +16,11 @@ En el repo: `packages/brand/` (spec y tokens, paquete `@agustinoberg/brand`), `a
 
 ## 0. Identidad
 
-- **Quién:** agustín oberg, product designer. Mobile primero, con foco en motion y sistemas. `[TODO: confirmar rol, seniority, ubicación y tipo de cliente]`
+- **Quién:** Agustín Oberg, product designer. Mobile primero, con foco en motion y sistemas. `[TODO: confirmar rol, seniority, ubicación y tipo de cliente]`
 - **Posicionamiento (borrador):** "Product design and motion for teams that ship."
 - **En una línea:** interfaces monocromas donde el producto es el protagonista, con profundidad hecha de luz y blur, y un movimiento preciso que explica.
 - **Referencias de origen:** el trabajo de Dominik Tyka (dribbble.com/dominikt) y el estudio Figura (figura.digital). Se toma el criterio, nunca las piezas: no reutilizar sus logos, nombres de proyecto, textos ni imágenes.
-- **Nombre en pantalla:** "agustín oberg", en minúscula, Inter Display 650, tracking −3.5%. Monograma provisorio: "ao" en un cuadrado redondeado de 28 px (radio 9), invertido (fg sobre bg). `[TODO: logo definitivo]`
+- **Nombre en pantalla:** "Agustín Oberg", con mayúsculas como cualquier nombre propio, Inter Display 650, tracking −3.5%. Monograma provisorio: "ao" en un cuadrado redondeado de 28 px (radio 9), invertido (fg sobre bg). `[TODO: logo definitivo]`
 
 ---
 
@@ -53,7 +53,7 @@ La gente no lee interfaces: las siente.
 | Sheets flotantes y concéntricos | Separado del borde se lee como capa; concéntrico parece hardware. | inset 12 · radio = exterior − inset |
 | Ease-out por defecto | Responde al instante y frena como algo real. | `cubic-bezier(.22,1,.36,1)` |
 | Cerrar más rápido que abrir | Quien cierra ya decidió. | abrir 420 ms · cerrar 280 ms |
-| Una atmósfera por proyecto | Un color sostenido se recuerda. | elegir 1 de 4 · nunca mezclar |
+| Una atmósfera por proyecto | Un color sostenido se recuerda. | elegir 1 de 4 o crear una con la misma receta · nunca mezclar |
 | Mockups frontales, sin manos | La perspectiva y las manos achican la pantalla. | device ≤ 60% del alto |
 
 ---
@@ -61,7 +61,7 @@ La gente no lee interfaces: las siente.
 ## 3. Reglas si/entonces (para aplicar sin pensar)
 
 - **Si diseñás un botón:** pastilla. Primario = `fg` de fondo y `bg` de texto (se invierte por modo). Secundario = `btn-2`. Sobre imagen o atmósfera = vidrio. Alto 40 (normal) o 52 (principal de pantalla). Texto 14/600 o 16/600.
-- **Si diseñás un titular:** dos líneas máximo. Primera en `fg` (afirma), segunda en `fg-2` (explica). Peso 600 y tracking negativo. No más de 48 px en web salvo display; en mobile, 22–28.
+- **Si diseñás un titular de afirmación** (un hero, la apertura de una sección, un estado vacío): dos líneas máximo. Primera en `fg` (afirma), segunda en `fg-2` (explica). Peso 600 y tracking negativo. No más de 48 px en web salvo display; en mobile, 22–28. Los títulos de cards, filas y bloques chicos van en un solo tono.
 - **Si hay un número importante:** que sea lo más grande de la pantalla. Tabular-nums. Cuando cambia, rueda.
 - **Si algo flota sobre contenido** (sheet, card, toast): se separa del borde, lleva radio concéntrico y, si hay imagen detrás, vidrio.
 - **Si hay contenido detrás de un sheet:** retrocede. Blur 10 px, scale 0.96, opacity 0.6.
@@ -74,10 +74,63 @@ La gente no lee interfaces: las siente.
 - **Si separás capas en modo claro:** sombra suave. En oscuro: escalón de superficie y una luz de 1 px arriba.
 - **Si el proyecto necesita color:** elegí una atmósfera y usala en todo el proyecto, nunca en la marca personal.
 - **Si dudás entre agregar o sacar:** sacá.
+- **Si escribís un nombre, un link de la nav o un título:** mayúsculas normales. Los nombres propios como los escriben sus dueños (Agustín Oberg, TraiNow), la nav y los botones con mayúscula inicial (Work, About, Book a call) y el copy en sentence case. Solo los labels mono van en mayúsculas.
+- **Si un layout se parece a uno que ya hiciste en este lenguaje:** cambialo (sección 4).
 
 ---
 
-## 4. Claro y oscuro
+## 4. Rango: la misma mano, trabajos distintos
+
+Las reglas de arriba definen cómo se siente mi trabajo. No definen un layout. Si dos proyectos en mi estilo parecen el mismo template con otras palabras, el lenguaje falló. El objetivo es un aire de familia: se reconoce la mano, no la página.
+
+### Fijo: la mano
+Esto no cambia entre proyectos.
+- Los tokens: escala mono, colores semánticos, familias tipográficas, escala de radios, base de espaciado, límites de blur, curvas y duraciones.
+- Botones pastilla, radios concéntricos, profundidad con luz en vez de líneas y titulares de afirmación en dos tonos.
+- Claro y oscuro, cada uno con sus propios valores.
+- El vocabulario de motion, los micro-blurs y sus límites.
+- Las reglas de voz, y nada inventado.
+
+### Libre: el trabajo
+Cada proyecto lo decide a partir de su propio contenido. Las opciones son ejemplos, no un menú para recorrer en orden.
+
+| eje | rango |
+|---|---|
+| composición | columna editorial · split asimétrico · stages a sangre · índice o grilla · una pantalla que se comporta como app · scroll narrativo largo · un objeto centrado en un stage |
+| ritmo de secciones | label mono en una columna lateral · label arriba del contenido · capítulos numerados · sin labels, solo espacio |
+| dónde vive la escala | un número enorme · una imagen u objeto enorme · una palabra gigante con blur detrás (profundidad por capas) · nada grande, todo preciso |
+| densidad | una idea por pantalla ↔ índice denso, tablas y specs |
+| historia de color | mono · una atmósfera existente · una atmósfera nueva con la misma receta · la atmósfera como superficie entera, o solo como acento |
+| imagen | device en un stage · foto a sangre con blur de borde · objeto de marca · solo tipografía · datos y diagramas |
+| navegación | barra arriba · pill flotante · índice lateral · ninguna (una sola página) |
+| temperamento del motion | quieto y exacto · un momento protagonista · reveals contados con el scroll (dentro de los límites de la sección 11) |
+| momento firma | el detalle que la gente va a recordar. Uno manda; de dos a cinco lo acompañan. |
+
+### Los defaults son una respuesta, no la respuesta
+El layout y la nav de la sección 8, la receta mobile de la sección 14 y el portfolio de la sección 15 son buenos defaults. Usalos solo cuando el contenido no da una razón para hacer otra cosa, y preguntate primero qué pide el contenido.
+
+### Dirección antes que píxeles
+Antes de cualquier layout, escribí la dirección en tres líneas:
+1. **Idea:** una frase sobre este contenido que el diseño tiene que expresar. Ejemplo: "un horario de trenes: preciso, rítmico, todo es tiempo".
+2. **Elecciones:** una por cada eje libre, cada una con una razón que sale del contenido.
+3. **Momento firma:** lo único que la gente va a recordar.
+
+Si esas tres líneas sirven para cualquier proyecto, no son una dirección. Reescribilas. Para piezas más grandes (un sitio, una home, una pantalla clave), bocetá dos o tres direcciones que difieran en al menos tres ejes, y elegí una o dejame elegir.
+
+### No te repitas
+- Mi sitio de diseño (columna de labels sticky a la izquierda, titular de dos tonos con dos botones en el hero) es una instancia del lenguaje, no su template.
+- Si conocés otro trabajo en este lenguaje (el sitio de diseño, el portfolio, pantallas anteriores del proyecto o de la conversación), cambiá al menos tres ejes libres.
+- El mismo tipo de contenido no implica el mismo layout. Dos portfolios pueden no compartir ninguna estructura.
+
+### La prueba
+- Tapá el nombre: ¿igual se sabe qué proyecto es? Tiene que ser distinto.
+- Mirá los detalles: ¿se sabe quién lo diseñó? Tiene que ser la misma mano.
+
+Las dos respuestas tienen que ser sí.
+
+---
+
+## 5. Claro y oscuro
 
 Los dos modos son de primera clase. Por defecto se sigue al sistema y la persona puede elegir sistema, claro u oscuro. En web: `data-theme="light|dark"` en `<html>`; sin atributo sigue a `prefers-color-scheme`. Para forzar una parte: clase `.theme-light` o `.theme-dark`.
 
@@ -110,7 +163,7 @@ Los dos modos son de primera clase. Por defecto se sigue al sistema y la persona
 
 ---
 
-## 5. Color
+## 6. Color
 
 ### Escala mono (igual en ambos modos)
 black #000000 · ink-950 #0A0A0A · ink-900 #111111 · ink-800 #1F1F1F · ink-700 #2B2B2B · ink-600 #3D3D3D · ink-500 #5C5C5C · ink-400 #8F8F8F · ink-300 #B8B8B8 · ink-200 #D9D9D9 · ink-150 #E6E6E6 · ink-100 #EDEDED · ink-50 #F4F4F4 · white #FFFFFF
@@ -132,7 +185,7 @@ Los hex del núcleo oscuro y del vidrio vienen del CSS de figura.digital. Los de
 
 ---
 
-## 6. Tipografía
+## 7. Tipografía
 
 - **Inter Display** (Google Fonts: Inter con eje `opsz` 14–32) para todo.
 - **Geist Mono** solo para labels.
@@ -149,14 +202,15 @@ Los hex del núcleo oscuro y del vidrio vienen del CSS de figura.digital. Los de
 | números | 64–128 / 600, tabular-nums | −4.5% | fg |
 
 Reglas:
-- Nombres de proyectos, títulos de shots y posts en minúscula. Copy de frases en sentence case.
-- `→` para flujos: `onboarding → first payment`.
+- Mayúsculas normales en todo. Los nombres (personas, proyectos, apps, lugares) se escriben como los escriben sus dueños: Agustín Oberg, Mi Huerta, TraiNow. Los links de la nav, los botones y los tabs arrancan con mayúscula (Work, About, Book a call). Titulares, títulos de shots, posts y copy en sentence case. Nada va en minúscula por estilo.
+- Las mayúsculas sostenidas son solo para los labels mono y el acento serif opcional de abajo.
+- `→` para flujos: `Onboarding → first payment`.
 - `®` solo si la marca está registrada.
 - Acento editorial opcional: una línea en serif y mayúsculas para el nombre de una marca o colección (visto en referencias). Máximo una por pantalla.
 
 ---
 
-## 7. Forma, espacio y layout
+## 8. Forma, espacio y layout
 
 - **Radios:**
   - `r-xs` 8: stage.
@@ -167,19 +221,17 @@ Reglas:
   - `r-device` 50: marco de iPhone a ~270 px de ancho.
 - **Concéntrico:** radio interno = radio externo − margen. Ejemplo: pantalla 44, sheet a 12 del borde → radio 32.
 - **Espacio (base 4):** 4, 8, 12, 16, 24, 32, 48, 64, 96, 160.
-- **Layout web:**
-  - Ancho máximo 1280 y gutter 24 (16 en mobile).
-  - Secciones con un label mono en una columna izquierda de 200 px (sticky) y el contenido a la derecha.
-  - Separación entre secciones: 96 (64 en mobile).
-- **Nav web:**
-  - Sticky, con el wordmark a la izquierda y links a la derecha (minúscula, 14 px).
-  - Una línea de 40 px antes del último link o CTA, y el selector de tema.
-  - Fondo con blur progresivo que se desvanece 36 px debajo de la barra.
+- **Layout web, fijo:**
+  - Ancho máximo 1280 y gutter 24 (16 en mobile). Un layout puede ser más angosto, o ir a sangre en stages e imágenes.
+  - Separación entre secciones según la escala: 96 por defecto (64 en mobile). Los layouts densos pueden bajar a 48; los aireados, subir a 160.
+- **Layout web, default** (una opción; decide la dirección, ver sección 4): secciones con un label mono en una columna izquierda sticky de 200 px y el contenido a la derecha.
+- **Nav web, fijo:** tenga la forma que tenga, una nav que queda en pantalla lleva blur progresivo que se desvanece 36 px debajo, links de 14 px con mayúscula inicial y el selector de tema.
+- **Nav web, default** (una opción): barra sticky, wordmark a la izquierda, links a la derecha y una línea de 40 px antes del último link o CTA. Otras formas: una pill flotante, un índice lateral o ninguna nav en una página única.
 - **Cards:** `surface-1`, radio 24, padding 24, `elev-1` + hairline. Usarlas solo donde hace falta separar un objeto; no todo es card.
 
 ---
 
-## 8. Componentes
+## 9. Componentes
 
 - **Botón primario:** pastilla, `fg`/`bg`, 600. Hover: mezcla del 86% hacia `bg`. Press: scale 0.97.
 - **Botón secundario:** pastilla, `btn-2`; hover `btn-2-hover`.
@@ -196,7 +248,7 @@ Reglas:
 
 ---
 
-## 9. Micro-blurs y micro-animaciones
+## 10. Micro-blurs y micro-animaciones
 
 Es la capa que más importa. Ninguno se nota solo; juntos son la diferencia.
 - Fuera del vidrio, el blur nunca pasa de 10 px.
@@ -221,7 +273,7 @@ Es la capa que más importa. Ninguno se nota solo; juntos son la diferencia.
 
 ---
 
-## 10. Motion
+## 11. Motion
 
 ### Principios
 1. **Responder al instante:** feedback en menos de 100 ms.
@@ -308,7 +360,7 @@ En web, todo está como variables en `tokens.css` y clases (`.pblur`, `.edgeblur
 
 ---
 
-## 11. Imagen y presentación
+## 12. Imagen y presentación
 
 Tres puestas, una por shot:
 1. **Stage claro:** device centrado sobre #E8E8E8. Para UI clara y flujos.
@@ -321,20 +373,20 @@ Tres puestas, una por shot:
 
 ---
 
-## 12. Voz
+## 13. Voz
 
 - **Idioma:** inglés para la marca pública; español para documentación interna.
 - **Estilo:** frases cortas, voz activa, verbos concretos. Sin jerga de agencia ("innovative solutions", "unique experiences").
 - **Ejemplos (borrador):**
   - hero: "Product design and motion for teams that ship." / "Screens, systems and the small moments between them."
   - about: "I work in prototypes, not decks." / "You see it moving by the end of week one."
-  - shot: `verdant → round summary`
-  - post: `sheet transitions for a booking flow` (una línea, sin hashtags, con video)
+  - shot: `Verdant → round summary`
+  - post: `Sheet transitions for a booking flow` (una línea, sin hashtags, con video)
 - **Botones:** dicen exactamente lo que pasa ("Schedule transfer", no "Continue"). Los errores dicen qué pasó y cómo arreglarlo.
 
 ---
 
-## 13. Aplicar a cualquier proyecto
+## 14. Aplicar a cualquier proyecto
 
 Este lenguaje no es solo para mi marca. Sirve para diseñar cualquier producto en mi estilo: una app de viajes, un banco, una herramienta interna. Antes de empezar, separá qué se transfiere y qué no.
 
@@ -342,7 +394,7 @@ Este lenguaje no es solo para mi marca. Sirve para diseñar cualquier producto e
 |---|---|
 | **Se transfiere** (sin referencias; con referencias, solo mi toque) | Filosofía, decisiones, reglas si/entonces, tipografía, radios, espacio, componentes, micro-blurs, motion, claro y oscuro, imagen y el checklist de calidad. |
 | **Se adapta al producto** | Color de acento (una atmósfera), nombre y logo, copy (en la voz del producto, con mis reglas de escritura), idioma, íconos y fotos del dominio. |
-| **Solo de mi marca** | El wordmark "agustín oberg", el monograma "ao", mi posicionamiento, mis textos de ejemplo y la regla de que mi marca personal no usa color. |
+| **Solo de mi marca** | El wordmark "Agustín Oberg", el monograma "ao", mi posicionamiento, mis textos de ejemplo y la regla de que mi marca personal no usa color. |
 
 ### Con referencias o sin referencias
 Antes de diseñar, fijate qué referencias de diseño hay: un Figma, capturas, la marca del cliente o apps que la persona quiere seguir.
@@ -374,14 +426,17 @@ Son los detalles que van arriba de cualquier diseño sin pisar su identidad. Ele
 - El acento aparece en **un solo tipo de elemento por pantalla**: la acción propia del dominio (Book, Claim, Pay), los pins o el progreso activo. Todo lo demás sigue mono. El botón primario genérico sigue siendo `fg` sobre `bg`.
 - La atmósfera completa (gradiente, glow y grano) va en onboarding, estados vacíos, confirmaciones grandes y shots de presentación.
 
+### Primero la dirección
+Escribí la dirección de la sección 4 antes de la primera pantalla: la idea, una elección por eje libre y el momento firma. La receta de abajo dice qué patrones usa cada tipo de pantalla. La composición, la densidad, la escala y la imagen salen de la dirección, así que dos productos hechos con esta receta no deberían parecerse.
+
 ### Receta: app mobile
 Stack sugerido: Expo / React Native con Reanimated y expo-blur (o Skia para el blur progresivo). En web: importar `tokens.css`.
 
-| pantalla | patrón |
+| pantalla | patrón por defecto |
 |---|---|
 | onboarding | Atmósfera completa, objeto de marca con sombra de contacto, titular de dos tonos y un solo CTA. |
 | home / explorar | Lista o mapa. Mapa con blur de borde y pins blancos. Pills flotantes arriba, card que asoma abajo y tab bar de vidrio con blur progresivo. |
-| detalle | Hero con profundidad por capas o foto con blur de borde. Nombre en minúscula y el dato clave como número grande. |
+| detalle | Hero con profundidad por capas o foto con blur de borde. El nombre, y el dato clave como número grande. |
 | acción | Sheet flotante concéntrico con el fondo que retrocede. Segmented o calendario adentro. |
 | confirmación | Botón que muta en check, texto que llega y haptic success. |
 | en curso | Island pill con punto vivo (timer, viaje, llamada). |
@@ -401,9 +456,12 @@ Navegación: push para profundizar, sheets para tareas cortas y tabs con crossfa
 - **Copy:** corto y concreto ("Book", "Change dates"). Los nombres de lugares van con mayúscula porque son nombres propios.
 
 ### Checklist para cualquier proyecto
+- [ ] ¿Hay una dirección escrita (idea, ejes libres, momento firma) que solo sirve para este proyecto?
+- [ ] ¿Se parece a sí mismo, y no a mi sitio de diseño ni a otro proyecto en este lenguaje?
 - [ ] ¿Si había referencias, mandan en lo visual, y mi toque está presente con 3 a 6 detalles sin pisarlas?
 - [ ] ¿Una sola atmósfera, con el acento en un solo tipo de elemento por pantalla?
-- [ ] ¿Titulares de dos tonos, números grandes y botones pastilla?
+- [ ] ¿Titulares de afirmación en dos tonos, números grandes y botones pastilla?
+- [ ] ¿Mayúsculas normales: nombres como los escriben sus dueños, nav y botones con mayúscula inicial?
 - [ ] ¿Sheets flotantes concéntricos con el fondo que retrocede?
 - [ ] ¿Blur progresivo en barras y bordes de scroll, y blur de borde en mapas y fotos?
 - [ ] ¿Cada cambio de estado tiene su micro-animación (press, cambio con blur, check)?
@@ -413,26 +471,27 @@ Navegación: push para profundizar, sheets para tareas cortas y tabs con crossfa
 
 ---
 
-## 14. Receta: portfolio
+## 15. Receta: portfolio
 
-Cuando me pidan "haceme un portfolio", seguí esto.
+Cuando me pidan "haceme un portfolio", seguí esto. Dice qué tiene que tener el portfolio, no cómo se tiene que ver: el orden, la composición y la presentación salen de la dirección (sección 4). El layout descrito es una opción.
 
 ### Stack sugerido
 - Página estática o Next.js.
 - Importar `@agustinoberg/brand/tokens.css` (en este repo) o `tokens.css` desde el sitio.
-- Las fuentes de la sección 6.
+- Las fuentes de la sección 7.
 - Claro y oscuro con selector (sistema / claro / oscuro) y revelado circular al cambiar.
 
-### Estructura de la home
-1. **Nav:** wordmark a la izquierda. Links en minúscula (work, about, contact), línea de 40 px, CTA pastilla "Book a call" y selector de tema. Blur progresivo debajo.
+### Contenido de la home
+1. **Nav:** el wordmark, links (Work, About, Contact), un CTA pastilla "Book a call" y el selector de tema, con blur progresivo si queda en pantalla. La forma es libre: barra, pill flotante o índice lateral.
 2. **Hero:**
    - Titular de dos tonos de 2 líneas como máximo, con reveal.
-   - Dos CTAs: primario y secundario.
-   - A la derecha, logos de clientes en gris o meta en mono. `[TODO: clientes reales]`
+   - Uno o dos CTAs.
+   - Prueba, si la hay: logos de clientes en gris o meta en mono. `[TODO: clientes reales]`
+   - Qué manda es libre: el titular, un proyecto ya reproduciéndose, un número grande o un objeto de marca.
 3. **Trabajo seleccionado:**
-   - Cada proyecto es un stage de ancho completo (radio 8) con un video en loop o el device centrado.
-   - Debajo: nombre en minúscula, una línea de descripción en `fg-2` y tags como texto o chips.
-   - Cada proyecto usa su atmósfera. Entre 3 y 6 proyectos. `[TODO: proyectos reales]`
+   - Entre 3 y 6 proyectos, cada uno con su atmósfera. `[TODO: proyectos reales]`
+   - Cada uno muestra su nombre como lo escribe el proyecto, una línea de descripción en `fg-2` y sus tags.
+   - La presentación es libre: stages de ancho completo con video, una grilla, un índice con preview al pasar el mouse, o un proyecto por pantalla.
 4. **Manifiesto corto** (opcional): 3 a 5 líneas de la filosofía, con reveal de gris a fg al scrollear. El texto siempre visible.
 5. **About:**
    - Foto en blanco y negro.
@@ -442,7 +501,7 @@ Cuando me pidan "haceme un portfolio", seguí esto.
 7. **Footer:** labels mono (SITEMAP, SOCIAL), links en `fg`, y legales en 12 px `fg-3`.
 
 ### Plantilla de caso de estudio
-1. **Hero:** atmósfera del proyecto con objeto de marca o device, nombre en minúscula y una línea de qué es.
+1. **Hero:** atmósfera del proyecto con objeto de marca o device, el nombre del proyecto y una línea de qué es.
 2. **Contexto:** problema en 2 o 3 líneas y rol / equipo / tiempo en labels mono.
 3. **Decisiones:** de 3 a 5, cada una con su "por qué", en filas, no cards.
 4. **Pantallas:** stages claros u oscuros según la UI. Mostrar los dos modos si existen.
@@ -459,7 +518,9 @@ Cuando me pidan "haceme un portfolio", seguí esto.
 - Todo el texto en HTML, no en imágenes.
 
 ### Checklist antes de entregar
-- [ ] ¿Cada botón es pastilla y cada titular es de dos tonos?
+- [ ] ¿Hay una dirección escrita, y el resultado parece una pieza nueva y no mi sitio de diseño?
+- [ ] ¿Cada botón es pastilla y cada titular de afirmación es de dos tonos?
+- [ ] ¿Mayúsculas normales: "Agustín Oberg", Work / About / Contact, nombres de proyecto como se escriben?
 - [ ] ¿Los dos modos están terminados y probados?
 - [ ] ¿Hay blur progresivo en nav y en los bordes de scroll?
 - [ ] ¿Los sheets flotan con radio concéntrico y el fondo retrocede?
@@ -469,7 +530,7 @@ Cuando me pidan "haceme un portfolio", seguí esto.
 
 ---
 
-## 15. Nunca
+## 16. Nunca
 
 - Gradientes violeta-azul genéricos, glassmorphism exagerado (blur de más de 40 o bordes blancos gruesos).
 - Mockups en perspectiva, manos sosteniendo el teléfono, emojis como íconos de UI.
@@ -477,12 +538,14 @@ Cuando me pidan "haceme un portfolio", seguí esto.
 - Dos atmósferas en un mismo proyecto.
 - Sombras grandes en oscuro.
 - Todo dentro de cards.
+- El mismo layout en todos los proyectos. Si parece el sitio de diseño con otras palabras, empezá de nuevo desde la dirección.
+- Nombres, links de la nav o títulos en minúscula como estilo.
 - Copy de agencia, lorem ipsum, o proyectos, clientes y métricas inventados.
 - Copiar logos, nombres, textos o piezas de Dominik Tyka o Figura.
 
 ---
 
-## 16. Pendiente
+## 17. Pendiente
 
 - [ ] Rol, posicionamiento y copy reales.
 - [ ] Logo y monograma definitivos.

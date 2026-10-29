@@ -4,11 +4,11 @@
 
 ## 0. Identity
 
-- **Who:** agustín oberg, product designer. Mobile first, with a focus on motion and systems. `[TODO: confirm role, seniority, location and client type]`
+- **Who:** Agustín Oberg, product designer. Mobile first, with a focus on motion and systems. `[TODO: confirm role, seniority, location and client type]`
 - **Positioning (draft):** "Product design and motion for teams that ship."
 - **In one line:** monochrome interfaces where the product is the hero, with depth made of light and blur, and precise motion that explains.
 - **Source references:** the work of Dominik Tyka (dribbble.com/dominikt) and the studio Figura (figura.digital). Take the judgment, never the pieces: do not reuse their logos, project names, copy or images.
-- **Name on screen:** "agustín oberg", lowercase, Inter Display 650, tracking −3.5%. Temporary monogram: "ao" in a 28 px rounded square (radius 9), inverted (fg on bg). `[TODO: final logo]`
+- **Name on screen:** "Agustín Oberg", capitalized like any proper name, Inter Display 650, tracking −3.5%. Temporary monogram: "ao" in a 28 px rounded square (radius 9), inverted (fg on bg). `[TODO: final logo]`
 
 ---
 
@@ -41,7 +41,7 @@ People don't read interfaces. They feel them.
 | Floating, concentric sheets | Set off the edge, it reads as a layer. Concentric, it looks like hardware. | inset 12 · radius = outer − inset |
 | Ease-out by default | It responds instantly and slows down like a real object. | `cubic-bezier(.22,1,.36,1)` |
 | Close faster than open | Whoever closes has already decided. | open 420 ms · close 280 ms |
-| One atmosphere per project | A sustained color is remembered. | pick 1 of 4 · never mix |
+| One atmosphere per project | A sustained color is remembered. | pick 1 of 4 or make one with the same recipe · never mix |
 | Front-facing mockups, no hands | Perspective and hands make the screen smaller. | device ≤ 60% of the height |
 
 ---
@@ -49,7 +49,7 @@ People don't read interfaces. They feel them.
 ## 3. If/then rules (apply without thinking)
 
 - **If you design a button:** pill. Primary = `fg` background and `bg` text (it inverts per mode). Secondary = `btn-2`. Over an image or atmosphere = glass. Height 40 (normal) or 52 (main action on the screen). Text 14/600 or 16/600.
-- **If you design a headline:** two lines max. The first in `fg` (it states), the second in `fg-2` (it explains). Weight 600 and negative tracking. No more than 48 px on web unless it is display. On mobile, 22–28.
+- **If you design a statement headline** (a hero, a section opener, an empty state): two lines max. The first in `fg` (it states), the second in `fg-2` (it explains). Weight 600 and negative tracking. No more than 48 px on web unless it is display. On mobile, 22–28. Titles of cards, rows and small blocks are one tone.
 - **If there is an important number:** make it the largest thing on the screen. Tabular-nums. When it changes, it rolls.
 - **If something floats over content** (sheet, card, toast): it sits off the edge, has a concentric radius and, if there is an image behind it, uses glass.
 - **If there is content behind a sheet:** it recedes. Blur 10 px, scale 0.96, opacity 0.6.
@@ -62,10 +62,63 @@ People don't read interfaces. They feel them.
 - **If you separate layers in light mode:** soft shadow. In dark: a surface step and a 1 px light on top.
 - **If the project needs color:** pick one atmosphere and use it across the whole project, never in the personal brand.
 - **If you're torn between adding and removing:** remove.
+- **If you write a name, a nav link or a title:** normal capitalization. Proper names as their owners write them (Agustín Oberg, TraiNow), nav and buttons in title or sentence case (Work, About, Book a call), copy in sentence case. Only mono labels are uppercase.
+- **If a layout looks like one you've already made in this language:** change it (section 4).
 
 ---
 
-## 15. Never
+## 4. Range: same hand, different work
+
+The rules above define how my work feels. They don't define a layout. If two projects in my style look like the same template with different words, the language failed. The goal is a family resemblance: you recognize the hand, not the page.
+
+### Fixed: the hand
+These never change between projects.
+- The tokens: mono scale, semantic colors, type families, radius scale, spacing base, blur limits, curves and durations.
+- Pill buttons, concentric radii, depth with light instead of lines, and two-tone statement headlines.
+- Light and dark, each with its own values.
+- The motion vocabulary, the micro-blurs and their limits.
+- The voice rules, and nothing invented.
+
+### Free: the work
+Each project decides these from its own content. The options are examples, not a menu to go through in order.
+
+| axis | range |
+|---|---|
+| composition | editorial single column · asymmetric split · full-bleed stages · index or grid · one screen that behaves like an app · long narrative scroll · one object centered on a stage |
+| section rhythm | mono label in a side column · label above the content · numbered chapters · no labels, only space |
+| where the scale lives | a huge number · a huge image or object · a giant blurred word behind (layered depth) · nothing big, everything precise |
+| density | one idea per viewport ↔ dense index, tables and specs |
+| color story | mono · one existing atmosphere · a new atmosphere made with the same recipe · the atmosphere as a whole surface, or only as the accent |
+| imagery | device on a stage · full-bleed photo with edge blur · brand object · type only · data and diagrams |
+| navigation | top bar · floating pill · side index · none (a single page) |
+| motion temperament | still and exact · one hero moment · reveals told by scroll (within section 11's limits) |
+| signature moment | the one detail people will remember. One leads; two to five support it. |
+
+### Defaults are one answer, not the answer
+The layout and nav in section 8, the mobile recipe in section 14 and the portfolio in section 15 are good defaults. Use them only when the content gives no reason to do something else, and ask what the content wants first.
+
+### Direction before pixels
+Before any layout, write the direction in three lines:
+1. **Idea:** one sentence about this content that the design must express. Example: "a train timetable: precise, rhythmic, all about time".
+2. **Choices:** one pick per free axis, each with a reason that comes from the content.
+3. **Signature moment:** the one thing people will remember.
+
+If the three lines would fit any project, they are not a direction. Rewrite them. For larger pieces (a site, a home, a key screen), sketch two or three directions that differ on at least three axes, then pick one, or let me pick.
+
+### Don't repeat yourself
+- My design site (sticky label column on the left, two-tone headline with two buttons in the hero) is one instance of the language, not its template.
+- If you know other work in this language (the design site, the portfolio, earlier screens in the project or the conversation), change at least three free axes.
+- The same kind of content doesn't mean the same layout. Two portfolios can share no structure at all.
+
+### The test
+- Cover the name: can you still tell which project it is? It must be distinct.
+- Look at the details: can you tell who designed it? It must be the same hand.
+
+Both answers have to be yes.
+
+---
+
+## 16. Never
 
 - Generic purple-blue gradients, overdone glassmorphism (blur above 40 or thick white borders).
 - Perspective mockups, hands holding the phone, emoji as UI icons.
@@ -73,12 +126,14 @@ People don't read interfaces. They feel them.
 - Two atmospheres in the same project.
 - Large shadows in dark.
 - Everything inside cards.
+- The same layout in every project. If it looks like the design site with other words, start again from the direction.
+- Lowercase names, nav links or titles as a style.
 - Agency copy, lorem ipsum, or invented projects, clients and metrics.
 - Copying logos, names, copy or pieces from Dominik Tyka or Figura.
 
 ---
 
-## 16. Pending
+## 17. Pending
 
 - [ ] Real role, positioning and copy.
 - [ ] Final logo and monogram.

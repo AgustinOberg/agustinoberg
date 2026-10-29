@@ -1,6 +1,6 @@
-# agustín oberg · design language v2.0
+# Agustín Oberg · design language v2.1
 
-> **For AI:** this guide is the source of truth for how I design, for any project in my style (apps, sites, portfolios, presentations or shots), not only my brand. English is the primary language: a Spanish translation lives in `brand.es.md`, and if the two ever differ, this file wins. Read it fully before you design. For a product, follow section 13, "Apply it to any project"; for my portfolio, section 14, "Recipe: portfolio". The exact values are in `tokens.json` and ready to use in `tokens.css`. If anything here conflicts with another source, this guide wins. If you are missing real content (projects, copy, metrics, images), **ask before you invent anything** and use placeholders marked `[TODO]`.
+> **For AI:** this guide is the source of truth for how I design, for any project in my style (apps, sites, portfolios, presentations or shots), not only my brand. English is the primary language: a Spanish translation lives in `brand.es.md`, and if the two ever differ, this file wins. Read it fully before you design. The rules define the hand, not one layout: section 4, "Range", says what stays fixed and what every project decides for itself. For a product, follow section 14, "Apply it to any project"; for my portfolio, section 15, "Recipe: portfolio". The exact values are in `tokens.json` and ready to use in `tokens.css`. If anything here conflicts with another source, this guide wins. If you are missing real content (projects, copy, metrics, images), **ask before you invent anything** and use placeholders marked `[TODO]`.
 
 On the site (https://agustinoberg-design.pages.dev for now; later https://design.agustinoberg.com):
 - `brand.md`: this file (English, primary). `brand.es.md`: the Spanish translation.
@@ -14,11 +14,11 @@ In the repo: `packages/brand/` (spec and tokens, package `@agustinoberg/brand`),
 
 ## 0. Identity
 
-- **Who:** agustín oberg, product designer. Mobile first, with a focus on motion and systems. `[TODO: confirm role, seniority, location and client type]`
+- **Who:** Agustín Oberg, product designer. Mobile first, with a focus on motion and systems. `[TODO: confirm role, seniority, location and client type]`
 - **Positioning (draft):** "Product design and motion for teams that ship."
 - **In one line:** monochrome interfaces where the product is the hero, with depth made of light and blur, and precise motion that explains.
 - **Source references:** the work of Dominik Tyka (dribbble.com/dominikt) and the studio Figura (figura.digital). Take the judgment, never the pieces: do not reuse their logos, project names, copy or images.
-- **Name on screen:** "agustín oberg", lowercase, Inter Display 650, tracking −3.5%. Temporary monogram: "ao" in a 28 px rounded square (radius 9), inverted (fg on bg). `[TODO: final logo]`
+- **Name on screen:** "Agustín Oberg", capitalized like any proper name, Inter Display 650, tracking −3.5%. Temporary monogram: "ao" in a 28 px rounded square (radius 9), inverted (fg on bg). `[TODO: final logo]`
 
 ---
 
@@ -51,7 +51,7 @@ People don't read interfaces. They feel them.
 | Floating, concentric sheets | Set off the edge, it reads as a layer. Concentric, it looks like hardware. | inset 12 · radius = outer − inset |
 | Ease-out by default | It responds instantly and slows down like a real object. | `cubic-bezier(.22,1,.36,1)` |
 | Close faster than open | Whoever closes has already decided. | open 420 ms · close 280 ms |
-| One atmosphere per project | A sustained color is remembered. | pick 1 of 4 · never mix |
+| One atmosphere per project | A sustained color is remembered. | pick 1 of 4 or make one with the same recipe · never mix |
 | Front-facing mockups, no hands | Perspective and hands make the screen smaller. | device ≤ 60% of the height |
 
 ---
@@ -59,7 +59,7 @@ People don't read interfaces. They feel them.
 ## 3. If/then rules (apply without thinking)
 
 - **If you design a button:** pill. Primary = `fg` background and `bg` text (it inverts per mode). Secondary = `btn-2`. Over an image or atmosphere = glass. Height 40 (normal) or 52 (main action on the screen). Text 14/600 or 16/600.
-- **If you design a headline:** two lines max. The first in `fg` (it states), the second in `fg-2` (it explains). Weight 600 and negative tracking. No more than 48 px on web unless it is display. On mobile, 22–28.
+- **If you design a statement headline** (a hero, a section opener, an empty state): two lines max. The first in `fg` (it states), the second in `fg-2` (it explains). Weight 600 and negative tracking. No more than 48 px on web unless it is display. On mobile, 22–28. Titles of cards, rows and small blocks are one tone.
 - **If there is an important number:** make it the largest thing on the screen. Tabular-nums. When it changes, it rolls.
 - **If something floats over content** (sheet, card, toast): it sits off the edge, has a concentric radius and, if there is an image behind it, uses glass.
 - **If there is content behind a sheet:** it recedes. Blur 10 px, scale 0.96, opacity 0.6.
@@ -72,10 +72,63 @@ People don't read interfaces. They feel them.
 - **If you separate layers in light mode:** soft shadow. In dark: a surface step and a 1 px light on top.
 - **If the project needs color:** pick one atmosphere and use it across the whole project, never in the personal brand.
 - **If you're torn between adding and removing:** remove.
+- **If you write a name, a nav link or a title:** normal capitalization. Proper names as their owners write them (Agustín Oberg, TraiNow), nav and buttons in title or sentence case (Work, About, Book a call), copy in sentence case. Only mono labels are uppercase.
+- **If a layout looks like one you've already made in this language:** change it (section 4).
 
 ---
 
-## 4. Light and dark
+## 4. Range: same hand, different work
+
+The rules above define how my work feels. They don't define a layout. If two projects in my style look like the same template with different words, the language failed. The goal is a family resemblance: you recognize the hand, not the page.
+
+### Fixed: the hand
+These never change between projects.
+- The tokens: mono scale, semantic colors, type families, radius scale, spacing base, blur limits, curves and durations.
+- Pill buttons, concentric radii, depth with light instead of lines, and two-tone statement headlines.
+- Light and dark, each with its own values.
+- The motion vocabulary, the micro-blurs and their limits.
+- The voice rules, and nothing invented.
+
+### Free: the work
+Each project decides these from its own content. The options are examples, not a menu to go through in order.
+
+| axis | range |
+|---|---|
+| composition | editorial single column · asymmetric split · full-bleed stages · index or grid · one screen that behaves like an app · long narrative scroll · one object centered on a stage |
+| section rhythm | mono label in a side column · label above the content · numbered chapters · no labels, only space |
+| where the scale lives | a huge number · a huge image or object · a giant blurred word behind (layered depth) · nothing big, everything precise |
+| density | one idea per viewport ↔ dense index, tables and specs |
+| color story | mono · one existing atmosphere · a new atmosphere made with the same recipe · the atmosphere as a whole surface, or only as the accent |
+| imagery | device on a stage · full-bleed photo with edge blur · brand object · type only · data and diagrams |
+| navigation | top bar · floating pill · side index · none (a single page) |
+| motion temperament | still and exact · one hero moment · reveals told by scroll (within section 11's limits) |
+| signature moment | the one detail people will remember. One leads; two to five support it. |
+
+### Defaults are one answer, not the answer
+The layout and nav in section 8, the mobile recipe in section 14 and the portfolio in section 15 are good defaults. Use them only when the content gives no reason to do something else, and ask what the content wants first.
+
+### Direction before pixels
+Before any layout, write the direction in three lines:
+1. **Idea:** one sentence about this content that the design must express. Example: "a train timetable: precise, rhythmic, all about time".
+2. **Choices:** one pick per free axis, each with a reason that comes from the content.
+3. **Signature moment:** the one thing people will remember.
+
+If the three lines would fit any project, they are not a direction. Rewrite them. For larger pieces (a site, a home, a key screen), sketch two or three directions that differ on at least three axes, then pick one, or let me pick.
+
+### Don't repeat yourself
+- My design site (sticky label column on the left, two-tone headline with two buttons in the hero) is one instance of the language, not its template.
+- If you know other work in this language (the design site, the portfolio, earlier screens in the project or the conversation), change at least three free axes.
+- The same kind of content doesn't mean the same layout. Two portfolios can share no structure at all.
+
+### The test
+- Cover the name: can you still tell which project it is? It must be distinct.
+- Look at the details: can you tell who designed it? It must be the same hand.
+
+Both answers have to be yes.
+
+---
+
+## 5. Light and dark
 
 Both modes are first class. By default, follow the system. The person can choose system, light or dark. On web: `data-theme="light|dark"` on `<html>`. With no attribute, it follows `prefers-color-scheme`. To force one part: class `.theme-light` or `.theme-dark`.
 
@@ -108,7 +161,7 @@ Both modes are first class. By default, follow the system. The person can choose
 
 ---
 
-## 5. Color
+## 6. Color
 
 ### Mono scale (same in both modes)
 black #000000 · ink-950 #0A0A0A · ink-900 #111111 · ink-800 #1F1F1F · ink-700 #2B2B2B · ink-600 #3D3D3D · ink-500 #5C5C5C · ink-400 #8F8F8F · ink-300 #B8B8B8 · ink-200 #D9D9D9 · ink-150 #E6E6E6 · ink-100 #EDEDED · ink-50 #F4F4F4 · white #FFFFFF
@@ -130,7 +183,7 @@ The hex values for the dark core and the glass come from the CSS of figura.digit
 
 ---
 
-## 6. Typography
+## 7. Typography
 
 - **Inter Display** (Google Fonts: Inter with the `opsz` axis 14–32) for everything.
 - **Geist Mono** only for labels.
@@ -147,14 +200,15 @@ The hex values for the dark core and the glass come from the CSS of figura.digit
 | numbers | 64–128 / 600, tabular-nums | −4.5% | fg |
 
 Rules:
-- Project names, shot titles and posts in lowercase. Sentence copy in sentence case.
-- `→` for flows: `onboarding → first payment`.
+- Normal capitalization everywhere. Names (people, projects, apps, places) are written the way their owners write them: Agustín Oberg, Mi Huerta, TraiNow. Nav links, buttons and tabs start with a capital (Work, About, Book a call). Headlines, shot titles, posts and copy are in sentence case. Nothing is lowercased for style.
+- Uppercase is only for mono labels, and the optional serif accent below.
+- `→` for flows: `Onboarding → first payment`.
 - `®` only if the brand is registered.
 - Optional editorial accent: one line in uppercase serif for the name of a brand or collection (seen in the references). One per screen at most.
 
 ---
 
-## 7. Shape, space and layout
+## 8. Shape, space and layout
 
 - **Radii:**
   - `r-xs` 8: stage.
@@ -165,19 +219,17 @@ Rules:
   - `r-device` 50: iPhone frame at ~270 px wide.
 - **Concentric:** inner radius = outer radius − margin. Example: screen 44, sheet 12 from the edge → radius 32.
 - **Space (base 4):** 4, 8, 12, 16, 24, 32, 48, 64, 96, 160.
-- **Web layout:**
-  - Max width 1280 and gutter 24 (16 on mobile).
-  - Sections with a mono label in a 200 px left column (sticky) and the content on the right.
-  - Space between sections: 96 (64 on mobile).
-- **Web nav:**
-  - Sticky, with the wordmark on the left and links on the right (lowercase, 14 px).
-  - A 40 px line before the last link or CTA, and the theme switcher.
-  - Background with a progressive blur that fades out 36 px below the bar.
+- **Web layout, fixed:**
+  - Max width 1280 and gutter 24 (16 on mobile). A layout can go narrower, or full bleed for stages and images.
+  - Space between sections from the scale: 96 by default (64 on mobile). Dense layouts can go down to 48; airy ones up to 160.
+- **Web layout, default** (one option; the direction decides, see section 4): sections with a mono label in a 200 px sticky left column and the content on the right.
+- **Web nav, fixed:** whatever the shape, a nav that stays on screen gets a progressive blur that fades out 36 px below it, links at 14 px with a capital letter, and the theme switcher.
+- **Web nav, default** (one option): sticky bar, wordmark on the left, links on the right, and a 40 px line before the last link or CTA. Other shapes: a floating pill, a side index, or no nav on a single page.
 - **Cards:** `surface-1`, radius 24, padding 24, `elev-1` + hairline. Use them only where an object needs to be separated. Not everything is a card.
 
 ---
 
-## 8. Components
+## 9. Components
 
 - **Primary button:** pill, `fg`/`bg`, 600. Hover: 86% mix toward `bg`. Press: scale 0.97.
 - **Secondary button:** pill, `btn-2`. Hover: `btn-2-hover`.
@@ -194,7 +246,7 @@ Rules:
 
 ---
 
-## 9. Micro-blurs and micro-animations
+## 10. Micro-blurs and micro-animations
 
 This is the layer that matters most. None of them stands out alone. Together they make the difference.
 - Outside of glass, blur never goes above 10 px.
@@ -219,7 +271,7 @@ This is the layer that matters most. None of them stands out alone. Together the
 
 ---
 
-## 10. Motion
+## 11. Motion
 
 ### Principles
 1. **Respond instantly:** feedback in under 100 ms.
@@ -306,7 +358,7 @@ On web, everything is available as variables in `tokens.css` and as classes (`.p
 
 ---
 
-## 11. Image and presentation
+## 12. Image and presentation
 
 Three setups, one per shot:
 1. **Light stage:** device centered on #E8E8E8. For light UI and flows.
@@ -319,20 +371,20 @@ Three setups, one per shot:
 
 ---
 
-## 12. Voice
+## 13. Voice
 
 - **Language:** English for the public brand. Spanish for internal documentation.
 - **Style:** short sentences, active voice, concrete verbs. No agency jargon ("innovative solutions", "unique experiences").
 - **Examples (draft):**
   - hero: "Product design and motion for teams that ship." / "Screens, systems and the small moments between them."
   - about: "I work in prototypes, not decks." / "You see it moving by the end of week one."
-  - shot: `verdant → round summary`
-  - post: `sheet transitions for a booking flow` (one line, no hashtags, with video)
+  - shot: `Verdant → round summary`
+  - post: `Sheet transitions for a booking flow` (one line, no hashtags, with video)
 - **Buttons:** say exactly what happens ("Schedule transfer", not "Continue"). Errors say what happened and how to fix it.
 
 ---
 
-## 13. Apply it to any project
+## 14. Apply it to any project
 
 This language isn't only for my brand. Use it to design any product in my style: a travel app, a bank, an internal tool. Before you start, separate what carries over from what doesn't.
 
@@ -340,7 +392,7 @@ This language isn't only for my brand. Use it to design any product in my style:
 |---|---|
 | **Carries over** (without references; with references, only my touch) | Philosophy, decisions, if/then rules, typography, radii, spacing, components, micro-blurs, motion, light and dark, imagery and the quality checklist. |
 | **Adapts to the product** | Accent color (one atmosphere), name and logo, copy (in the product's voice, using my writing rules), language, and domain icons and photos. |
-| **Only my brand** | The "agustín oberg" wordmark, the "ao" monogram, my positioning, my sample copy and the rule that my personal brand uses no color. |
+| **Only my brand** | The "Agustín Oberg" wordmark, the "ao" monogram, my positioning, my sample copy and the rule that my personal brand uses no color. |
 
 ### With or without references
 Before designing, check which design references exist: a Figma file, screenshots, the client's brand or apps the person wants to follow.
@@ -372,14 +424,17 @@ These are the details that go on top of any design without overriding its identi
 - The accent appears on **one kind of element per screen**: the domain action (Book, Claim, Pay), the pins or the active progress. Everything else stays mono. The generic primary button stays `fg` on `bg`.
 - The full atmosphere (gradient, glow and grain) goes in onboarding, empty states, big confirmations and presentation shots.
 
+### Direction first
+Write the direction from section 4 before the first screen: the idea, a pick on each free axis and the signature moment. The recipe below says which patterns each kind of screen uses. Composition, density, scale and imagery come from the direction, so two products built with this recipe shouldn't look alike.
+
 ### Recipe: mobile app
 Suggested stack: Expo / React Native with Reanimated and expo-blur (or Skia for progressive blur). On the web: import `tokens.css`.
 
-| screen | pattern |
+| screen | default pattern |
 |---|---|
 | onboarding | Full atmosphere, brand object with contact shadow, two-tone headline and a single CTA. |
 | home / explore | List or map. Map with edge blur and white pins. Floating pills on top, a peeking card at the bottom and a glass tab bar with progressive blur. |
-| detail | Hero with layered depth, or a photo with edge blur. Lowercase name and the key fact as a big number. |
+| detail | Hero with layered depth, or a photo with edge blur. The name, and the key fact as a big number. |
 | action | Floating concentric sheet with the background receding. Segmented control or calendar inside. |
 | confirmation | Button that morphs into a check, arriving text and a success haptic. |
 | in progress | Island pill with a live dot (timer, trip, call). |
@@ -399,9 +454,12 @@ Navigation: push to go deeper, sheets for short tasks and tabs with a crossfade.
 - **Copy:** short and concrete ("Book", "Change dates"). Place names are capitalized because they're proper nouns.
 
 ### Checklist for any project
+- [ ] Is there a written direction (idea, free axes, signature moment) that only fits this project?
+- [ ] Does it look like itself, and not like my design site or another project in this language?
 - [ ] If there were references, do they lead the visuals, with my touch present in 3 to 6 details that don't override them?
 - [ ] One atmosphere, with the accent on one kind of element per screen?
-- [ ] Two-tone headlines, big numbers and pill buttons?
+- [ ] Two-tone statement headlines, big numbers and pill buttons?
+- [ ] Normal capitalization: names as their owners write them, nav and buttons starting with a capital?
 - [ ] Floating concentric sheets with the background receding?
 - [ ] Progressive blur on bars and scroll edges, and edge blur on maps and photos?
 - [ ] Does every state change have its micro-animation (press, blur swap, check)?
@@ -411,26 +469,27 @@ Navigation: push to go deeper, sheets for short tasks and tabs with a crossfade.
 
 ---
 
-## 14. Recipe: portfolio
+## 15. Recipe: portfolio
 
-When I ask you to "make me a portfolio", follow this.
+When I ask you to "make me a portfolio", follow this. It lists what the portfolio must contain, not how it must look: the order, the composition and the presentation come from the direction (section 4). The layout described is one option.
 
 ### Suggested stack
 - Static page or Next.js.
 - Import `@agustinoberg/brand/tokens.css` (in this repo) or `tokens.css` from the site.
-- The fonts from section 6.
+- The fonts from section 7.
 - Light and dark with a switcher (system / light / dark) and a circular reveal on change.
 
-### Home structure
-1. **Nav:** wordmark on the left. Lowercase links (work, about, contact), a 40 px line, a "Book a call" pill CTA and the theme switcher. Progressive blur underneath.
+### Home content
+1. **Nav:** the wordmark, links (Work, About, Contact), a "Book a call" pill CTA and the theme switcher, with progressive blur if it stays on screen. Its shape is free: bar, floating pill or side index.
 2. **Hero:**
    - Two-tone headline, 2 lines at most, with a reveal.
-   - Two CTAs: primary and secondary.
-   - On the right, client logos in gray or meta in mono. `[TODO: real clients]`
+   - One or two CTAs.
+   - Proof, if there is any: client logos in gray or meta in mono. `[TODO: real clients]`
+   - What leads is free: the headline, a project already playing, a big number or a brand object.
 3. **Selected work:**
-   - Each project is a full-width stage (radius 8) with a looping video or the device centered.
-   - Below: lowercase name, a one-line description in `fg-2` and tags as text or chips.
-   - Each project uses its own atmosphere. Between 3 and 6 projects. `[TODO: real projects]`
+   - Between 3 and 6 projects, each with its own atmosphere. `[TODO: real projects]`
+   - Each one shows its name as the project writes it, a one-line description in `fg-2` and its tags.
+   - The presentation is free: full-width stages with video, a grid, an index list with a preview on hover, or one project per screen.
 4. **Short manifesto** (optional): 3 to 5 lines from the philosophy, with a gray-to-fg reveal on scroll. The text is always visible.
 5. **About:**
    - Black and white photo.
@@ -440,7 +499,7 @@ When I ask you to "make me a portfolio", follow this.
 7. **Footer:** mono labels (SITEMAP, SOCIAL), links in `fg`, and legal text at 12 px `fg-3`.
 
 ### Case study template
-1. **Hero:** project atmosphere with a brand object or device, lowercase name and one line on what it is.
+1. **Hero:** project atmosphere with a brand object or device, the project's name and one line on what it is.
 2. **Context:** the problem in 2 or 3 lines, and role / team / timeline in mono labels.
 3. **Decisions:** 3 to 5, each with its "why", in rows, not cards.
 4. **Screens:** light or dark stages depending on the UI. Show both modes if they exist.
@@ -457,7 +516,9 @@ When I ask you to "make me a portfolio", follow this.
 - All text in HTML, not in images.
 
 ### Checklist before delivery
-- [ ] Is every button a pill and every headline two-tone?
+- [ ] Is there a written direction, and does the result look like a new piece rather than my design site?
+- [ ] Is every button a pill and every statement headline two-tone?
+- [ ] Is capitalization normal: "Agustín Oberg", Work / About / Contact, project names as they're written?
 - [ ] Are both modes finished and tested?
 - [ ] Is there progressive blur on the nav and on scroll edges?
 - [ ] Do sheets float with a concentric radius, and does the background recede?
@@ -467,7 +528,7 @@ When I ask you to "make me a portfolio", follow this.
 
 ---
 
-## 15. Never
+## 16. Never
 
 - Generic purple-blue gradients, overdone glassmorphism (blur above 40 or thick white borders).
 - Perspective mockups, hands holding the phone, emoji as UI icons.
@@ -475,12 +536,14 @@ When I ask you to "make me a portfolio", follow this.
 - Two atmospheres in the same project.
 - Large shadows in dark.
 - Everything inside cards.
+- The same layout in every project. If it looks like the design site with other words, start again from the direction.
+- Lowercase names, nav links or titles as a style.
 - Agency copy, lorem ipsum, or invented projects, clients and metrics.
 - Copying logos, names, copy or pieces from Dominik Tyka or Figura.
 
 ---
 
-## 16. Pending
+## 17. Pending
 
 - [ ] Real role, positioning and copy.
 - [ ] Final logo and monogram.

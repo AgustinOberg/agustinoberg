@@ -2,7 +2,7 @@
 
 # Apply the design language to any product
 
-## 13. Apply it to any project
+## 14. Apply it to any project
 
 This language isn't only for my brand. Use it to design any product in my style: a travel app, a bank, an internal tool. Before you start, separate what carries over from what doesn't.
 
@@ -10,7 +10,7 @@ This language isn't only for my brand. Use it to design any product in my style:
 |---|---|
 | **Carries over** (without references; with references, only my touch) | Philosophy, decisions, if/then rules, typography, radii, spacing, components, micro-blurs, motion, light and dark, imagery and the quality checklist. |
 | **Adapts to the product** | Accent color (one atmosphere), name and logo, copy (in the product's voice, using my writing rules), language, and domain icons and photos. |
-| **Only my brand** | The "agustín oberg" wordmark, the "ao" monogram, my positioning, my sample copy and the rule that my personal brand uses no color. |
+| **Only my brand** | The "Agustín Oberg" wordmark, the "ao" monogram, my positioning, my sample copy and the rule that my personal brand uses no color. |
 
 ### With or without references
 Before designing, check which design references exist: a Figma file, screenshots, the client's brand or apps the person wants to follow.
@@ -42,14 +42,17 @@ These are the details that go on top of any design without overriding its identi
 - The accent appears on **one kind of element per screen**: the domain action (Book, Claim, Pay), the pins or the active progress. Everything else stays mono. The generic primary button stays `fg` on `bg`.
 - The full atmosphere (gradient, glow and grain) goes in onboarding, empty states, big confirmations and presentation shots.
 
+### Direction first
+Write the direction from section 4 before the first screen: the idea, a pick on each free axis and the signature moment. The recipe below says which patterns each kind of screen uses. Composition, density, scale and imagery come from the direction, so two products built with this recipe shouldn't look alike.
+
 ### Recipe: mobile app
 Suggested stack: Expo / React Native with Reanimated and expo-blur (or Skia for progressive blur). On the web: import `tokens.css`.
 
-| screen | pattern |
+| screen | default pattern |
 |---|---|
 | onboarding | Full atmosphere, brand object with contact shadow, two-tone headline and a single CTA. |
 | home / explore | List or map. Map with edge blur and white pins. Floating pills on top, a peeking card at the bottom and a glass tab bar with progressive blur. |
-| detail | Hero with layered depth, or a photo with edge blur. Lowercase name and the key fact as a big number. |
+| detail | Hero with layered depth, or a photo with edge blur. The name, and the key fact as a big number. |
 | action | Floating concentric sheet with the background receding. Segmented control or calendar inside. |
 | confirmation | Button that morphs into a check, arriving text and a success haptic. |
 | in progress | Island pill with a live dot (timer, trip, call). |
@@ -69,9 +72,12 @@ Navigation: push to go deeper, sheets for short tasks and tabs with a crossfade.
 - **Copy:** short and concrete ("Book", "Change dates"). Place names are capitalized because they're proper nouns.
 
 ### Checklist for any project
+- [ ] Is there a written direction (idea, free axes, signature moment) that only fits this project?
+- [ ] Does it look like itself, and not like my design site or another project in this language?
 - [ ] If there were references, do they lead the visuals, with my touch present in 3 to 6 details that don't override them?
 - [ ] One atmosphere, with the accent on one kind of element per screen?
-- [ ] Two-tone headlines, big numbers and pill buttons?
+- [ ] Two-tone statement headlines, big numbers and pill buttons?
+- [ ] Normal capitalization: names as their owners write them, nav and buttons starting with a capital?
 - [ ] Floating concentric sheets with the background receding?
 - [ ] Progressive blur on bars and scroll edges, and edge blur on maps and photos?
 - [ ] Does every state change have its micro-animation (press, blur swap, check)?

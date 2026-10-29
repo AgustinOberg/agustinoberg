@@ -2,7 +2,7 @@
 
 # Foundations: modes, color, type, shape
 
-## 4. Light and dark
+## 5. Light and dark
 
 Both modes are first class. By default, follow the system. The person can choose system, light or dark. On web: `data-theme="light|dark"` on `<html>`. With no attribute, it follows `prefers-color-scheme`. To force one part: class `.theme-light` or `.theme-dark`.
 
@@ -35,7 +35,7 @@ Both modes are first class. By default, follow the system. The person can choose
 
 ---
 
-## 5. Color
+## 6. Color
 
 ### Mono scale (same in both modes)
 black #000000 · ink-950 #0A0A0A · ink-900 #111111 · ink-800 #1F1F1F · ink-700 #2B2B2B · ink-600 #3D3D3D · ink-500 #5C5C5C · ink-400 #8F8F8F · ink-300 #B8B8B8 · ink-200 #D9D9D9 · ink-150 #E6E6E6 · ink-100 #EDEDED · ink-50 #F4F4F4 · white #FFFFFF
@@ -57,7 +57,7 @@ The hex values for the dark core and the glass come from the CSS of figura.digit
 
 ---
 
-## 6. Typography
+## 7. Typography
 
 - **Inter Display** (Google Fonts: Inter with the `opsz` axis 14–32) for everything.
 - **Geist Mono** only for labels.
@@ -74,14 +74,15 @@ The hex values for the dark core and the glass come from the CSS of figura.digit
 | numbers | 64–128 / 600, tabular-nums | −4.5% | fg |
 
 Rules:
-- Project names, shot titles and posts in lowercase. Sentence copy in sentence case.
-- `→` for flows: `onboarding → first payment`.
+- Normal capitalization everywhere. Names (people, projects, apps, places) are written the way their owners write them: Agustín Oberg, Mi Huerta, TraiNow. Nav links, buttons and tabs start with a capital (Work, About, Book a call). Headlines, shot titles, posts and copy are in sentence case. Nothing is lowercased for style.
+- Uppercase is only for mono labels, and the optional serif accent below.
+- `→` for flows: `Onboarding → first payment`.
 - `®` only if the brand is registered.
 - Optional editorial accent: one line in uppercase serif for the name of a brand or collection (seen in the references). One per screen at most.
 
 ---
 
-## 7. Shape, space and layout
+## 8. Shape, space and layout
 
 - **Radii:**
   - `r-xs` 8: stage.
@@ -92,12 +93,10 @@ Rules:
   - `r-device` 50: iPhone frame at ~270 px wide.
 - **Concentric:** inner radius = outer radius − margin. Example: screen 44, sheet 12 from the edge → radius 32.
 - **Space (base 4):** 4, 8, 12, 16, 24, 32, 48, 64, 96, 160.
-- **Web layout:**
-  - Max width 1280 and gutter 24 (16 on mobile).
-  - Sections with a mono label in a 200 px left column (sticky) and the content on the right.
-  - Space between sections: 96 (64 on mobile).
-- **Web nav:**
-  - Sticky, with the wordmark on the left and links on the right (lowercase, 14 px).
-  - A 40 px line before the last link or CTA, and the theme switcher.
-  - Background with a progressive blur that fades out 36 px below the bar.
+- **Web layout, fixed:**
+  - Max width 1280 and gutter 24 (16 on mobile). A layout can go narrower, or full bleed for stages and images.
+  - Space between sections from the scale: 96 by default (64 on mobile). Dense layouts can go down to 48; airy ones up to 160.
+- **Web layout, default** (one option; the direction decides, see section 4): sections with a mono label in a 200 px sticky left column and the content on the right.
+- **Web nav, fixed:** whatever the shape, a nav that stays on screen gets a progressive blur that fades out 36 px below it, links at 14 px with a capital letter, and the theme switcher.
+- **Web nav, default** (one option): sticky bar, wordmark on the left, links on the right, and a 40 px line before the last link or CTA. Other shapes: a floating pill, a side index, or no nav on a single page.
 - **Cards:** `surface-1`, radius 24, padding 24, `elev-1` + hairline. Use them only where an object needs to be separated. Not everything is a card.

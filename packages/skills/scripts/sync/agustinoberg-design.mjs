@@ -13,11 +13,11 @@ const write = skillWriter(SKILL);
 
 const sections = specSections("brand.md");
 const groups = [
-  ["references/philosophy-and-decisions.md", "Philosophy, decisions and rules", [0, 1, 2, 3, 15, 16]],
-  ["references/foundations.md", "Foundations: modes, color, type, shape", [4, 5, 6, 7]],
-  ["references/components.md", "Components", [8]],
-  ["references/micro-and-motion.md", "Micro-blurs, micro-animations and motion", [9, 10]],
-  ["references/imagery-and-voice.md", "Imagery and voice", [11, 12]],
+  ["references/philosophy-and-decisions.md", "Philosophy, decisions and rules", [0, 1, 2, 3, 4, 16, 17]],
+  ["references/foundations.md", "Foundations: modes, color, type, shape", [5, 6, 7, 8]],
+  ["references/components.md", "Components", [9]],
+  ["references/micro-and-motion.md", "Micro-blurs, micro-animations and motion", [10, 11]],
+  ["references/imagery-and-voice.md", "Imagery and voice", [12, 13]],
 ];
 for (const [file, title, ids] of groups) {
   writeSections({ write, sections, file, title, ids, source: "brand.md", script: SCRIPT });

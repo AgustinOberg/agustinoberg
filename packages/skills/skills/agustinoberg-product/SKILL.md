@@ -4,7 +4,7 @@ description: How Agustín Oberg builds a product end to end, such as a mobile ap
 license: MIT
 metadata:
   author: agustín oberg
-  version: 1.0.0
+  version: 1.1.0
 ---
 
 # Agustín Oberg · building products
@@ -65,24 +65,25 @@ Design references set the look. Research sets the structure. Never design a scre
    - Which flows are in scope.
    Ask for real content you don't have; use visible `[TODO: …]` placeholders otherwise. Never invent facts, clients, metrics or quotes.
 2. **Choose the visual base:** references, partial references or none (see above). Load `agustinoberg-design` and read its philosophy-and-decisions reference. If there are references, also pick the 3 to 6 touch details you'll use and note why each fits.
-3. **Pick the recipe:**
-   - A product: `references/apply-to-product.md`. Choose one atmosphere and the accent rule, then follow the mobile recipe and the screen patterns. The travel app is a worked example.
-   - Agustín's portfolio: `references/portfolio.md`.
-4. **Study** each screen type (prime directive).
-5. **Map the flows.** For every screen, write down three things before you build it, using `references/navigation.md`:
+3. **Write the direction** (agustinoberg-design, spec section 4, "Range"): the idea in one sentence, a pick per free axis with its reason, and the signature moment. It must only fit this product. For a site, a home or a key screen, sketch 2 or 3 directions that differ on at least 3 axes and pick one, or ask. With references, the direction covers whatever they leave open (often composition and the signature moment).
+4. **Pick the recipe:**
+   - A product: `references/apply-to-product.md`. Choose one atmosphere and the accent rule, then use the mobile recipe's screen patterns. The recipe says which patterns a screen uses; the direction decides how the screen is composed. The travel app is a worked example, not a template.
+   - Agustín's portfolio: `references/portfolio.md`. It lists what the portfolio must contain; the direction decides how it looks.
+5. **Study** each screen type (prime directive).
+6. **Map the flows.** For every screen, write down three things before you build it, using `references/navigation.md`:
    - what it is (push, modal, sheet, overlay or replace);
    - what back does from it;
    - whether it's behind a one-way door.
-6. **Build the structure** on the visual base, following the fidelity laws below.
-7. **Build every state** with `references/states-and-performance.md`: loading, empty, error, long content, offline and success.
-8. **Place motion** with the frequency gate. Take the values from agustinoberg-design.
-9. **Run the pre-flight:**
+7. **Build the structure** on the visual base and the direction, following the fidelity laws below.
+8. **Build every state** with `references/states-and-performance.md`: loading, empty, error, long content, offline and success.
+9. **Place motion** with the frequency gate. Take the values from agustinoberg-design.
+10. **Run the pre-flight:**
    - agustinoberg-design's visual counts (its `review-checklist.md`), when there are no references;
    - the reference's own rules, when there are;
    - the product counts below, always.
-10. **Run the verification loop** in `references/verification.md`. Fix, relaunch, look again.
-11. **Report back briefly:**
-    - the visual base (references or Agustín's design), the touch details used, and the recipe and atmosphere;
+11. **Run the verification loop** in `references/verification.md`. Fix, relaunch, look again.
+12. **Report back briefly:**
+    - the visual base (references or Agustín's design), the direction, the touch details used, and the recipe and atmosphere;
     - the reference patterns you adopted;
     - the navigation map;
     - the states covered;
@@ -164,12 +165,14 @@ Count these alongside agustinoberg-design's visual pre-flight. A failed count is
 | lists that can grow but aren't virtualized | 0 |
 | full-screen spinners for partial updates | 0 |
 | invented content without `[TODO]` | 0 |
+| screens or sections whose composition was copied from the default recipe, the design site or another project without a reason from the direction | 0 |
 | with references: overrides of the reference's colors, typography, logo or radius scale | 0 |
 | with references: Agustín's touch details present | 3 to 6 |
 
 ## Definition of done, per screen
 
 - [ ] Studied real screens of this type and can name the pattern adopted.
+- [ ] Built from a written direction that only fits this product; it doesn't look like the design site or a previous project.
 - [ ] Navigation decided: what it is, what back does, and one-way doors can't be re-entered.
 - [ ] The visual base is respected. With references: their identity is intact and 3 to 6 touch details are present. Without them: agustinoberg-design's laws pass and its visual pre-flight is clean.
 - [ ] Light and dark verified on the running app.

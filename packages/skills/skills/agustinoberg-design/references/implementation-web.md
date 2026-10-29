@@ -85,9 +85,9 @@ The bar's blur fades out 36 px below it, so content dissolves instead of being c
 }
 ```
 
-Nav layout:
+Default nav layout (one option; the spec's section 4, "Range", lets each project pick another shape, such as a floating pill or a side index):
 - Wordmark on the left.
-- Lowercase links (14 px) on the right.
+- Links (14 px, starting with a capital: Work, About) on the right.
 - A 40 px hairline (`width: 40px; height: 1px; background: var(--fg-3)`) before the last link or the CTA pill.
 
 ## 4. Progressive blur on a scroll container
