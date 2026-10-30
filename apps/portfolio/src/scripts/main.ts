@@ -71,3 +71,18 @@ if (!("IntersectionObserver" in window) || reduceMotion.matches) {
   );
   lines.forEach((l) => io.observe(l));
 }
+
+/* ---------- rise by mass: project stages arrive once, slower than small things ---------- */
+const risers = document.querySelectorAll<HTMLElement>(".rise-in");
+if ("IntersectionObserver" in window && !reduceMotion.matches && risers.length) {
+  root.classList.add("rise-ready");
+  const rio = new IntersectionObserver(
+    (entries) => entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      en.target.classList.add("in");
+      rio.unobserve(en.target);
+    }),
+    { rootMargin: "0px 0px -12% 0px" }
+  );
+  risers.forEach((el) => rio.observe(el));
+}

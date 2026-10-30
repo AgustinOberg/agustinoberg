@@ -6,7 +6,7 @@
 
 This is the layer that matters most. None of them stands out alone. Together they make the difference.
 - Outside of glass, blur never goes above 10 px.
-- No micro-animation lasts longer than 420 ms (except loading and live loops).
+- No micro-animation lasts longer than 420 ms (except loading and live loops). Big things are not micro: headlines reveal in 800 ms and stages rise in 800 ms.
 
 | pattern | where | spec | why |
 |---|---|---|---|
@@ -24,6 +24,7 @@ This is the layer that matters most. None of them stands out alone. Together the
 | **Elastic switch** | toggles | The thumb stretches from 28 to 36 on press. It travels in 240 ms spring. | It feels soft under the finger. |
 | **Live dot** | live, pending, recording | The ring scales 1 → 2.6 and its opacity goes from 0.55 to 0. 1.6 s ease-out, looping only while the state lasts. | "It's happening" without asking for attention. |
 | **Growing underline** | links | 1 px line that grows from left to right in 240 ms ease-out. | Minimal hover feedback. |
+| **Rise by mass** | stages, images and gallery tiles entering on scroll | y 32 → 0 and opacity 0 → 1 in 800 ms ease-out. No blur, no bounce, once per element. Class `.rise-in`. | A chip snaps; a stage arrives. Speed that matches size reads as weight. |
 
 ---
 
@@ -35,6 +36,7 @@ This is the layer that matters most. None of them stands out alone. Together the
 3. **Nothing appears out of nowhere:** things enter from where they originate.
 4. **One thing at a time:** stagger 120 ms between lines, 50 ms between items (cap of 6) and 30 ms between words.
 5. **Text doesn't dance:** it reveals and stays still.
+6. **Weight sets the speed:** small things move in 120–240 ms, components in 420, stages and images in 800. The bigger it is, the further and slower it travels, never with a bounce.
 
 ### Curves
 - `ease-out` `cubic-bezier(.22, 1, .36, 1)`: entrances, responses and reveals.
@@ -48,6 +50,7 @@ This is the layer that matters most. None of them stands out alone. Together the
 - `dur-3` 420: open and morphs.
 - `dur-count` 600: numbers.
 - `dur-4` 800: headlines.
+- `dur-rise` 800: stages and images rising into view (travel `lift-lg` 32 px).
 
 ### Catalog
 | pattern | spec |

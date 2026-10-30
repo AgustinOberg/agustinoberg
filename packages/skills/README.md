@@ -7,7 +7,7 @@ Agent skills by agustín oberg, distributed through [skills.sh](https://skills.s
 | skill | what it answers | use it for |
 |---|---|---|
 | [`agustinoberg-design`](skills/agustinoberg-design/SKILL.md) | What my design is, exactly. | Anything that must look, move and read like I designed it: screens, components, sites, decks, Dribbble shots. Includes tokens (CSS + React Native), code for every signature pattern and a visual pre-flight. |
-| [`agustinoberg-product`](skills/agustinoberg-product/SKILL.md) | How to build a product well. | Whole apps, sites and flows. Design references lead the visuals when they exist, with my touch on top; otherwise it uses my design. Adds study-first research, navigation grammar, every state, the motion frequency gate and a verification loop. Loads `agustinoberg-design`. |
+| [`agustinoberg-product`](skills/agustinoberg-product/SKILL.md) | How my studio builds a product. | Whole apps, sites and flows, worked like a design agency: brief, research on real products, 2–3 directions built from the product, a scored critique and the delivery. The client's identity leads; it adds my craft and 3–6 signature touches, and my house style only on request. Adds navigation grammar, every state, the motion frequency gate and a verification loop. Loads `agustinoberg-design`. |
 
 ## Install
 

@@ -86,11 +86,18 @@ img, svg { max-width: 100%; }
 .hero { padding-block: var(--s-9) var(--s-8); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-6); align-items: end; }
 .hero .headline { font-size: clamp(30px, 4.4vw, 48px); line-height: 1.12; letter-spacing: var(--tracking-display); max-width: 21ch; }
 .ctas { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-5); }
+.hero__side { display: grid; justify-items: end; gap: var(--s-4); }
+/* the apps as objects: real icons, tilted like stickers, each one a link to its project */
+.hero__apps { display: flex; padding-left: 14px; }
+.hero__app { display: block; width: clamp(64px, 6.4vw, 88px); margin-left: -14px; transform: rotate(var(--r, 0deg)); filter: drop-shadow(0 14px 14px rgba(0, 0, 0, 0.16)); transition: transform var(--dur-3) var(--ease-out); }
+.hero__app img { display: block; width: 100%; height: auto; aspect-ratio: 1; border-radius: 22%; background: var(--surface-1); box-shadow: inset 0 0 0 1px var(--line); }
+.hero__app:hover, .hero__app:focus-visible { position: relative; z-index: 1; transform: rotate(0deg) translateY(-6px); }
+.hero__note { margin-top: -6px; font-size: 24px; }
 .hero__meta { margin: 0; display: grid; gap: 2px; text-align: right; font-size: var(--text-sm); color: var(--fg-2); }
 .hero__meta dd { margin: 0; }
 .hero__meta .label { color: var(--fg-3); margin-top: var(--s-3); }
 .hero__meta .label:first-child { margin-top: 0; }
-@media (max-width: 760px) { .hero { grid-template-columns: minmax(0, 1fr); padding-block: var(--s-8) var(--s-7); } .hero__meta { text-align: left; } }
+@media (max-width: 760px) { .hero { grid-template-columns: minmax(0, 1fr); padding-block: var(--s-8) var(--s-7); } .hero__side { justify-items: start; } .hero__meta { text-align: left; } }
 
 /* ---------- numbers: the reason people should care ---------- */
 .numbers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-5); padding-block: var(--s-6) 0; border-top: 1px solid var(--line); }
@@ -161,6 +168,11 @@ img, svg { max-width: 100%; }
 }
 .project__object .contact-shadow { margin-top: var(--s-3); }
 .project:hover .project__icon { transform: translateY(-4px); }
+
+/* real screens telling a flow: same device and scale in every tile */
+.project__screens { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; gap: clamp(10px, 2.4vw, 28px); }
+.device { width: clamp(96px, 15vw, 200px); padding: clamp(3px, 0.4vw, 6px); border-radius: clamp(18px, 2.6vw, 34px); background: linear-gradient(150deg, #48484a 0%, #1c1c1e 14%, #0a0a0b 50%, #1c1c1e 86%, #48484a 100%); box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.55), 0 12px 24px -12px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.1); }
+.device img { display: block; width: 100%; height: auto; border-radius: clamp(15px, 2.2vw, 28px); }
 
 .project__badge {
   position: absolute;
@@ -251,6 +263,7 @@ img, svg { max-width: 100%; }
   text-align: center;
 }
 .about__photo { padding: 0; overflow: hidden; }
+.about__story { max-width: 62ch; }
 .about__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 42% 40%; }
 @media (max-width: 760px) { .about__intro { grid-template-columns: minmax(0, 1fr); } .about__photo { max-width: 280px; } }
 

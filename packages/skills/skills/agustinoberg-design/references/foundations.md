@@ -12,14 +12,15 @@ Both modes are first class. By default, follow the system. The person can choose
 | cards (`surface-1`) | #FFFFFF + soft shadow | #111111 + 1 px inner light |
 | inside cards (`surface-2`) | #F0F0F0 | #1F1F1F |
 | opaque sheet (`sheet-bg`) | #FFFFFF | #1F1F1F |
-| text (`fg` / `fg-2` / `fg-3`) | #0A0A0A / #6B6B6B / #A1A1A1 | #FFFFFF / #8F8F8F / #5C5C5C |
+| text (`fg` / `fg-2` / `fg-3`) | #0A0A0A / #6B6B6B / #A1A1A1 | #FAFAFA / #8F8F8F / #5C5C5C |
 | secondary button (`btn-2`) | #E6E6E6 | #1F1F1F |
 | glass (`glass`) | white 68% | white 12% |
 | hairline (`line`) | black 7% | white 8% |
 | separation | shadow | surface step + hairline |
 | atmospheres | pastel with saturated glow | deep with bright glow |
 | grain | 5% | 12% |
-| device stage | #E8E8E8 | #EDEDED (the light stage stays) |
+| photo tint (`.tinted`) | 14% of the photo's color over `bg` | 30% over black |
+| device stage (`stage`) | #E8E8E8 | #111111 (tonal: one step above `bg`) |
 
 **Always:**
 - Design both modes in parallel.
@@ -38,7 +39,7 @@ Both modes are first class. By default, follow the system. The person can choose
 ## 6. Color
 
 ### Mono scale (same in both modes)
-black #000000 · ink-950 #0A0A0A · ink-900 #111111 · ink-800 #1F1F1F · ink-700 #2B2B2B · ink-600 #3D3D3D · ink-500 #5C5C5C · ink-400 #8F8F8F · ink-300 #B8B8B8 · ink-200 #D9D9D9 · ink-150 #E6E6E6 · ink-100 #EDEDED · ink-50 #F4F4F4 · white #FFFFFF
+black #000000 · ink-950 #0A0A0A · ink-900 #111111 · ink-800 #1F1F1F · ink-700 #2B2B2B · ink-600 #3D3D3D · ink-500 #5C5C5C · ink-400 #8F8F8F · ink-300 #B8B8B8 · ink-200 #D9D9D9 · ink-150 #E6E6E6 · ink-100 #EDEDED · ink-50 #F4F4F4 · ink-25 #FAFAFA · white #FFFFFF
 
 ### Semantic (states only, never decoration)
 positive #34C759 · warning #FF9F0A · critical #FF453A
@@ -55,7 +56,7 @@ Built as a radial gradient from the top (`a-2` → `a-1` → `a-0`), with a cent
 | iris | creativity, AI, talent, night | #0B0719 / #231552 / #6D45E0 / #B9A4FF | #F6F4FD / #E9E3FB / #CBBDF6 / #8C6CF0 |
 | flame | intense sport, food, urgency, heat | #140802 / #4A1C08 / #D9531A / #FF9F6B | #FCF5F1 / #F9E3D7 / #F3BC9F / #F2753A |
 
-The hex values for the dark core and the glass come from the CSS of figura.digital. The atmosphere values are my own, approximated from the references.
+The hex values for the dark core and the glass come from the CSS of figura.digital, and the soft white and the tonal stage from revmp.studio. The atmosphere values are my own, approximated from the references.
 
 ### Color dial (one per project)
 The references aren't black and white. Their frames are quiet, but the products inside are full of color: photos, 3D objects, category colors, and sometimes a whole screen in the brand's hue. Each project sets how loud its lead hue is.
@@ -69,6 +70,14 @@ The references aren't black and white. Their frames are quiet, but the products 
 
 At any dial, the generic primary button stays `fg` on `bg`, and the lead hue is the only brand hue. In CSS, `.accent-{atmosphere}` on a container gives `--accent`, `--accent-1` and `--accent-2`; `.surface--tint` and `.surface--accent` paint a surface. On `.surface--accent`, all text is on-accent (#0A0A0A) and hierarchy comes from size and weight.
 
+**Color picks the recommended option.** When there are options (plans, tiers, sizes), the lead hue paints only the one you recommend, as a soft gradient inside its own ramp (`.surface--featured`). The others stay on `surface-1`. Color says "this one" without a badge. It works at any dial, even 0.
+
+### Companion tones (from the product's world)
+A lead hue alone looks sterile; a product's world is never one color. Take 2–4 companion tones from the content: the city, the food, the sport, the material. A Lisbon guide: azulejo blue, terracotta, sand. A running app: track orange, grass, sky. A plant app: leaf, soil, terracotta pot.
+- **Where:** illustrations, the backgrounds of objects and collectibles, image placeholders, tags, category tiles and tinted cards.
+- **How:** softer than the lead hue. In light, pastel (lightness 85–92%); in dark, deep (lightness 15–25%), with the content on top in full color.
+- **Never:** on buttons, nav, tabs or any chrome; never as a second lead. If you can't name the thing in the world a tone comes from, drop it.
+
 ### Content color (always allowed)
 Photos, video, 3D and brand objects, avatars, illustrations, maps and app icons keep their full color at every dial. They don't count as a second hue. Frame them with mono so they glow; never tint or desaturate them to match.
 
@@ -79,8 +88,10 @@ When data has categories (health metrics, chart series, tags, map layers, tee co
 
 ## 7. Typography
 
-- **Inter Display** (Google Fonts: Inter with the `opsz` axis 14–32) for everything.
-- **Geist Mono** only for labels.
+- **Inter Display** (Google Fonts: Inter with the `opsz` axis 14–32) for everything in my brand, and by default.
+- **Geist Mono** only for technical labels: specs, metadata and my brand's section labels. Never as a product's section headers.
+- **Caveat** (Google Fonts) only for the hand accent below. `[TODO: replace with my own handwriting]`
+- **Type voice (products):** a product may speak in its platform's font (SF Pro or SF Pro Rounded on iOS, Roboto Flex on Android) or use one display face that comes from its content, for titles only: rounded for friendly and social, an editorial serif for travel and food, a condensed face for sport. Body text stays a neutral sans. Two-tone headlines, big tabular numbers and the rest of the hand still apply in any voice.
 
 | role | size / weight | tracking | color |
 |---|---|---|---|
@@ -88,17 +99,21 @@ When data has categories (health metrics, chart series, tags, map layers, tee co
 | h1 | 40 / 600 | −3% | fg |
 | h2 | 28 / 600 | −1.5% to −3% | fg + fg-2 |
 | h3 | 22 / 600 | −1.5% | fg |
-| body | 16 / 400, line height 1.55, ≤ 62 characters | 0 | fg-2 |
+| section header (product) | 17–22 / 600, sentence case | −1% | fg |
+| body | 16 / 400, line height 1.55, ≤ 62 characters (40–50 when centered) | 0 | fg-2 |
 | small | 14 / 500 | 0 | fg-2 |
 | label | Geist Mono 11 / 400, uppercase | +6% | fg-2 or fg-3 |
+| hand | Caveat 20–28 / 500 | 0 | fg or fg-2 |
 | numbers | 64–128 / 600, tabular-nums | −4.5% | fg |
 
 Rules:
-- Normal capitalization everywhere. Names (people, projects, apps, places) are written the way their owners write them: Agustín Oberg, Mi Huerta, TraiNow. Nav links, buttons and tabs start with a capital (Work, About, Book a call). Headlines, shot titles, posts and copy are in sentence case. Nothing is lowercased for style.
+- Normal capitalization everywhere. Names (people, projects, apps, places) are written the way their owners write them: Agustín Oberg, Mi Huerta, TraiNow. Nav links, buttons and tabs start with a capital (Work, About, Book a call). Headlines, shot titles, posts and copy are in sentence case. Nothing is lowercased for style, and nothing is in Title Case For Style.
 - Uppercase is only for mono labels, and the optional serif accent below.
 - `→` for flows: `Onboarding → first payment`.
 - `®` only if the brand is registered.
-- Optional editorial accent: one line in uppercase serif for the name of a brand or collection (seen in the references). One per screen at most.
+- **Two-tone paragraphs:** in longer copy, the narrative sits in `fg-2` and the turning points in `fg` (class `.story` with `.beat`). About one line in four turns white; more than that and nothing stands out.
+- **The hand accent:** a handwritten note, like a designer annotating the work: "Before", "After", "Step 1", "this part moves". Caveat 500, in `fg` inside a `btn-2` pill (class `.note`) or loose in `fg-2` next to what it points at, optionally rotated −3°. One or two per page. Never in product chrome, never on buttons, never a paragraph.
+- Optional editorial accent: one line in uppercase serif for the name of a brand or collection (seen in the references). One per screen at most, and never on the same screen as the hand accent.
 
 ---
 
@@ -120,3 +135,4 @@ Rules:
 - **Web nav, fixed:** whatever the shape, a nav that stays on screen gets a progressive blur that fades out 36 px below it, links at 14 px with a capital letter, and the theme switcher.
 - **Web nav, default** (one option): sticky bar, wordmark on the left, links on the right, and a 40 px line before the last link or CTA. Other shapes: a floating pill, a side index, or no nav on a single page.
 - **Cards:** `surface-1`, radius 24, padding 24, `elev-1` + hairline. Use them only where an object needs to be separated. Not everything is a card.
+- **Series tiles:** 6:5, `stage` background, radius 8, gap 24 (16 on mobile). Class `.series`.

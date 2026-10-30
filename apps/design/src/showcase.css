@@ -359,3 +359,124 @@
 .case .case-meta h3 span { color: var(--fg-2); }
 .case .case-meta p { margin: 0; color: var(--fg-2); font-size: var(--text-sm); max-width: 52ch; }
 .case .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ==========================================================================
+   life: small devices for uniform series tiles (3 to a 6:5 tile, like a gallery)
+   ========================================================================== */
+.sc-device.xs {
+  --w: 150px;
+  --k: 0.35897; /* (w - 10) / 390 */
+  padding: 5px;
+  border-radius: calc(55px * var(--k) + 5px);
+  box-shadow:
+    0 30px 50px -22px rgba(0, 0, 0, 0.5),
+    0 10px 18px -10px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 0 2px #000;
+}
+.sc-device.xs::before, .sc-device.xs::after { width: 2px; }
+.sc-device.xs .sc-screen { width: calc(var(--w) - 10px); height: calc((var(--w) - 10px) * 2.16410); }
+@media (max-width: 520px) { .sc-device.xs { --w: 116px; --k: 0.27179; } }
+
+/* shared: emoji faces on companion-tone circles */
+.sc-ui .face { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; flex: none; background: var(--f); font-size: 26px; line-height: 1; }
+
+/* ---------- before: what the rules alone produced (the AI tells, on purpose) ---------- */
+.sc-ai { background: #f2f2f6; color: #0a0a0a; }
+.sc-ai .tools { position: absolute; top: 58px; right: 18px; display: flex; height: 54px; border-radius: 999px; background: #fff; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); }
+.sc-ai .tools span { width: 58px; display: grid; place-items: center; }
+.sc-ai .tools span + span { background: #e9e9ee; border-radius: 999px; }
+.sc-ai h4 { position: absolute; top: 126px; left: 24px; margin: 0; font-size: 46px; font-weight: 700; letter-spacing: -0.02em; }
+.sc-ai .lbl { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #7a7a80; }
+.sc-ai .lbl.blue { color: #4a6fd8; }
+.sc-ai .row1 { position: absolute; top: 212px; left: 24px; right: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 17px; color: #6b6b70; }
+.sc-ai .card { position: absolute; top: 246px; left: 18px; right: 18px; height: 236px; border-radius: 30px; padding: 18px 20px; background: radial-gradient(100% 90% at 100% 0%, #cfc0f5 0%, transparent 60%), linear-gradient(160deg, #f6f4fc, #e4dbf8); }
+.sc-ai .pill { display: inline-block; padding: 8px 14px; border-radius: 999px; background: #fff; font-size: 17px; }
+.sc-ai .foot { position: absolute; left: 20px; right: 20px; bottom: 18px; display: flex; justify-content: space-between; align-items: flex-end; }
+.sc-ai .foot b { display: block; font-size: 42px; font-weight: 600; letter-spacing: -0.02em; }
+.sc-ai .days { text-align: right; color: #6b6b70; font-size: 16px; }
+.sc-ai .days b { font-size: 64px; color: #0a0a0a; line-height: 1; }
+.sc-ai .ready { position: absolute; top: 498px; left: 18px; right: 18px; height: 132px; border-radius: 26px; background: #fff; padding: 18px 20px; }
+.sc-ai .r1 { display: flex; justify-content: space-between; font-size: 19px; }
+.sc-ai .r1 b { font-weight: 600; }
+.sc-ai .r1 span { color: #8a8a90; }
+.sc-ai .ready i { display: block; height: 7px; border-radius: 4px; margin: 14px 0; background: linear-gradient(90deg, #4a6fd8 17%, #e6e6ea 17%); }
+.sc-ai .ready p { margin-top: 4px; font-size: 17px; }
+.sc-ai .tiles { position: absolute; top: 646px; left: 18px; right: 18px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.sc-ai .tiles span { height: 96px; border-radius: 20px; background: #fff; display: grid; place-items: center; align-content: center; gap: 8px; font-size: 14px; }
+.sc-ai .tabs { position: absolute; left: 18px; right: 18px; bottom: 24px; height: 64px; border-radius: 999px; background: rgba(255, 255, 255, 0.92); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; text-align: center; font-size: 13px; color: #333; }
+.sc-ai .tabs .on { color: #3b6fe0; }
+
+/* ---------- after: wayfare home (its own warm identity, SF Pro + an editorial serif for places) ---------- */
+.sc-way, .sc-stub { background: #f7f2ea; color: #1b1712; font-family: -apple-system, "SF Pro Text", system-ui, sans-serif; letter-spacing: -0.015em; }
+.sc-way .head { position: absolute; top: 60px; left: 20px; right: 20px; display: flex; align-items: center; gap: 12px; }
+.sc-way .head b { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; }
+.sc-way .bell { margin-left: auto; width: 44px; height: 44px; border-radius: 50%; background: #fff; display: grid; place-items: center; box-shadow: 0 4px 14px rgba(60, 40, 20, 0.08); }
+.sc-way .h { position: absolute; top: 128px; left: 20px; right: 20px; display: flex; justify-content: space-between; align-items: center; }
+.sc-way .h b { font-size: 22px; font-weight: 700; letter-spacing: -0.025em; }
+.sc-way .h .i { color: #9a8f80; }
+.sc-way .h.h2 { top: 540px; }
+.sc-way .trips { position: absolute; top: 168px; left: 20px; display: flex; gap: 12px; }
+.sc-way .trip { position: relative; width: 286px; height: 352px; border-radius: 26px; overflow: hidden; flex: none; box-shadow: 0 18px 30px -18px rgba(80, 40, 10, 0.45); }
+.sc-way .trip .ph { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sc-way .trip::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(30, 15, 5, 0.55)); }
+.sc-way .count { position: absolute; top: 14px; left: 14px; z-index: 1; display: flex; align-items: baseline; gap: 4px; padding: 6px 14px; border-radius: 999px; color: #1b1712; font-size: 14px; font-weight: 600; --glass: rgba(255, 255, 255, 0.72); --glass-edge: rgba(255, 255, 255, 0.9); --line: transparent; }
+.sc-way .count b { font-size: 26px; font-weight: 700; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.sc-way .txt { position: absolute; left: 18px; bottom: 16px; z-index: 1; display: grid; color: #fff; }
+.sc-way .txt b { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 42px; line-height: 1; letter-spacing: -0.01em; }
+.sc-way .txt small { margin-top: 4px; font-size: 14px; opacity: 0.85; }
+.sc-way .faces { position: absolute; right: 14px; bottom: 16px; z-index: 1; display: flex; }
+.sc-way .faces span { width: 34px; height: 34px; margin-left: -10px; border-radius: 50%; border: 2px solid #fff; display: grid; place-items: center; background: var(--f); font-size: 19px; line-height: 1; }
+.sc-way .open { position: absolute; top: 580px; left: 20px; right: 20px; height: 128px; padding: 12px; display: flex; gap: 14px; border-radius: 24px; background: #fff; box-shadow: 0 10px 24px -16px rgba(80, 40, 10, 0.35); }
+.sc-way .thumb { width: 104px; height: 104px; flex: none; border-radius: 18px; overflow: hidden; }
+.sc-way .thumb svg, .sc-stub .thumb svg, .sc-stub .behind svg { display: block; width: 100%; height: 100%; }
+.sc-way .open > div { display: grid; align-content: center; gap: 4px; }
+.sc-way .open b { font-size: 17px; font-weight: 600; }
+.sc-way .open small { font-size: 13px; line-height: 1.3; color: #7d7366; }
+.sc-way .spots { justify-self: start; margin-top: 4px; padding: 4px 10px; border-radius: 999px; background: #dfe7fa; color: #2f5bd6; font-size: 12px; font-weight: 600; }
+.sc-way .tabbar { position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%); display: flex; gap: 6px; padding: 6px; border-radius: 999px; --glass: rgba(255, 255, 255, 0.72); }
+.sc-way .tabbar span { width: 58px; height: 48px; border-radius: 999px; display: grid; place-items: center; color: #8a7f70; }
+.sc-way .tabbar .on { background: #1b1712; color: #fff; }
+
+/* ---------- wayfare · lisbon: the screen takes the photo's tint ---------- */
+.sc-lis { background: color-mix(in srgb, #c8643b 30%, #000); color: #fafafa; }
+.sc-lis .photo { position: absolute; top: 0; left: 0; width: 390px; height: 470px; -webkit-mask-image: linear-gradient(#000 62%, transparent); mask-image: linear-gradient(#000 62%, transparent); }
+.sc-lis::before { content: ""; position: absolute; z-index: 1; inset: 0 0 auto; height: 150px; background: linear-gradient(rgba(40, 18, 8, 0.38), transparent); }
+.sc-lis .bar { position: absolute; z-index: 2; top: 58px; left: 16px; right: 16px; display: flex; justify-content: space-between; }
+.sc-lis .bar .sc-iconbtn { color: #fff; --glass: rgba(0, 0, 0, 0.22); --glass-edge: rgba(255, 255, 255, 0.18); --line: transparent; }
+.sc-lis .body { position: absolute; top: 392px; left: 24px; right: 24px; display: grid; }
+.sc-lis .name { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 58px; line-height: 1; letter-spacing: -0.01em; }
+.sc-lis .body > small { margin-top: 6px; font-size: 15px; color: rgba(255, 255, 255, 0.66); }
+.sc-lis .price { margin-top: 22px; font-size: 60px; }
+.sc-lis .price span { margin-left: 6px; font-family: var(--font-text); font-size: 17px; font-weight: 500; letter-spacing: 0; color: rgba(255, 255, 255, 0.6); }
+.sc-lis .stat-trio { margin-top: 24px; --line-strong: rgba(255, 255, 255, 0.16); }
+.sc-lis .stat-trio small { font-size: 13px; color: rgba(255, 255, 255, 0.6); }
+.sc-lis .likes { display: flex; gap: 8px; margin-top: 24px; }
+.sc-lis .likes span { padding: 9px 14px; border-radius: 999px; background: rgba(255, 255, 255, 0.1); font-size: 15px; }
+.sc-lis .cta { position: absolute; left: 20px; right: 20px; bottom: 34px; height: 58px; border-radius: 999px; display: grid; place-items: center; background: #8fb4ff; color: #0a0a0a; font-weight: 600; font-size: 18px; }
+
+/* ---------- wayfare · trip complete: the earned object over the receding screen ---------- */
+.sc-stub .behind { position: absolute; inset: 0; filter: blur(7px); transform: scale(0.955); transform-origin: 50% 0; opacity: 0.7; }
+.sc-stub .b1, .sc-stub .b2 { position: absolute; top: 168px; width: 286px; height: 352px; border-radius: 26px; overflow: hidden; }
+.sc-stub .b1 { left: 20px; }
+.sc-stub .b2 { left: 318px; }
+.sc-stub .b3 { position: absolute; top: 60px; left: 20px; width: 180px; height: 44px; border-radius: 22px; background: #e6dccd; }
+.sc-stub .b4 { position: absolute; top: 580px; left: 20px; right: 20px; height: 128px; border-radius: 24px; background: #fff; }
+.sc-stub .dim { position: absolute; inset: 0; background: rgba(40, 25, 10, 0.22); }
+.sc-stub .sheet { position: absolute; left: 10px; right: 10px; bottom: 10px; height: 560px; padding: 44px 24px 0; overflow: hidden; display: grid; justify-items: center; align-content: start; border-radius: 45px; background: #fff; box-shadow: 0 -20px 50px -20px rgba(0, 0, 0, 0.35); }
+.sc-stub .glow { position: absolute; top: -40px; left: 50%; width: 420px; height: 340px; margin-left: -210px; background: radial-gradient(closest-side, rgba(91, 134, 232, 0.32), transparent); }
+.sc-stub .ticket { position: relative; width: 270px; height: 150px; margin-top: 6px; display: flex; border-radius: 18px; background: #fffaf2; transform: rotate(-5deg); box-shadow: 0 18px 30px -16px rgba(60, 40, 20, 0.45), inset 0 0 0 1px rgba(60, 40, 20, 0.08); }
+.sc-stub .ticket .thumb { width: 104px; height: 100%; flex: none; border-radius: 18px 0 0 18px; overflow: hidden; }
+.sc-stub .tear { position: relative; width: 0; margin: 12px 0; border-left: 2px dashed rgba(60, 40, 20, 0.2); }
+.sc-stub .tear::before, .sc-stub .tear::after { content: ""; position: absolute; left: -10px; width: 18px; height: 18px; border-radius: 50%; background: #fff; }
+.sc-stub .tear::before { top: -21px; }
+.sc-stub .tear::after { bottom: -21px; }
+.sc-stub .t { display: grid; align-content: center; gap: 2px; padding: 0 18px; }
+.sc-stub .t span { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.1em; color: #3d6fb6; }
+.sc-stub .t b { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1.05; }
+.sc-stub .t small { font-size: 13px; color: #7d7366; }
+.sc-stub .cshadow { width: 220px; height: 16px; margin-top: 18px; border-radius: 50%; background: radial-gradient(closest-side, rgba(0, 0, 0, 0.22), transparent); filter: blur(4px); }
+.sc-stub .title { position: relative; margin-top: 26px; text-align: center; font-family: var(--font-display); font-size: 26px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.25; }
+.sc-stub .title span { display: block; color: #8a7f70; }
+.sc-stub .sc-cta { position: absolute; left: 24px; right: 24px; bottom: 74px; background: #1b1712; color: #fff; }
+.sc-stub .later { position: absolute; left: 0; right: 0; bottom: 30px; text-align: center; font-size: 17px; font-weight: 500; color: #8a7f70; }

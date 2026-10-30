@@ -23,15 +23,16 @@ function aiFiles(siteUrl) {
   const specEn = read("brand.md");
   const tokensJson = read("tokens.json");
 
-  const llms = `# agustín oberg · design language
+  const llms = `# Agustín Oberg · design language
 
-> The personal design language of agustín oberg, product designer. Use it to design anything in my style: mobile apps, websites, portfolios, decks or Dribbble shots. It covers philosophy, decisions with reasons, if/then rules, light and dark tokens, typography, components, micro-blurs, motion and voice. Available in English and Spanish.
+> The design language of Agustín Oberg, who works like a design studio. Use it to design anything with his hand: mobile apps, websites, portfolios, decks or Dribbble shots. It covers philosophy, decisions with reasons, if/then rules, life (real content, so nothing looks AI-made), light and dark tokens, typography, components, micro-blurs, motion and voice. Available in English and Spanish.
 
 How to use it:
 1. Read the spec. English is primary; a Spanish translation exists.
-2. For a product (for example a travel app), follow "Apply it to any project". For my portfolio, follow "Recipe: portfolio".
-3. Take every value from the tokens. Don't hardcode colors, radii, blurs or timings.
-4. Never invent facts about me (projects, clients, metrics, bio). Ask, or use placeholders marked [TODO].
+2. Read section 4, "Range and life", before the first screen: gather real content first.
+3. For someone else's product (for example a travel app), follow "Work like a studio": the product gets its own identity, with my craft and a few signature touches. My own look (the house style) is only for my brand or when asked. For my portfolio, follow "Recipe: portfolio".
+4. Take every value from the tokens. Don't hardcode colors, radii, blurs or timings.
+5. Never invent facts about me (projects, clients, metrics, bio). Ask, or use placeholders marked [TODO].
 If the English spec and the Spanish translation ever differ, English (brand.md) wins.
 
 ## Spec

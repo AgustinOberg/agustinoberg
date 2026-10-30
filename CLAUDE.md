@@ -19,7 +19,8 @@ More apps will come (portfolio…). Each new app goes in `apps/<name>` and depen
 
 - Use the skills in `packages/skills/skills`:
   - `agustinoberg-design` for what the design is.
-  - `agustinoberg-product` for building a product. With it, references lead when they exist, and my touch is layered on top.
+  - `agustinoberg-product` for building a product. It works like a design studio: the product gets its own identity (the client's brand, or directions proposed from the product), with my craft and a few signature touches on top. My house style is only for my own brand or when asked.
+- Every screen needs real content (photos, people, places, objects or colored data). See "Life" in `brand.md` section 4: it's what keeps the work from looking AI-made.
 - The source of truth is `packages/brand/brand.md`: philosophy, decisions, if/then rules, light and dark mode, micro-blurs, motion and voice.
 - Import `@agustinoberg/brand/tokens.css` (or read `tokens.json`) for every value. Don't hardcode colors, radii, blurs or timings that exist as tokens.
 - Build light and dark mode together, and respect `prefers-reduced-motion`.

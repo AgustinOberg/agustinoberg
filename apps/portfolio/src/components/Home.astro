@@ -6,6 +6,9 @@ import { clients, copy, experience, links, projects, type Lang } from "../data/c
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = copy[lang];
+// Real app icons as objects: the first thing alive on the page.
+const heroApps = projects.filter((p) => p.icon);
+const tilt = [-8, 5, -3, 7];
 ---
 <a class="btn btn--primary skip" href="#main">{t.skip}</a>
 <Nav lang={lang} />
@@ -24,9 +27,19 @@ const t = copy[lang];
         <a class="btn btn--secondary btn--lg" href="#contact">{t.hero.secondary}</a>
       </div>
     </div>
-    <dl class="hero__meta">
-      {t.hero.meta.map(([k, v]) => (<><dt class="label">{k}</dt><dd>{v}</dd></>))}
-    </dl>
+    <div class="hero__side">
+      <nav class="hero__apps" aria-label={t.hero.appsLabel}>
+        {heroApps.map((p, i) => (
+          <a class="hero__app" href={`#${p.id}`} style={`--r:${tilt[i % tilt.length]}deg`}>
+            <img src={p.icon} alt={p.name} width="88" height="88" decoding="async" referrerpolicy="no-referrer" />
+          </a>
+        ))}
+      </nav>
+      <span class="hand hand--tilt hero__note" aria-hidden="true">{t.hero.note} ↑</span>
+      <dl class="hero__meta">
+        {t.hero.meta.map(([k, v]) => (<><dt class="label">{k}</dt><dd>{v}</dd></>))}
+      </dl>
+    </div>
   </section>
 
   <section class="wrap numbers" aria-label={t.numbers.label}>
@@ -91,7 +104,9 @@ const t = copy[lang];
         </figure>
         <div>
           <h2><span>{t.about.h1}</span> <span class="muted">{t.about.h2}</span></h2>
-          {t.about.body.map((p) => <p class="lede">{p}</p>)}
+          <div class="story about__story">
+            {t.about.body.map((p, i, all) => <p class={i === all.length - 1 ? "beat" : undefined}>{p}</p>)}
+          </div>
         </div>
       </div>
 

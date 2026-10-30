@@ -16,3 +16,8 @@
 - **Toast:** `fg`/`bg` pill, bottom center, 1600 ms.
 - **Island pill:** black pill, 36 px tall, that grows into a card (radius 32) for live activities.
 - **Stage:** `stage` panel, radius 8, device centered.
+- **Featured option:** among plans or tiers, the recommended one is `.surface--featured` with on-accent text and an `fg`/`bg` pill. The rest sit on `surface-1`.
+- **Stat trio:** three values in a row (`.stat-trio`): label 12/500 in `fg-2` above, value 20–24/600 tabular below, 1 px hairlines between.
+- **Photo card:** a photo filling a radius-24 card, the name and place over a soft bottom scrim, and actions as glass pills inside the photo. Stacked avatars when people are involved.
+- **Reward sheet:** a floating sheet over the receding screen. The earned object sits centered on a soft glow of the lead hue (optional rays at 6%), with a two-tone title, one primary action ("Share", "Claim") and a quiet secondary ("Later").
+- **Note:** the hand accent inside a `btn-2` pill, 44 px tall (`.note`), used as a section label on a page or above before/after tiles.

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>agustín oberg · design language</title>
+<title>Agustín Oberg · design language</title>
 <meta name="description" content="Mi lenguaje de diseño: filosofía, decisiones, modo claro y oscuro, micro-blurs, motion y una spec completa para que cualquier IA diseñe como yo.">
 <meta name="theme-color" content="#f4f4f4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
@@ -14,7 +14,7 @@
 <link rel="alternate" type="application/json" href="%VITE_SITE_URL%/tokens.json" title="Design tokens (JSON)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&family=Geist+Mono:wght@400;500&family=Caveat:wght@500&family=Instrument+Serif&display=swap">
 <link rel="help" type="text/plain" href="%VITE_SITE_URL%/llms.txt" title="Index for AI models">
 <link rel="stylesheet" href="/src/styles.css">
 <script>
@@ -48,6 +48,60 @@
     <symbol id="s-signal" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></symbol>
     <symbol id="s-wifi" viewBox="0 0 16 12"><path d="M8 11.6l2.3-2.7a3.5 3.5 0 0 0-4.6 0zM8 6.3c1.6 0 3.1.6 4.2 1.6l1.4-1.6A8.4 8.4 0 0 0 8 4.1a8.4 8.4 0 0 0-5.6 2.2l1.4 1.6A6.3 6.3 0 0 1 8 6.3zM8 1.4c2.8 0 5.3 1 7.2 2.7L16 2.8A12.5 12.5 0 0 0 8 0 12.5 12.5 0 0 0 0 2.8l.8 1.3A11 11 0 0 1 8 1.4z"/></symbol>
     <symbol id="s-battery" viewBox="0 0 27 12"><rect x="0.5" y="0.5" width="23" height="11" rx="3.5" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="25" y="4" width="1.6" height="4" rx=".8" opacity=".4"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10.5h18M7 15h3"/></symbol>
+    <symbol id="i-chev-right" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V4M8 8l4-4 4 4"/><path d="M6 12v6a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-6"/></symbol>
+    <!-- Illustrated "photos" for the fictional demo apps: one flat poster style, in each place's companion tones. -->
+    <symbol id="ph-lisbon" viewBox="0 0 300 360" preserveAspectRatio="xMidYMid slice">
+      <linearGradient id="g-lis-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f9dcbc"/><stop offset=".75" stop-color="#f0a47d"/></linearGradient>
+      <rect width="300" height="360" fill="url(#g-lis-sky)"/>
+      <circle cx="222" cy="98" r="34" fill="#fde9b6"/>
+      <path d="M0 192 C 50 158 110 148 160 164 S 252 148 300 168 V360 H0Z" fill="#e3966e"/>
+      <path d="M116 152h10v-8h6v8h8v-8h6v8h10v18h-40z" fill="#c97c56"/>
+      <g fill="#f4e4c9"><rect x="2" y="190" width="30" height="40"/><rect x="66" y="184" width="28" height="46"/><rect x="156" y="182" width="30" height="48"/><rect x="222" y="188" width="28" height="42"/></g>
+      <g fill="#9fbbe2"><rect x="34" y="196" width="30" height="34"/><rect x="188" y="192" width="32" height="38"/><rect x="252" y="186" width="30" height="44"/></g>
+      <g fill="#ecc497"><rect x="96" y="192" width="28" height="38"/><rect x="126" y="186" width="28" height="44"/><rect x="284" y="194" width="20" height="36"/></g>
+      <g fill="#c8643b"><path d="M0 190l17-12 17 12z"/><path d="M32 196l17-12 17 12z"/><path d="M64 184l16-12 16 12z"/><path d="M94 192l16-12 16 12z"/><path d="M124 186l16-12 16 12z"/><path d="M154 182l17-12 17 12z"/><path d="M186 192l17-12 17 12z"/><path d="M220 188l16-12 16 12z"/><path d="M250 186l17-12 17 12z"/><path d="M282 194l12-9 12 9z"/></g>
+      <g fill="#f8eedf"><rect x="-4" y="214" width="52" height="50"/><rect x="104" y="208" width="46" height="56"/><rect x="246" y="212" width="58" height="52"/></g>
+      <g fill="#3d6fb6"><rect x="48" y="220" width="56" height="44"/><rect x="200" y="216" width="46" height="48"/></g>
+      <g fill="#e8b98a"><rect x="150" y="218" width="50" height="46"/></g>
+      <g fill="#b9532e"><path d="M-6 214l30-14 30 14z"/><path d="M46 220l30-14 30 14z"/><path d="M102 208l25-13 25 13z"/><path d="M148 218l27-13 27 13z"/><path d="M198 216l25-13 25 13z"/><path d="M244 212l31-14 31 14z"/></g>
+      <g fill="#6b3a26" opacity=".55"><rect x="10" y="226" width="7" height="10" rx="1"/><rect x="28" y="226" width="7" height="10" rx="1"/><rect x="116" y="222" width="7" height="10" rx="1"/><rect x="132" y="222" width="7" height="10" rx="1"/><rect x="262" y="226" width="7" height="10" rx="1"/><rect x="280" y="226" width="7" height="10" rx="1"/><rect x="162" y="232" width="7" height="10" rx="1"/><rect x="180" y="232" width="7" height="10" rx="1"/></g>
+      <g fill="#dbe6f6" opacity=".8"><rect x="58" y="230" width="9" height="11" rx="1"/><rect x="80" y="230" width="9" height="11" rx="1"/><rect x="210" y="228" width="9" height="11" rx="1"/><rect x="228" y="228" width="9" height="11" rx="1"/></g>
+      <rect y="262" width="300" height="34" fill="#d68a62"/>
+      <path d="M0 276h300" stroke="#c57850" stroke-width="2"/>
+      <g transform="translate(122 230)">
+        <path d="M30 2 L50 -22" stroke="#3a2a22" stroke-width="2"/>
+        <rect x="0" y="0" width="104" height="40" rx="9" fill="#f2c230"/>
+        <rect x="0" y="27" width="104" height="5" fill="#d99f1c"/>
+        <g fill="#fff4d6"><rect x="9" y="7" width="15" height="13" rx="3"/><rect x="28" y="7" width="15" height="13" rx="3"/><rect x="47" y="7" width="15" height="13" rx="3"/><rect x="66" y="7" width="15" height="13" rx="3"/><rect x="85" y="7" width="12" height="13" rx="3"/></g>
+        <g fill="#2b2b2b"><circle cx="24" cy="42" r="5"/><circle cx="80" cy="42" r="5"/></g>
+      </g>
+      <rect y="296" width="300" height="64" fill="#3d6fb6"/>
+      <path d="M10 316q12-5 24 0t24 0M150 330q12-5 24 0t24 0M70 346q12-5 24 0t24 0M222 312q12-5 24 0t24 0" fill="none" stroke="#86a8db" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ph-kyoto" viewBox="0 0 300 360" preserveAspectRatio="xMidYMid slice">
+      <rect width="300" height="360" fill="#f4e8d4"/>
+      <circle cx="96" cy="98" r="30" fill="#f2c4a2"/>
+      <path d="M0 192 L58 128 L118 176 L190 106 L300 186 V360 H0Z" fill="#b3c19c"/>
+      <path d="M0 238 C 70 198 140 232 210 206 S 290 216 300 212 V360 H0Z" fill="#7a9566"/>
+      <path d="M0 292 C 80 262 170 302 300 272 V360 H0Z" fill="#55704a"/>
+      <g fill="#d2462e"><rect x="108" y="182" width="84" height="9" rx="3"/><rect x="116" y="194" width="68" height="7" rx="2"/><rect x="124" y="194" width="8" height="66"/><rect x="168" y="194" width="8" height="66"/><rect x="122" y="212" width="56" height="5"/></g>
+      <path d="M138 260h24l10 100h-44z" fill="#e9dcc6"/>
+      <g fill="#8fa676"><circle cx="40" cy="250" r="16"/><circle cx="62" cy="258" r="12"/><circle cx="246" cy="246" r="17"/><circle cx="268" cy="256" r="12"/></g>
+    </symbol>
+    <symbol id="ph-patagonia" viewBox="0 0 300 360" preserveAspectRatio="xMidYMid slice">
+      <rect width="300" height="360" fill="#d3e6ee"/>
+      <path d="M0 232 L68 122 L104 168 L150 58 L190 150 L230 98 L300 212 V360 H0Z" fill="#5d7182"/>
+      <g fill="#f1f5f7"><path d="M150 58 L166 96 L156 90 L148 104 L138 88z"/><path d="M68 122 L82 146 L72 142 L64 152 L58 138z"/><path d="M230 98 L244 122 L234 118 L226 128 L220 114z"/></g>
+      <path d="M0 254 C 60 238 120 256 180 242 S 270 248 300 242 V360 H0Z" fill="#41624a"/>
+      <g fill="#33503b"><path d="M30 262l10-26 10 26z"/><path d="M52 266l9-22 9 22z"/><path d="M226 258l10-26 10 26z"/><path d="M250 262l9-22 9 22z"/></g>
+      <rect y="284" width="300" height="76" fill="#3f81a8"/>
+      <path d="M20 304q12-5 24 0t24 0M160 318q12-5 24 0t24 0M90 338q12-5 24 0t24 0" fill="none" stroke="#86b6d2" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
   </defs>
 </svg>
 <a class="btn btn--primary skip" href="#main">Ir al contenido</a>
@@ -58,6 +112,7 @@
     <div class="nav__right">
       <nav class="nav__links" aria-label="Secciones">
         <a class="link" href="#examples">Ejemplos</a>
+        <a class="link" href="#vida">Vida</a>
         <a class="link" href="#filosofia">Filosofía</a>
         <a class="link" href="#decisiones">Decisiones</a>
         <a class="link" href="#micro">Micro</a>
@@ -92,7 +147,7 @@
     </div>
     <div class="hero__meta">
       <span class="label">design language</span>
-      <span>v2.1 · octubre 2026</span>
+      <span>v3.0 · octubre 2026</span>
       <span class="label">modos</span>
       <span>claro + oscuro</span>
       <span class="label">para IA</span>
@@ -190,10 +245,10 @@
     <span class="label">ejemplos</span>
     <div>
       <h2>Mismo lenguaje, cualquier producto. <span class="muted">Apps ficticias, reglas reales.</span></h2>
-      <p class="lede">Cada pantalla está hecha a tamaño real de iPhone con los tokens y patrones de esta página, y después escalada al marco. Los nombres y datos son inventados; las decisiones no.</p>
+      <p class="lede">Trabajo como un estudio: cada producto tiene su propia identidad, y mi mano se nota en el oficio y en algunos detalles de firma. Cada pantalla está hecha a tamaño real de iPhone con los tokens y patrones de esta página, y después escalada al marco. Los nombres y datos son inventados; las decisiones no.</p>
       <div class="cases">
         <article class="case">
-          <div class="stage "><div class="sc-device " aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-dark sc-closet">
+          <div class="stage rise-in"><div class="sc-device " aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-dark sc-closet">
 <div class="cam"></div><div class="vign"></div>
 <div class="sc-status" style="--sc-status:#fff"><span>9:41</span><span class="r"><svg viewBox="0 0 18 12"><use href="#s-signal"/></svg><svg viewBox="0 0 16 12"><use href="#s-wifi"/></svg><svg viewBox="0 0 27 12"><use href="#s-battery"/></svg></span></div><div class="sc-island"></div>
 <div class="scan"><span class="live"></span>Scanning</div>
@@ -207,7 +262,7 @@
           <div class="case-meta"><h3>Closet <span>· objeto detectado</span></h3><p>Apuntás la cámara y el objeto se despega de la habitación.</p><div class="tags"><span class="chip">Vidrio flotante</span><span class="chip">Profundidad por capas</span><span class="chip">Sombra de contacto</span><span class="chip">Un sticker</span></div></div>
         </article>
         <article class="case">
-          <div class="stage black"><div class="sc-device " aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-light sc-atlas">
+          <div class="stage rise-in"><div class="sc-device " aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-light sc-atlas">
 <div class="thread">
   <div class="me">Somewhere warm for a weekend in November?</div>
   <p class="ai">Seville, Málaga or Barcelona. Barcelona has the most direct flights from Lisbon.</p>
@@ -229,7 +284,7 @@
           <div class="case-meta"><h3>Atlas <span>· planificador de viajes</span></h3><p>Un planificador de viajes que responde con palabras que llegan, con un solo acento donde está la plata.</p><div class="tags"><span class="chip">Palabras que llegan</span><span class="chip">Shimmer</span><span class="chip">Blur progresivo</span><span class="chip">Un acento</span></div></div>
         </article>
         <article class="case">
-          <div class="stage black"><div class="sc-device " aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-dark sc-boarding">
+          <div class="stage rise-in"><div class="sc-device " aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-dark sc-boarding">
 <div class="wall"></div>
 <div class="sc-status" style="--sc-status:#fff"><span>9:41</span><span class="r"><svg viewBox="0 0 18 12"><use href="#s-signal"/></svg><svg viewBox="0 0 16 12"><use href="#s-wifi"/></svg><svg viewBox="0 0 27 12"><use href="#s-battery"/></svg></span></div>
 <div class="sc-island"><svg class="i sm fill" style="transform:rotate(45deg)"><use href="#i-plane"/></svg><span>18 min</span></div>
@@ -245,7 +300,7 @@
           <div class="case-meta"><h3>Boarding <span>· actividad en vivo</span></h3><p>Tu vuelo, en vivo en la pantalla bloqueada, en la island y sobre vidrio.</p><div class="tags"><span class="chip">Island</span><span class="chip">Actividad en vivo</span><span class="chip">Número protagonista</span><span class="chip">Atmósfera</span></div></div>
         </article>
         <article class="case">
-          <div class="stage "><div class="sc-device " aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-dark sc-pulse">
+          <div class="stage rise-in"><div class="sc-device " aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-dark sc-pulse">
 <div class="atm"></div><div class="rings"></div>
 <div class="sc-status" style="--sc-status:#fff"><span>9:41</span><span class="r"><svg viewBox="0 0 18 12"><use href="#s-signal"/></svg><svg viewBox="0 0 16 12"><use href="#s-wifi"/></svg><svg viewBox="0 0 27 12"><use href="#s-battery"/></svg></span></div><div class="sc-island"></div>
 <span class="tag t1"><span class="live"></span>1,204 live now</span>
@@ -262,20 +317,138 @@
     </div>
   </section>
 
+  <!-- ===================== vida ===================== -->
+  <section class="wrap section" id="vida">
+    <span class="label">vida</span>
+    <div>
+      <h2>La vida sale del contenido. <span class="muted">Un marco quieto alrededor de una pantalla vacía es solo una pantalla gris.</span></h2>
+      <div class="story life-story">
+        <p>Si seguís solo las reglas, te quedan cards grises, labels mono y un gradiente lavanda.</p>
+        <p>Está bien, está prolijo, y nadie lo quiere usar.</p>
+        <p class="beat">El marco queda quieto para que el contenido pueda sonar fuerte: fotos, caras, lugares, objetos y color.</p>
+      </div>
+
+      <div class="series life-series">
+        <div class="rise-in ba">
+          <figure>
+            <span class="note">Antes</span>
+            <div class="sc-device xs" aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-light sc-ai">
+<div class="sc-status"><span>9:27</span><span class="r"><svg viewBox="0 0 18 12"><use href="#s-signal"/></svg><svg viewBox="0 0 16 12"><use href="#s-wifi"/></svg><svg viewBox="0 0 27 12"><use href="#s-battery"/></svg></span></div><div class="sc-island"></div>
+<div class="tools"><span><svg class="i"><use href="#i-plus"/></svg></span><span><svg class="i"><use href="#i-gear"/></svg></span></div>
+<h4>Home</h4>
+<div class="row1"><span class="lbl">Up next</span><span>All trips</span></div>
+<div class="card"><span class="pill">12 Nov – 15 Nov · 4 days</span><div class="foot"><div><span class="lbl">Portugal</span><b>Lisbon</b></div><div class="days"><b>13</b><span>days to go</span></div></div></div>
+<div class="ready"><div class="r1"><b>Getting ready</b><span>1 of 6</span></div><i></i><span class="lbl blue">Start here</span><p>Add how you get there</p></div>
+<div class="tiles"><span><svg class="i"><use href="#i-cal"/></svg>Activity</span><span><svg class="i"><use href="#i-pin"/></svg>Place</span><span><svg class="i"><use href="#i-card"/></svg>Expense</span><span><svg class="i"><use href="#i-camera"/></svg>Memory</span></div>
+<div class="tabs"><span class="on">Home</span><span>Trips</span><span>Saved</span><span>Memories</span></div>
+<div class="sc-home"></div></div></div></div>
+          </figure>
+          <figure>
+            <span class="note">Después</span>
+            <div class="sc-device xs" aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-light sc-way">
+<div class="sc-status"><span>9:41</span><span class="r"><svg viewBox="0 0 18 12"><use href="#s-signal"/></svg><svg viewBox="0 0 16 12"><use href="#s-wifi"/></svg><svg viewBox="0 0 27 12"><use href="#s-battery"/></svg></span></div><div class="sc-island"></div>
+<div class="head"><span class="face" style="--f:#e9dcc3">👩🏽</span><b>Hi, Mara</b><span class="bell"><svg class="i"><use href="#i-bell"/></svg></span></div>
+<div class="h"><b>Upcoming trips</b><svg class="i sm"><use href="#i-chev-right"/></svg></div>
+<div class="trips">
+  <div class="trip"><svg class="ph" aria-hidden="true"><use href="#ph-lisbon"/></svg><span class="count sc-glass"><b>13</b> days</span><div class="txt"><b>Lisbon</b><small>Nov 14 – 18 · 4 nights</small></div><div class="faces"><span style="--f:#9fbbe2">🧔🏾</span><span style="--f:#f4e4c9">👱🏼‍♀️</span><span style="--f:#ecc497">🧑🏻‍🦱</span></div></div>
+  <div class="trip"><svg class="ph" aria-hidden="true"><use href="#ph-kyoto"/></svg><div class="txt"><b>Kyoto</b><small>Mar 2 – 9</small></div></div>
+</div>
+<div class="h h2"><b>Open trips</b><svg class="i sm"><use href="#i-chev-right"/></svg></div>
+<div class="open"><span class="thumb"><svg aria-hidden="true"><use href="#ph-patagonia"/></svg></span><div><b>Weekend in Patagonia</b><small>Hikes, a cabin and a lot of mate. Split four ways.</small><span class="spots">2 spots left</span></div></div>
+<div class="tabbar sc-glass"><span class="on"><svg class="i"><use href="#i-compass"/></svg></span><span><svg class="i"><use href="#i-pin"/></svg></span><span><svg class="i"><use href="#i-heart"/></svg></span><span><svg class="i"><use href="#i-user"/></svg></span></div>
+<div class="sc-home"></div></div></div></div>
+          </figure>
+        </div>
+
+        <div class="rise-in flow">
+          <div class="sc-device xs" aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-dark sc-lis">
+<svg class="photo" aria-hidden="true"><use href="#ph-lisbon"/></svg>
+<div class="sc-status" style="--sc-status:#fff"><span>9:41</span><span class="r"><svg viewBox="0 0 18 12"><use href="#s-signal"/></svg><svg viewBox="0 0 16 12"><use href="#s-wifi"/></svg><svg viewBox="0 0 27 12"><use href="#s-battery"/></svg></span></div><div class="sc-island"></div>
+<div class="bar"><span class="sc-iconbtn sc-glass"><svg class="i"><use href="#i-chev-left"/></svg></span><span class="sc-iconbtn sc-glass"><svg class="i"><use href="#i-heart"/></svg></span></div>
+<div class="body">
+  <b class="name">Lisbon</b><small>Portugal · Nov 14 – 18</small>
+  <p class="price sc-num">$142<span>/ night</span></p>
+  <div class="stat-trio"><div><small>Nights</small><b>4</b></div><div><small>Friends</small><b>3</b></div><div><small>Flight</small><b>2h 40m</b></div></div>
+  <div class="likes"><span>🚋 Tram 28</span><span>🥐 Pastéis</span><span>🎸 Fado</span></div>
+</div>
+<div class="cta">Book · $568</div>
+<div class="sc-home" style="--sc-home:#fff"></div></div></div></div>
+          <div class="sc-device xs" aria-hidden="true"><div class="sc-screen"><div class="sc-ui theme-light sc-stub">
+<div class="behind"><div class="b1"><svg aria-hidden="true"><use href="#ph-lisbon"/></svg></div><div class="b2"><svg aria-hidden="true"><use href="#ph-kyoto"/></svg></div><div class="b3"></div><div class="b4"></div></div>
+<div class="dim"></div>
+<div class="sc-status"><span>9:41</span><span class="r"><svg viewBox="0 0 18 12"><use href="#s-signal"/></svg><svg viewBox="0 0 16 12"><use href="#s-wifi"/></svg><svg viewBox="0 0 27 12"><use href="#s-battery"/></svg></span></div><div class="sc-island"></div>
+<div class="sheet">
+  <div class="glow"></div>
+  <div class="ticket"><span class="thumb"><svg aria-hidden="true"><use href="#ph-lisbon"/></svg></span><div class="tear"></div><div class="t"><span>LIS</span><b>Lisbon</b><small>Nov 14 – 18</small><small>4 nights · 3 friends</small></div></div>
+  <div class="cshadow"></div>
+  <p class="title">Trip complete.<span>Your Lisbon stub is in your collection.</span></p>
+  <div class="sc-cta"><svg class="i sm"><use href="#i-share"/></svg>Share</div>
+  <p class="later">Later</p>
+</div>
+<div class="sc-home"></div></div></div></div>
+        </div>
+      </div>
+      <div class="life-captions"><div><b>Mismo brief, mismas reglas</b><span>Antes: lo que produjeron solo las reglas. Después: el contenido manda y el producto gana una identidad propia y cálida.</span></div><div><b>Wayfare <span>· Lisbon → viaje completo</span></b><span>Una pantalla teñida por su foto, un trío de números y un ticket que se gana sobre la pantalla que retrocede.</span></div></div>
+
+      <span class="label sub">fuentes de vida · cada pantalla tiene una, las homes tienen tres</span>
+      <div class="sources">
+        <div class="card"><b>Fotografía</b><span>Lugares, comida, productos y personas. Grande y redondeada, o a sangre con blur de borde. Nunca del tamaño de una estampilla.</span></div>
+        <div class="card"><b>Personas</b><span>Caras reales, avatares apilados en todo lo compartido, nombres al lado de las acciones. Un producto con personas adentro se siente usado.</span></div>
+        <div class="card"><b>Lugares</b><span>Mapas a todo color, con pins con foto. El agua es azul y los parques son verdes.</span></div>
+        <div class="card"><b>Objetos</b><span>Tickets, medallas, plantas, discos. Inclinados unos grados, con sombra de contacto.</span></div>
+        <div class="card"><b>Datos en color</b><span>Anillos, barras, rachas y calendarios, en los colores de datos.</span></div>
+        <div class="card"><b>Ilustración</b><span>Un solo estilo por producto, en sus tonos acompañantes.</span></div>
+      </div>
+
+      <span class="label sub">tonos acompañantes · del mundo del producto</span>
+      <p class="lede">Un color protagonista solo se ve estéril. Al lado van de 2 a 4 tonos más suaves, tomados de aquello de lo que trata el producto. Llenan ilustraciones, objetos, tags y tiles, y nunca tocan botones ni el chrome.</p>
+      <div class="companions">
+        <div class="card"><span class="label">guía de lisboa · protagonista tide</span><div class="sw"><i style="--c:#3d6fb6"><b>Azulejo</b></i><i style="--c:#c8643b"><b>Terracota</b></i><i style="--c:#e9dcc3"><b>Arena</b></i><i style="--c:#f2c230"><b>Tranvía</b></i></div></div>
+        <div class="card"><span class="label">app de running · protagonista flame</span><div class="sw"><i style="--c:#d9531a"><b>Pista</b></i><i style="--c:#5f9c4e"><b>Pasto</b></i><i style="--c:#9cc8ea"><b>Cielo</b></i></div></div>
+        <div class="card"><span class="label">app de plantas · protagonista forest</span><div class="sw"><i style="--c:#7cc874"><b>Hoja</b></i><i style="--c:#6b4a34"><b>Tierra</b></i><i style="--c:#c9764f"><b>Maceta</b></i></div></div>
+      </div>
+
+      <span class="label sub">señales de que un diseño lo hizo una IA</span>
+      <div class="grid-2">
+        <div class="card"><span class="label">la señal</span>
+          <ul class="chk no">
+            <li>Ninguna foto, cara, lugar ni objeto: solo cards, íconos y texto.</li>
+            <li>Títulos de sección en mono y mayúsculas en una app de consumo ("UP NEXT").</li>
+            <li>Un título "Home" gigante, un checklist de configuración y una grilla de tiles de íconos.</li>
+            <li>Una card con gradiente lavanda como único color.</li>
+            <li>Todo en cards blancas sobre gris, todas con el mismo peso.</li>
+            <li>Cajas grises o gradientes planos en lugar de fotos.</li>
+          </ul>
+        </div>
+        <div class="card"><span class="label">el arreglo</span>
+          <ul class="chk yes">
+            <li>Juntá el contenido antes que el layout: fotos, personas, lugares, objetos.</li>
+            <li>Títulos en sentence case, de 17 a 22 px, en el color de texto principal.</li>
+            <li>Arrancá por el próximo viaje: su foto, los amigos que van, la cuenta regresiva.</li>
+            <li>Un color protagonista, sus tonos acompañantes y el color propio del contenido.</li>
+            <li>Dejá que una foto tiña la pantalla en la que manda.</li>
+            <li>Fotos reales o de stock marcadas [TODO: reemplazar], o un solo estilo de ilustración.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== filosofía ===================== -->
   <section class="wrap section" id="filosofia">
     <span class="label">filosofía</span>
     <div>
       <h2>La gente no lee interfaces. <span class="muted">Las siente.</span></h2>
-      <p class="lede">Siete creencias que guían todo lo que diseño. Cuando dudo entre dos opciones, vuelvo acá.</p>
+      <p class="lede">Ocho creencias que guían todo lo que diseño. Cuando dudo entre dos opciones, vuelvo acá.</p>
       <div class="rows">
         <div class="row"><h3>El detalle es el producto</h3><div><p>Dos apps con las mismas funciones no se sienten igual. La diferencia está en 200 milisegundos, en un blur de 6 píxeles, en un botón que se achica cuando lo tocás.</p><p class="why">Ahí pongo la mayor parte de mi tiempo.</p></div></div>
-        <div class="row"><h3>Marco quieto, producto protagonista</h3><div><p>Fondos neutros, tipografía contenida y casi nada de color alrededor de la pantalla.</p><p class="why">Cuanto más callado el marco, más se escucha el producto.</p></div></div>
+        <div class="row"><h3>Marco quieto, contenido que suena fuerte</h3><div><p>Fondos neutros y un chrome sobrio, para que el contenido pueda sonar fuerte: fotos, personas, lugares, objetos y color.</p><p class="why">Un marco quieto alrededor de una pantalla vacía es solo una pantalla gris.</p></div></div>
         <div class="row"><h3>Profundidad con luz, no con líneas</h3><div><p>Separo capas con desenfoque, transparencia y sombras suaves. Los bordes y las cajas dividen; el blur ordena sin cortar la imagen.</p><p class="why">Una interfaz con capas se entiende sin explicarla.</p></div></div>
         <div class="row"><h3>El movimiento explica</h3><div><p>Animo para mostrar de dónde viene algo y adónde va. El sheet sube desde abajo porque vive abajo; el check nace del botón que lo pidió.</p><p class="why">Si una animación no responde una pregunta, la saco.</p></div></div>
-        <div class="row"><h3>Un color por historia</h3><div><p>Mi marca vive en negro, blanco y grises. Cada proyecto elige un solo color y lo sostiene en todas sus piezas.</p><p class="why">Un color sostenido se recuerda. Cinco colores se olvidan.</p></div></div>
+        <div class="row"><h3>Un color manda en cada historia</h3><div><p>Cada proyecto elige un color protagonista y se compromete con él, desde un acento puntual hasta superficies enteras. Su mundo trae algunos tonos acompañantes más suaves, y las fotos, las personas y los datos suman su propio color encima.</p><p class="why">Un color sostenido se recuerda. Cinco colores protagonistas se olvidan.</p></div></div>
         <div class="row"><h3>Claro y oscuro desde el día uno</h3><div><p>Diseño los dos modos en paralelo. No invierto colores: cada modo tiene sus propias decisiones de sombra, vidrio y contraste.</p><p class="why">El modo es de quien usa la app, no mío.</p></div></div>
         <div class="row"><h3>Las palabras también son diseño</h3><div><p>Copy corto, voz activa, cero jerga. Los nombres se escriben como los escriben sus dueños, y los flujos con flecha.</p><p class="why">Si un botón necesita explicación, el botón está mal.</p></div></div>
+        <div class="row"><h3>Vivo, no estéril</h3><div><p>Cada pantalla muestra algo del mundo real: una foto, una cara, un lugar, un objeto o datos en color.</p><p class="why">Si una pantalla podría ser de cualquier app, no está terminada.</p></div></div>
       </div>
     </div>
   </section>
@@ -290,14 +463,19 @@
         <div class="row"><h3>Botones siempre pastilla</h3><p>Se leen como tocables al instante, entran cómodos bajo el pulgar y repiten la curva del teléfono.</p><span class="rule">radio 999 · alto 40 o 52</span></div>
         <div class="row"><h3>Titulares chicos en dos tonos</h3><p>La seguridad no necesita tamaño. El gris arma la jerarquía y deja el tamaño grande libre para los números.</p><span class="rule">línea 1 fg · línea 2 fg-2 · mismo peso</span></div>
         <div class="row"><h3>Números enormes</h3><p>Hora, plata y puntaje son lo que la gente vino a ver. Tienen que leerse de un vistazo.</p><span class="rule">600 · tabulares · tracking −4.5%</span></div>
-        <div class="row"><h3>Una sola sans</h3><p>Inter Display tiene tamaño óptico y números tabulares, y se parece a SF Pro: el diseño y el iPhone hablan igual.</p><span class="rule">Inter Display · Geist Mono solo en labels</span></div>
+        <div class="row"><h3>Una sola sans para la mano, una voz por producto</h3><p>Inter Display tiene tamaño óptico y números tabulares, y se parece a SF Pro. Un producto igual puede hablar con la fuente de su plataforma o con una tipografía display que salga de su contenido.</p><span class="rule">Inter Display en mi marca · Geist Mono solo donde es técnico</span></div>
         <div class="row"><h3>Negro puro en oscuro</h3><p>En OLED el negro desaparece, el device se funde con la página y los glows ganan contraste.</p><span class="rule">bg #000 en oscuro</span></div>
+        <div class="row"><h3>Texto blanco suave en oscuro</h3><p>El blanco puro sobre negro puro encandila en pantallas grandes. Un toque por debajo del blanco mantiene el contraste sin la vibración.</p><span class="rule">fg #FAFAFA en oscuro</span></div>
+        <div class="row"><h3>Stage tonal en oscuro</h3><p>Un panel claro sobre negro corta la página en dos. Un stage un escalón arriba del fondo sostiene pantallas claras y oscuras por igual.</p><span class="rule">stage #111111 en oscuro</span></div>
         <div class="row"><h3>Gris claro, no blanco, en claro</h3><p>El blanco puro cansa y no deja que las cards se separen. Sobre gris claro, una card blanca flota sola.</p><span class="rule">bg #F4F4F4 · cards #FFFFFF</span></div>
         <div class="row"><h3>Blur en vez de bordes</h3><p>El vidrio deja ver el contexto y separa capas sin cortar la imagen de atrás.</p><span class="rule">blur 20 · saturate 180% · luz de 1 px arriba</span></div>
         <div class="row"><h3>Sheets flotantes y concéntricos</h3><p>Separado del borde se lee como capa. Con radio concéntrico parece parte del hardware.</p><span class="rule">inset 12 · radio = exterior − inset</span></div>
         <div class="row"><h3>Ease-out por defecto</h3><p>Responde al toque de inmediato y frena como un objeto real. Nada arranca lento.</p><span class="rule">cubic-bezier(.22, 1, .36, 1)</span></div>
         <div class="row"><h3>Cerrar más rápido que abrir</h3><p>Cuando alguien cierra algo ya decidió. No lo hago esperar.</p><span class="rule">abrir 420 ms · cerrar 280 ms</span></div>
-        <div class="row"><h3>Una atmósfera por proyecto</h3><p>El color identifica el proyecto, no decora. Repetido en todas las piezas, se vuelve memoria.</p><span class="rule">elegir 1 de 4 · nunca mezclar</span></div>
+        <div class="row"><h3>Un color protagonista, más acompañantes</h3><p>El color protagonista identifica el proyecto; repetido en todas las piezas, se vuelve memoria. Alrededor, algunos tonos más suaves del mundo del producto evitan que se vea estéril.</p><span class="rule">1 protagonista · 2–4 acompañantes · nunca en el chrome</span></div>
+        <div class="row"><h3>Primero el contenido, el chrome al final</h3><p>Fotos, caras, lugares y objetos hacen que una pantalla sea específica y esté viva. Sin ellos, cualquier app se parece a todas.</p><span class="rule">una fuente de vida en cada pantalla</span></div>
+        <div class="row"><h3>Series uniformes</h3><p>Una galería se ve terminada cuando todos los tiles coinciden. Solo cambian las pantallas, y cada tile cuenta una historia de dos o tres pantallas.</p><span class="rule">tiles 6:5 · un stage · una escala de device</span></div>
+        <div class="row"><h3>Lo pesado se mueve lento</h3><p>Un chip encaja al instante; un stage llega. Una velocidad acorde al tamaño se lee como peso.</p><span class="rule">los stages suben 32 px en 800 ms</span></div>
         <div class="row"><h3>Mockups frontales, sin manos</h3><p>La perspectiva y las manos distorsionan y achican la pantalla, que es lo que importa.</p><span class="rule">device ≤ 60% del alto del shot</span></div>
       </div>
     </div>
@@ -339,11 +517,13 @@
             <tr><td>cards</td><td>Blancas, con sombra suave y larga.</td><td><code>#111111</code> con un hilo de luz de 1 px arriba.</td></tr>
             <tr><td>separación</td><td>Sombra.</td><td>Escalón de superficie y hairline. Casi sin sombras: en negro se ven sucias.</td></tr>
             <tr><td>vidrio</td><td>Blanco al 68% + blur 20.</td><td>Blanco al 12% + blur 20.</td></tr>
-            <tr><td>botón primario</td><td>Negro con texto claro.</td><td>Blanco con texto negro.</td></tr>
+            <tr><td>texto</td><td><code>#0A0A0A</code></td><td><code>#FAFAFA</code>: un toque por debajo del blanco, para que no encandile.</td></tr>
+            <tr><td>botón primario</td><td>Negro con texto claro.</td><td>Blanco suave con texto negro.</td></tr>
             <tr><td>texto secundario</td><td><code>#6B6B6B</code></td><td><code>#8F8F8F</code></td></tr>
             <tr><td>atmósferas</td><td>Pastel, con glow saturado.</td><td>Profundas, con glow brillante.</td></tr>
             <tr><td>grano</td><td>5%</td><td>12%</td></tr>
-            <tr><td>stage de devices</td><td><code>#E8E8E8</code></td><td><code>#EDEDED</code>: el stage claro se mantiene en oscuro.</td></tr>
+            <tr><td>stage de devices</td><td><code>#E8E8E8</code></td><td><code>#111111</code>: tonal, un escalón arriba del fondo.</td></tr>
+            <tr><td>tinte de foto</td><td>14% del color de la foto sobre el fondo.</td><td>30% sobre negro.</td></tr>
           </tbody>
         </table>
       </div>
@@ -376,7 +556,7 @@
   <section class="wrap section" id="sistema">
     <span class="label">sistema</span>
     <div>
-      <h2>Negro, blanco y doce grises. <span class="muted">El color se gana proyecto a proyecto.</span></h2>
+      <h2>Negro, blanco y trece grises. <span class="muted">El color se gana proyecto a proyecto.</span></h2>
       <p class="lede">La escala base es la misma en los dos modos; lo que cambia es qué tono cumple cada rol. Tocá un tono para copiar el hex.</p>
       <div class="ramp" id="ramp">
         <button type="button" data-hex="#000000" style="--c:#000000; --t:#fff"><b>black</b><code>#000000</code></button>
@@ -392,6 +572,7 @@
         <button type="button" data-hex="#E6E6E6" style="--c:#E6E6E6; --t:#000"><b>ink-150</b><code>#E6E6E6</code></button>
         <button type="button" data-hex="#EDEDED" style="--c:#EDEDED; --t:#000"><b>ink-100</b><code>#EDEDED</code></button>
         <button type="button" data-hex="#F4F4F4" style="--c:#F4F4F4; --t:#000"><b>ink-50</b><code>#F4F4F4</code></button>
+        <button type="button" data-hex="#FAFAFA" style="--c:#FAFAFA; --t:#000"><b>ink-25</b><code>#FAFAFA</code></button>
         <button type="button" data-hex="#FFFFFF" style="--c:#FFFFFF; --t:#000"><b>white</b><code>#FFFFFF</code></button>
       </div>
 
@@ -404,18 +585,19 @@
             <tr><td><code>--surface-1</code></td><td><code>#FFFFFF</code></td><td><code>#111111</code></td><td>Cards.</td></tr>
             <tr><td><code>--surface-2</code></td><td><code>#F0F0F0</code></td><td><code>#1F1F1F</code></td><td>Filas, inputs, elementos dentro de cards.</td></tr>
             <tr><td><code>--sheet-bg</code></td><td><code>#FFFFFF</code></td><td><code>#1F1F1F</code></td><td>Sheets opacos.</td></tr>
-            <tr><td><code>--fg</code></td><td><code>#0A0A0A</code></td><td><code>#FFFFFF</code></td><td>Texto principal y botón primario.</td></tr>
+            <tr><td><code>--fg</code></td><td><code>#0A0A0A</code></td><td><code>#FAFAFA</code></td><td>Texto principal y botón primario.</td></tr>
             <tr><td><code>--fg-2</code></td><td><code>#6B6B6B</code></td><td><code>#8F8F8F</code></td><td>Segunda línea del titular, descripciones.</td></tr>
             <tr><td><code>--fg-3</code></td><td><code>#A1A1A1</code></td><td><code>#5C5C5C</code></td><td>Hints, labels apagados, punto de partida de los reveals.</td></tr>
             <tr><td><code>--btn-2</code></td><td><code>#E6E6E6</code></td><td><code>#1F1F1F</code></td><td>Botón secundario y chips.</td></tr>
             <tr><td><code>--glass</code></td><td><code>white 68%</code></td><td><code>white 12%</code></td><td>Superficies de vidrio con blur.</td></tr>
+            <tr><td><code>--stage</code></td><td><code>#E8E8E8</code></td><td><code>#111111</code></td><td>El panel que presenta los devices. Uno por serie.</td></tr>
           </tbody>
         </table>
       </div>
 
-      <span class="label sub">atmósferas · una por proyecto</span>
+      <span class="label sub">atmósferas · una manda en cada proyecto</span>
       <p class="lede">Gradiente radial desde arriba, glow al centro y grano. Cada una tiene versión clara y oscura: cambiá el tema y mirá cómo se adaptan.</p>
-      <div class="grid-4">
+      <div class="grid-3">
         <div class="atmos atmos--forest atmos-tile topo">
           <span class="label">forest</span>
           <div class="center"><span class="gloss" style="--g-1:#9be096; --g-2:#1f5c2b"></span></div>
@@ -436,15 +618,36 @@
           <div class="center"><span class="gloss" style="--g-1:#ff9fbf; --g-2:#8a0f37"></span></div>
           <div><h3>Social, ubicación, alertas</h3><div class="stops"><i style="background:var(--rouge-0)"></i><i style="background:var(--rouge-1)"></i><i style="background:var(--rouge-2)"></i><i style="background:var(--rouge-glow)"></i></div></div>
         </div>
+        <div class="atmos atmos--iris atmos-tile">
+          <span class="label">iris</span>
+          <div class="center"><span class="gloss" style="--g-1:#c9b8ff; --g-2:#3a2296"></span></div>
+          <div><h3>Creatividad, IA, talento, noche</h3><div class="stops"><i style="background:var(--iris-0)"></i><i style="background:var(--iris-1)"></i><i style="background:var(--iris-2)"></i><i style="background:var(--iris-glow)"></i></div></div>
+        </div>
+        <div class="atmos atmos--flame atmos-tile">
+          <span class="label">flame</span>
+          <div class="center"><span class="num">5:42</span></div>
+          <div><h3>Deporte intenso, comida, urgencia, calor</h3><div class="stops"><i style="background:var(--flame-0)"></i><i style="background:var(--flame-1)"></i><i style="background:var(--flame-2)"></i><i style="background:var(--flame-glow)"></i></div></div>
+        </div>
+      </div>
+
+      <span class="label sub">el color elige la opción recomendada</span>
+      <p class="lede">Cuando hay opciones, el color protagonista pinta solo la que recomiendo, como un gradiente suave dentro de su propia rampa. Las otras quedan neutras. El color dice "esta" sin un badge.</p>
+      <div class="plans accent-iris">
+        <article class="card plan"><b>Basic</b><span class="price num">$0</span><p>Three trips a year, shared with up to four friends.</p><span class="btn btn--secondary">Start free</span></article>
+        <article class="plan surface--featured"><b>Plus</b><span class="price num">$4.99<small>/ month</small></span><p>Unlimited trips, offline maps and costs split for you.</p><span class="btn btn--primary">Try Plus</span></article>
       </div>
 
       <span class="label sub">tipografía</span>
-      <p class="lede">Inter Display para todo, con peso 600 en títulos y 400 a 500 en texto. Geist Mono solo en labels chicos, en mayúscula y en gris.</p>
+      <p class="lede">Inter Display en mi marca y por defecto, con peso 600 en títulos y 400 a 500 en texto. Geist Mono solo donde algo es técnico. Un producto puede traer su propia voz para los títulos, y la mano aparece una o dos veces por página.</p>
       <div class="specimen">
         <div class="spec-row"><span class="label">display · 56 · 600<br>tracking −3%</span><div class="sample t-display">Design that ships</div></div>
         <div class="spec-row"><span class="label">h2 · 28 · 600<br>tracking −1.5%</span><div class="sample t-h2">Onboarding → first payment</div></div>
         <div class="spec-row"><span class="label">body · 16 · 400<br>color fg-2</span><div class="sample t-body">I design mobile products end to end, from the first flow to the last micro-interaction, and hand off files engineers can build from.</div></div>
+        <div class="spec-row"><span class="label">título de sección<br>producto · 22 · 600</span><div class="sample t-section">Upcoming trips</div></div>
+        <div class="spec-row"><span class="label">relato<br>fg-2 + fg</span><div class="sample story"><p>Anyone can ship an app in a weekend now.</p><p class="beat">Making it feel right still takes care.</p></div></div>
         <div class="spec-row"><span class="label">label · mono 11<br>caps · +6%</span><div class="sample"><span class="label">sitemap · social · contact</span></div></div>
+        <div class="spec-row"><span class="label">mano · caveat<br>1–2 por página</span><div class="sample"><span class="hand">esta parte se mueve →</span></div></div>
+        <div class="spec-row"><span class="label">voz tipográfica<br>títulos de un producto</span><div class="sample t-voice">Lisbon</div></div>
         <div class="spec-row"><span class="label">números · 600<br>tabulares</span><div class="sample num">$1,240</div></div>
       </div>
 
@@ -736,7 +939,7 @@
   <section class="wrap section" id="motion">
     <span class="label">motion</span>
     <div>
-      <h2>Entra rápido, frena suave. <span class="muted">Tres curvas, seis duraciones, ocho patrones.</span></h2>
+      <h2>Entra rápido, frena suave. <span class="muted">Tres curvas, siete duraciones, ocho patrones.</span></h2>
       <p class="lede">Las reglas de movimiento a escala de pantalla. Todo sale de los tokens de <code>tokens.css</code>.</p>
 
       <div class="rows">
@@ -745,6 +948,7 @@
         <div class="row"><h3>Nada aparece de la nada</h3><p>Los elementos entran desde donde se originan: el sheet desde abajo, el toast desde el borde, el check desde el botón.</p></div>
         <div class="row"><h3>Una cosa a la vez</h3><p>Lo que entra junto se escalona: 120 ms entre líneas, 50 ms entre ítems (máximo 6), 30 ms entre palabras.</p></div>
         <div class="row"><h3>El texto no baila</h3><p>El texto se revela y queda quieto. Nunca arranca invisible, nunca rebota y nunca se mueve mientras alguien lo lee.</p></div>
+        <div class="row"><h3>El peso marca la velocidad</h3><p>Las cosas chicas se mueven en 120 a 240 ms, los componentes en 420, los stages y las imágenes en 800. Cuanto más grande, más lejos y más lento viaja, nunca con rebote.</p></div>
       </div>
 
       <span class="label sub">curvas</span>
@@ -765,6 +969,7 @@
             <tr><td><code>--dur-3</code></td><td><code>420</code></td><td>Abrir sheets, entrar cards y toasts, morphs.</td></tr>
             <tr><td><code>--dur-count</code></td><td><code>600</code></td><td>Números que ruedan.</td></tr>
             <tr><td><code>--dur-4</code></td><td><code>800</code></td><td>Reveal de titulares y entrada del hero.</td></tr>
+            <tr><td><code>--dur-rise</code></td><td><code>800</code></td><td>Stages e imágenes que suben al entrar en pantalla, 32 px, una vez.</td></tr>
           </tbody>
         </table>
       </div>
@@ -958,12 +1163,12 @@ onPressOut: scale.value = withSpring(1, spring);
   <section class="wrap section" id="imagen">
     <span class="label">imagen</span>
     <div>
-      <h2>Tres puestas para mostrar trabajo. <span class="muted">Una por shot.</span></h2>
-      <p class="lede">4:3 para Dribbble y 16:9 para el sitio. iPhone frontal, sin perspectiva, ocupando como mucho el 60% del alto. Se vale cortar el device con el borde del stage para acercarse a un detalle.</p>
+      <h2>El trabajo se muestra en serie. <span class="muted">Solo cambian las pantallas.</span></h2>
+      <p class="lede">Todos los tiles de una galería o un caso de estudio comparten proporción, stage, device y escala: 6:5 en la web, 4:3 en Dribbble. iPhone frontal, sin perspectiva, sin epígrafes dentro del tile. Un stage por serie, sea cual sea el modo de las pantallas de adentro.</p>
       <div class="grid-3">
-        <div class="img"><div class="frame light"><div class="mini"><div></div></div></div><p><b>Stage claro.</b> Device centrado sobre #E8E8E8. Para UI clara y flujos.</p></div>
-        <div class="img"><div class="frame black"><div class="mini"><div style="background: radial-gradient(100% 60% at 50% 100%, #b8821a, #111 70%)"></div></div></div><p><b>Stage negro.</b> La pantalla es la única luz. Para UI oscura.</p></div>
-        <div class="img"><div class="frame atmos atmos--forest topo"><span class="gloss" style="--g-1:#9be096; --g-2:#1f5c2b; width: 56px; height: 56px"></span></div><p><b>Objeto de marca.</b> Objeto 3D brillante con el glow de la atmósfera, grano y sombra de contacto.</p></div>
+        <div class="img"><div class="frame tonal"><div class="minis"><div class="mini"><div></div></div><div class="mini"><div style="background:#111"></div></div><div class="mini"><div></div></div></div></div><p><b>Flujo de tres pantallas.</b> Dónde estás → qué abrís → qué pasa. El tercero suele ser un sheet sobre la pantalla que retrocede.</p></div>
+        <div class="img"><div class="frame tonal"><div class="minis"><div class="mini"><div style="background:#e4dbf8"></div></div><div class="mini"><div style="background: linear-gradient(#f0a47d, #3d6fb6)"></div></div></div></div><p><b>Antes → después.</b> Dos tiles lado a lado, cada uno con una nota arriba. Solo con una versión anterior real.</p></div>
+        <div class="img"><div class="frame atmos atmos--forest topo"><span class="gloss" style="--g-1:#9be096; --g-2:#1f5c2b; width: 56px; height: 56px"></span></div><p><b>Objeto de marca.</b> Brillante o táctil, en mono o con el glow de la atmósfera, grano y sombra de contacto. Para covers y el cierre de una página.</p></div>
       </div>
     </div>
   </section>
@@ -1002,7 +1207,7 @@ onPressOut: scale.value = withSpring(1, spring);
         <pre id="promptText">Leé %VITE_SITE_URL%/llms.txt y diseñá siguiendo mi lenguaje de diseño. La fuente de verdad es %VITE_SITE_URL%/brand.md y los valores están en tokens.css y tokens.json.
 
 Tarea: [lo que necesites: "una app de viajes", "mi portfolio", "una landing para X"].
-Para un producto, seguí "Aplicar a cualquier proyecto". Para mi portfolio, "Receta: portfolio".
+Para un producto, seguí "Trabajar como un estudio": su propia identidad, mi oficio y algunos de mis toques. Primero juntá el contenido real ("Vida"). Para mi portfolio, "Receta: portfolio".
 
 Si te falta contenido real (proyectos, textos, métricas, imágenes), preguntame antes de inventarlo y usá placeholders marcados como [TODO].</pre>
         <button class="btn btn--secondary" type="button" id="copyPrompt">Copiar</button>
@@ -1011,17 +1216,24 @@ Si te falta contenido real (proyectos, textos, métricas, imágenes), preguntame
       <details class="spec">
         <summary>Ver la spec resumida</summary>
 <pre>IDENTIDAD
-- agustín oberg · product designer (mobile, motion, sistemas)
-- Lenguaje: monocromo, producto protagonista, micro-blurs, motion preciso, claro + oscuro
+- Agustín Oberg · trabaja como un estudio de diseño (mobile, motion, sistemas)
+- Lenguaje: marco quieto, contenido lleno de vida, micro-blurs, motion preciso, claro + oscuro
+- Capas: oficio (siempre) · toque (3–6 detalles) · estilo de la casa (mi marca, o si lo piden)
+
+VIDA
+- Cada pantalla: una foto, una cara, un lugar, un objeto o datos en color. Homes: 3+ sin scrollear
+- Sin assets reales: preguntá, o fotos de stock marcadas [TODO: reemplazar]. Nunca cajas grises
+- 2–4 tonos acompañantes del mundo del producto, nunca en el chrome
+- Señales de IA: títulos de sección mono, título "Home", grillas de tiles de íconos, una card lavanda
 
 REGLAS DURAS
-- Fuentes: Inter Display (todo) + Geist Mono (labels 11px caps +6%)
+- Fuentes: Inter Display (mi marca, por defecto) + Geist Mono (labels técnicos) · los productos pueden elegir una voz tipográfica
 - Titulares: chicos, 600, dos tonos (fg + fg-2), tracking −1.5% a −3%
 - Números: grandes, 600, tabular-nums, tracking −4.5%
 - Botones: pastilla siempre. Primario = fg sobre bg. Secundario = btn-2
-- Color: núcleo mono. Una atmósfera por proyecto (forest | ember | tide | rouge)
+- Color: un color protagonista por proyecto (forest | ember | tide | rouge | iris | flame | nuevo), un dial 0–3, acompañantes
 - Claro: bg #F4F4F4, cards #FFF + sombra suave
-- Oscuro: bg #000, cards #111 + luz de 1px, sin sombras grandes
+- Oscuro: bg #000, texto #FAFAFA, cards #111 + luz de 1px, stage #111, sin sombras grandes
 - Vidrio: blur 20, saturate 180%, luz interna 1px; claro 68% / oscuro 12%
 - Sheets: flotantes, inset 12, radio = exterior − inset
 - Radios: 8 stage · 16 thumbs · 24 cards · 32 sheets · pill controles
@@ -1043,7 +1255,8 @@ MOTION
 
 NUNCA
 - Gradientes violeta-azul, mockups en perspectiva, manos, emojis como íconos
-- Bordes rectos en botones, dos atmósferas juntas, sombras grandes en oscuro
+- Bordes rectos en botones, dos colores protagonistas juntos, sombras grandes en oscuro
+- Pantallas sin nada real adentro; galerías con tiles que no coinciden
 - Copy de agencia, lorem ipsum, proyectos o métricas inventadas</pre>
       </details>
     </div>
@@ -1057,7 +1270,7 @@ NUNCA
       <p class="lede">Todo lo de esta página también se distribuye como skills para agentes a través de <a class="link" href="https://skills.sh">skills.sh</a>. Una vez instaladas, el agente las carga solo cuando la tarea lo pide: sin prompt para pegar ni links para pasar. Funcionan con Claude Code, Cursor, Codex y cualquier agente compatible con el formato abierto Agent Skills.</p>
       <div class="grid-2">
         <div class="card skill"><code>agustinoberg-design</code><b>Qué es mi diseño, exactamente.</b><span>Para todo lo que tenga que verse, moverse y leerse como si lo hubiera diseñado yo: pantallas, componentes, sitios, decks y shots de Dribbble. Trae los tokens para web (CSS) y React Native, código para cada patrón característico y un pre-flight visual.</span></div>
-        <div class="card skill"><code>agustinoberg-product</code><b>Cómo construir bien un producto.</b><span>Para apps, sitios y flujos completos. Si tenés referencias de diseño, mandan en lo visual y mi toque va encima; si no, usa mi diseño. Suma investigación antes de dibujar, gramática de navegación, todos los estados, dónde va el motion y un loop de verificación. Carga <code>agustinoberg-design</code>.</span></div>
+        <div class="card skill"><code>agustinoberg-product</code><b>Cómo construir bien un producto.</b><span>Para apps, sitios y flujos completos. Trabaja como un estudio de diseño: un brief, investigación sobre productos reales, dos o tres direcciones que salen de tu producto, una crítica y la entrega. Tu marca manda; suma mi oficio y algunos toques de firma, y mi propio look solo si lo pedís. Carga <code>agustinoberg-design</code>.</span></div>
       </div>
 
       <span class="label sub">instalación</span>
@@ -1078,8 +1291,8 @@ NUNCA
 
   <footer class="wrap footer">
     <div><span class="label">archivos</span><ul><li><a class="link" href="%BASE_URL%brand.es.md"><code>brand.es.md</code></a> · <a class="link" href="%BASE_URL%brand.md">en</a></li><li><a class="link" href="%BASE_URL%tokens.json"><code>tokens.json</code></a></li><li><a class="link" href="%BASE_URL%tokens.css"><code>tokens.css</code></a></li><li><a class="link" href="%BASE_URL%llms.txt"><code>llms.txt</code></a></li></ul></div>
-    <div><span class="label">fuentes</span><ul><li>Inter Display · Google Fonts</li><li>Geist Mono · Google Fonts</li></ul></div>
-    <div><span class="label">referencias</span><ul><li>Dominik Tyka · dribbble.com/dominikt</li><li>Figura · figura.digital</li></ul></div>
+    <div><span class="label">fuentes</span><ul><li>Inter Display · Google Fonts</li><li>Geist Mono · Google Fonts</li><li>Caveat · Google Fonts</li></ul></div>
+    <div><span class="label">referencias</span><ul><li>Dominik Tyka · dribbble.com/dominikt</li><li>Figura · figura.digital</li><li>Revmp Studio · revmp.studio</li></ul></div>
   </footer>
 </main>
 

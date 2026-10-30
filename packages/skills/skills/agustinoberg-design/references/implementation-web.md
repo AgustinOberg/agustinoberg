@@ -5,6 +5,7 @@ Copy `assets/tokens.css` into the project and load it before your own styles. It
 - the base components: `.headline`, `.label`, `.num`, `.btn` (`--primary`, `--secondary`, `--glass`, `--accent`, `--lg`), `.chip`, `.glass`, `.sheet`, `.stage` and `.atmos--*`;
 - color: `.accent-{forest|ember|tide|rouge|iris|flame}` on a container (sets `--accent`, `--accent-1`, `--accent-2`), `.surface--tint` and `.surface--accent` for the color dial, and `--data-{hue}` for categories in charts, metrics and tags;
 - the micro layer: `.pblur`, `.edgeblur`, `.float-sheet`, `.swap`, `.shimmer`, `.reveal`, `.words`, `.stagger`, `.live`, `.link`, `.depth-text` and `.contact-shadow`;
+- life and finish: `.tinted` (with `--tint`), `.surface--featured`, `.stat-trio`, `.series`, `.rise-in`, `.story` with `.beat`, `.hand` and `.note`;
 - the reduced-motion rules.
 
 The snippets below show how to wire those classes up, plus the few patterns that need a little JS. They work in plain HTML. In React, Next.js, Svelte or Vue, keep the same classes and swap the DOM calls for state.
@@ -17,7 +18,7 @@ The snippets below show how to wire those classes up, plus the few patterns that
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&family=Geist+Mono:wght@400;500&family=Caveat:wght@500&display=swap">
   <link rel="stylesheet" href="/tokens.css">
   <script>
     // Apply a saved theme before first paint (no flash). No attribute = follow the OS.
@@ -289,7 +290,79 @@ Use the accent on one kind of element per screen. Primary actions that are not t
 - Screen: `border-radius: 41px; overflow: hidden`.
 - Stage: `.stage` (radius 8, `--stage` color). Center the device and leave a lot of air around it.
 
-## 19. Checks before you ship
+### A uniform series of three-screen flows
+
+```html
+<div class="series">
+  <div class="rise-in"><div class="flow">
+    <div class="device"><img src="/work/trip-home.webp" alt="Home: upcoming trips"></div>
+    <div class="device"><img src="/work/trip-detail.webp" alt="Lisbon: four nights"></div>
+    <div class="device"><img src="/work/trip-reward.webp" alt="Ticket stub earned"></div>
+  </div></div>
+  <!-- every tile: same markup, same device size; only the screens change -->
+</div>
+```
+
+```css
+.flow { display: flex; gap: 4%; width: 75%; justify-content: center; }
+.flow .device { flex: 1; max-width: 200px; }
+```
+
+## 19. Life on the web
+
+### Rise by mass
+
+```js
+// Big things (stages, images, gallery tiles) rise once as they enter. Without JS, nothing is hidden.
+const big = document.querySelectorAll(".rise-in");
+if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.documentElement.classList.add("rise-ready");
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { rootMargin: "0px 0px -12% 0px" });
+  big.forEach((el) => io.observe(el));
+}
+```
+
+### Photo-tinted surface
+
+```html
+<section class="tinted" style="--tint: #b0643a"> <!-- the photo's dominant color -->
+  <img class="hero-photo" src="/places/lisbon.webp" alt="Alfama at sunset">
+</section>
+```
+
+Pick `--tint` once per photo: by eye, at build time (for example `node-vibrant` or `sharp().stats().dominant`), or from the image CDN's color metadata. Never compute it on every render.
+
+### Companion tones
+
+```css
+/* Lisbon guide: lead hue tide; companions from the city, never on buttons or nav */
+.accent-tide {
+  --c-azulejo: #3d6fb6; --c-terracotta: #c8643b; --c-sand: #e9dcc3;
+}
+.place-tile { background: color-mix(in srgb, var(--c-sand) 60%, var(--bg)); }
+```
+
+### Featured option, stat trio, story, hand
+
+```html
+<div class="accent-iris plans">
+  <article class="card">Basic…</article>
+  <article class="card surface--featured">Pro… <a class="btn btn--primary">Start Pro</a></article>
+</div>
+
+<div class="stat-trio"><div><small>Nights</small><b>4</b></div><div><small>Friends</small><b>3</b></div><div><small>Flight</small><b>2h 40m</b></div></div>
+
+<div class="story story--center">
+  <p>Anyone can ship an app in a weekend now.</p>
+  <p class="beat">Making it feel right still takes care.</p>
+</div>
+
+<span class="note">Before</span>  <span class="hand hand--tilt">this part moves →</span>
+```
+
+## 20. Checks before you ship
 
 - Test both modes, and the no-attribute "auto" state.
 - No horizontal scroll at 360 px.

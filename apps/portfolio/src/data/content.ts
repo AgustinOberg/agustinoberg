@@ -5,6 +5,7 @@
 // - The Musu repo (README, app.json, landing): not published yet, in store review.
 // - LinkedIn: linkedin.com/in/oberg-agustin (roles, dates, stacks, clients, SQUIRE user count).
 // - Agustín, in chat: Givers (US) and Galeno have large user bases; email, X handle and photo.
+// - Musu screens: the app's own store screenshots inputs (comidita repo, apps/screenshots/public/screenshots/apple/iphone).
 // - Galeno: Google Play listing com.galeno.android (500K+ downloads).
 // - Givers: givers.com and Fast Company (2023): "about 10,000 family caregivers using the platform".
 // Anything not confirmed is a visible [TODO]. Never invent numbers.
@@ -85,6 +86,9 @@ export interface Project {
   stack?: L;
   store?: { label: string; href: string }[];
   status?: L; // shown with a live dot instead of a stat
+  // 2–3 real screens telling a flow, shown in the uniform series. Never mockups of invented UI.
+  // [TODO: raw screenshots for Mi Huerta, TraiNow and LockBox, so every project shows its screens]
+  screens?: { src: Record<Lang, string>; alt: L }[];
 }
 
 const play = (id: string) => `https://play.google.com/store/apps/details?id=${id}`;
@@ -141,6 +145,11 @@ export const projects: Project[] = [
     platforms: ["iOS", "Android"],
     stack: { en: "Expo · API on EAS Hosting · Next.js · Vercel", es: "Expo · API en EAS Hosting · Next.js · Vercel" },
     status: { en: "In review", es: "En revisión" },
+    screens: [
+      { src: { en: "/apps/musu/en-01.jpg", es: "/apps/musu/es-01.jpg" }, alt: { en: "Musu result in red: not for you, it contains milk and gluten", es: "Resultado de Musu en rojo: contiene cacahuetes" } },
+      { src: { en: "/apps/musu/en-02.jpg", es: "/apps/musu/es-02.jpg" }, alt: { en: "Musu result in yellow: check first, borderline carbs for keto", es: "Resultado de Musu en amarillo: revisar antes, puede contener gluten" } },
+      { src: { en: "/apps/musu/en-03.jpg", es: "/apps/musu/es-03.jpg" }, alt: { en: "Musu result in green: good to go, it fits your filter", es: "Resultado de Musu en verde: encaja con tu filtro" } },
+    ],
   },
   {
     id: "lockbox",
@@ -228,6 +237,8 @@ export const copy = {
       h2: "Mobile, web, backend and infra, for teams and for my own apps.",
       primary: "See my work",
       secondary: "Get in touch",
+      note: "designed, built and shipped by me",
+      appsLabel: "My apps",
       meta: [
         ["Now", "Senior React Native engineer · SQUIRE"],
         ["Based in", "Buenos Aires, Argentina"],
@@ -262,7 +273,7 @@ export const copy = {
         "The detail is the product: 200 ms, a 6 px blur, a button that shrinks when you tap it.",
         "Motion explains where things come from and where they go.",
         "Light and dark from day one.",
-        "When I'm torn between adding and removing, I remove.",
+        "When a screen feels empty, I add something real, never more chrome.",
       ],
       more: "Explore my design language",
       designH1: "Want to know more about how I design?",
@@ -317,6 +328,8 @@ export const copy = {
       h2: "Mobile, web, backend e infra, para equipos y para mis propias apps.",
       primary: "Ver mi trabajo",
       secondary: "Escribime",
+      note: "diseñadas, hechas y lanzadas por mí",
+      appsLabel: "Mis apps",
       meta: [
         ["Hoy", "Senior React Native engineer · SQUIRE"],
         ["Desde", "Buenos Aires, Argentina"],
@@ -351,7 +364,7 @@ export const copy = {
         "El detalle es el producto: 200 ms, un blur de 6 px, un botón que se achica cuando lo tocás.",
         "El movimiento explica de dónde viene algo y a dónde va.",
         "Claro y oscuro desde el día uno.",
-        "Si dudo entre agregar y sacar, saco.",
+        "Si una pantalla se siente vacía, le sumo algo real, nunca más adornos.",
       ],
       more: "Ver mi lenguaje de diseño",
       designH1: "¿Querés conocer más sobre mi manera de diseñar?",

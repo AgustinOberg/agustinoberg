@@ -289,3 +289,18 @@ document.querySelectorAll("[data-words]").forEach((el) => {
   play();
   if (!reduceMotion.matches) setInterval(play, 7000);
 });
+
+/* ---------- rise by mass: stages and tiles arrive once, slower than small things ---------- */
+const risers = document.querySelectorAll(".rise-in");
+if ("IntersectionObserver" in window && !reduceMotion.matches && risers.length) {
+  root.classList.add("rise-ready");
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach((en) => {
+      if (!en.isIntersecting) return;
+      en.target.classList.add("in");
+      io.unobserve(en.target);
+    }),
+    { rootMargin: "0px 0px -12% 0px" }
+  );
+  risers.forEach((el) => io.observe(el));
+}

@@ -16,6 +16,7 @@ export const mono = {
   "ink150": "#E6E6E6",
   "ink100": "#EDEDED",
   "ink50": "#F4F4F4",
+  "ink25": "#FAFAFA",
   "white": "#FFFFFF"
 } as const;
 
@@ -52,8 +53,8 @@ export const colors = {
     "surface2": "#1F1F1F",
     "surface3": "#2B2B2B",
     "sheetBg": "#1F1F1F",
-    "stage": "#EDEDED",
-    "fg": "#FFFFFF",
+    "stage": "#111111",
+    "fg": "#FAFAFA",
     "fg2": "#8F8F8F",
     "fg3": "#5C5C5C",
     "line": "rgba(255,255,255,0.08)",
@@ -299,7 +300,8 @@ export const motion = {
     "base": 420,
     "theme": 520,
     "count": 600,
-    "reveal": 800
+    "reveal": 800,
+    "rise": 800
   },
   "stagger": {
     "text": 120,

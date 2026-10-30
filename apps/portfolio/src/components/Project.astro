@@ -11,15 +11,25 @@ const accent = p.atmosphere ? `accent-${p.atmosphere}` : "";
 const storeBtn = p.atmosphere ? "btn--accent" : "btn--secondary";
 ---
 <article class={`project ${accent}`} id={p.id}>
-  <div class={`stage project__stage ${stage}`}>
+  <div class={`stage project__stage ${stage} rise-in`}>
     <span class="label project__idx">{n} · {p.category[lang]}</span>
-    <span class="depth-text project__word" aria-hidden="true">{p.name}</span>
-    <div class="project__object">
-      {p.icon
-        ? <img class="project__icon" src={p.icon} alt="" width="144" height="144" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
-        : <span class="project__icon project__icon--blank" aria-hidden="true">{p.name[0]}</span>}
-      <div class="contact-shadow"></div>
-    </div>
+    {p.screens ? (
+      <div class="project__screens">
+        {p.screens.map((s) => (
+          <div class="device"><img src={s.src[lang]} alt={s.alt[lang]} width="480" height="1043" loading="lazy" decoding="async" /></div>
+        ))}
+      </div>
+    ) : (
+      <>
+        <span class="depth-text project__word" aria-hidden="true">{p.name}</span>
+        <div class="project__object">
+          {p.icon
+            ? <img class="project__icon" src={p.icon} alt="" width="144" height="144" loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+            : <span class="project__icon project__icon--blank" aria-hidden="true">{p.name[0]}</span>}
+          <div class="contact-shadow"></div>
+        </div>
+      </>
+    )}
     {p.stat && <span class="glass project__badge"><b>{p.stat.value}</b> {p.stat.label[lang]}</span>}
     {p.status && <span class="glass project__badge"><span class="live"></span> {p.status[lang]}</span>}
   </div>

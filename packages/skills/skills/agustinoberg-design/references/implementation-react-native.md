@@ -324,7 +324,46 @@ The iOS `Switch` already has the elastic thumb, the right timing and the haptic,
 | modal | `presentation: "formSheet"` or `"modal"` on iOS, or the `FloatingSheet` above for in-screen tasks. |
 | tabs | crossfade, no slide (`animation: "fade"` where supported). |
 
-## 15. Haptics map
+## 15. Life in a native app
+
+### Photos, generously
+
+```tsx
+import { Image } from "expo-image";
+
+<Image
+  source={{ uri: trip.photo }}            // real asset, or stock marked [TODO: replace]
+  placeholder={{ blurhash: trip.blurhash }} // never a grey box
+  contentFit="cover"
+  transition={motion.duration.quick}
+  style={{ width: "100%", aspectRatio: 4 / 5, borderRadius: radius.lg, borderCurve: "continuous" }}
+/>
+```
+
+### Photo-tinted backdrop
+
+```tsx
+// Store the dominant color with the photo (backend or build step). `react-native-image-colors` can compute it once and cache it.
+const tint = trip.color; // e.g. "#b0643a"
+<View style={{ flex: 1, backgroundColor: scheme === "dark" ? mix(tint, "#000", 0.3) : mix(tint, c.bg, 0.14) }}>
+```
+
+`mix(a, b, t)` is a small helper that blends two hex colors; keep it in `theme.ts`.
+
+### Objects that feel physical
+
+```tsx
+<View style={{ transform: [{ rotate: "-4deg" }] }}>
+  <Image source={badge} style={{ width: 160, height: 160 }} />
+  <View style={styles.contactShadow} /> {/* 70% ellipse, 35% black, blurred */}
+</View>
+```
+
+### Section headers
+
+Sentence case, 17–22 / 600 in `c.fg`, as the native large title or a plain `Text`. Never a mono uppercase label in a consumer product.
+
+## 16. Haptics map
 
 | moment | call |
 |---|---|
@@ -333,7 +372,7 @@ The iOS `Switch` already has the elastic thumb, the right timing and the haptic,
 | success (payment, send, save) | `notificationAsync(Success)` |
 | error | `notificationAsync(Error)` |
 
-## 16. Reduced motion
+## 17. Reduced motion
 
 ```tsx
 import { useReducedMotion } from "react-native-reanimated";
